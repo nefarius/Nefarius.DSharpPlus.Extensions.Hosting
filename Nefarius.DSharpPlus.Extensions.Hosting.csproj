@@ -10,6 +10,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="WorkerExample\**" />
+    <EmbeddedResource Remove="WorkerExample\**" />
+    <None Remove="WorkerExample\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="JetBrains.Annotations" Version="2021.2.0" PrivateAssets="All" />
     <PackageReference Include="DSharpPlus" Version="4.1.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="5.0.0" />
