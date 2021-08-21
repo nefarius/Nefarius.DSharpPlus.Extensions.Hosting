@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>Benjamin Höglinger-Stelzer</Authors>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <LangVersion>8</LangVersion>
+    <OutputPath>$(SolutionDir)bin\</OutputPath>
+    <Copyright>Copyright © Benjamin Höglinger-Stelzer 2021</Copyright>
+    <Description>DSharpPlus UNOFFICIAL Microsoft.Extensions.DependencyInjection integration.</Description>
+    <RepositoryUrl>https://github.com/nefarius/Nefarius.DSharpPlus.Extensions.Hosting</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/nefarius/Nefarius.DSharpPlus.Extensions.Hosting</PackageProjectUrl>
+    <PackageTags>discord dsharpplus hosting extensions</PackageTags>
+    <Version>1.0.0</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="JetBrains.Annotations" Version="2021.2.0" PrivateAssets="All" />
+    <PackageReference Include="DSharpPlus" Version="4.1.0" />
+    <PackageReference Include="DSharpPlus.CommandsNext" Version="4.1.0" PrivateAssets="All" />
+    <PackageReference Include="DSharpPlus.Interactivity" Version="4.1.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Options" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="5.0.0" />
+    <PackageReference Include="OpenTracing" Version="0.12.1" />
+  </ItemGroup>
+
+</Project>

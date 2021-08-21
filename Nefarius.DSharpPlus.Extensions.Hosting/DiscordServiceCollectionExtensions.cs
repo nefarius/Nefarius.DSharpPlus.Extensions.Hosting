@@ -7,16 +7,20 @@ using Nefarius.DSharpPlus.Extensions.Hosting.Events;
 namespace Nefarius.DSharpPlus.Extensions.Hosting
 {
     [UsedImplicitly]
-    public static class DiscordServiceCollectionExtensions
+    public static partial class DiscordServiceCollectionExtensions
     {
+        /// <summary>
+        ///     Registers a <see cref="IDiscordClientService"/> with <see cref="DiscordServiceOptions"/>.
+        /// </summary>
+        /// <param name="services">The <see cref="IServiceCollection"/>.</param>
+        /// <param name="configure">The <see cref="DiscordServiceOptions"/>.</param>
+        /// <returns>The <see cref="IServiceCollection"/>.</returns>
         [UsedImplicitly]
         public static IServiceCollection AddDiscord(
             this IServiceCollection services,
             Action<DiscordServiceOptions> configure
         )
         {
-            services.AddOptions();
-
             services.Configure(configure);
 
             services.TryAddSingleton<IDiscordClientService, DiscordService>();
@@ -24,6 +28,11 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
             return services;
         }
 
+        /// <summary>
+        ///     Registers a <see cref="DiscordHostedService"/>.
+        /// </summary>
+        /// <param name="services">The <see cref="IServiceCollection"/>.</param>
+        /// <returns>The <see cref="IServiceCollection"/>.</returns>
         [UsedImplicitly]
         public static IServiceCollection AddDiscordHostedService(
             this IServiceCollection services

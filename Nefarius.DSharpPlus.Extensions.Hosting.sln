@@ -3,9 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31613.86
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nefarius.DSharpPlus.Extensions.Hosting", "Nefarius.DSharpPlus.Extensions.Hosting.csproj", "{A99E8608-9142-4C32-8045-0D7574B539F9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nefarius.DSharpPlus.Extensions.Hosting", "Nefarius.DSharpPlus.Extensions.Hosting\Nefarius.DSharpPlus.Extensions.Hosting.csproj", "{A99E8608-9142-4C32-8045-0D7574B539F9}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WorkerExample", "WorkerExample\WorkerExample.csproj", "{BA844A48-9DC4-43A4-A3AC-8D6665807DDC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nefarius.DSharpPlus.CommandsNext.Extensions.Hosting", "Nefarius.DSharpPlus.CommandsNext.Extensions.Hosting\Nefarius.DSharpPlus.CommandsNext.Extensions.Hosting.csproj", "{F5A4E49C-C6E8-409D-A5D4-D913DCB7B703}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nefarius.DSharpPlus.Interactivity.Extensions.Hosting", "Nefarius.DSharpPlus.Interactivity.Extensions.Hosting\Nefarius.DSharpPlus.Interactivity.Extensions.Hosting.csproj", "{9FE838B7-4A71-4BB0-AAC4-475F30A74089}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{BA844A48-9DC4-43A4-A3AC-8D6665807DDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BA844A48-9DC4-43A4-A3AC-8D6665807DDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BA844A48-9DC4-43A4-A3AC-8D6665807DDC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5A4E49C-C6E8-409D-A5D4-D913DCB7B703}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5A4E49C-C6E8-409D-A5D4-D913DCB7B703}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5A4E49C-C6E8-409D-A5D4-D913DCB7B703}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5A4E49C-C6E8-409D-A5D4-D913DCB7B703}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9FE838B7-4A71-4BB0-AAC4-475F30A74089}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FE838B7-4A71-4BB0-AAC4-475F30A74089}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FE838B7-4A71-4BB0-AAC4-475F30A74089}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FE838B7-4A71-4BB0-AAC4-475F30A74089}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

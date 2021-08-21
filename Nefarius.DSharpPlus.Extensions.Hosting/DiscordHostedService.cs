@@ -7,6 +7,9 @@ using OpenTracing;
 
 namespace Nefarius.DSharpPlus.Extensions.Hosting
 {
+    /// <summary>
+    ///     Brings a <see cref="IDiscordClientService"/> online.
+    /// </summary>
     [UsedImplicitly]
     public class DiscordHostedService : IHostedService
     {

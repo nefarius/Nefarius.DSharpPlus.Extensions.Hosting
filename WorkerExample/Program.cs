@@ -1,10 +1,17 @@
 using System;
 using DSharpPlus;
+
+/*
 using DSharpPlus.CommandsNext;
 using DSharpPlus.Interactivity;
 using DSharpPlus.Interactivity.Enums;
+using Nefarius.DSharpPlus.CommandsNext.Extensions.Hosting;
+using Nefarius.DSharpPlus.Interactivity.Extensions.Hosting;
+*/
+
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+
 using Nefarius.DSharpPlus.Extensions.Hosting;
 using OpenTracing;
 using OpenTracing.Mock;
@@ -23,16 +30,41 @@ namespace WorkerExample
             return Host.CreateDefaultBuilder(args)
                 .ConfigureServices((hostContext, services) =>
                 {
+                    //
+                    // Tracer is required, if you don't use one, use the MockTracer
+                    // 
                     services.AddSingleton<ITracer>(provider => new MockTracer());
 
+                    //
+                    // Adds DiscordClient singleton service you can use everywhere
+                    // 
                     services.AddDiscord(options =>
                     {
+                        //
+                        // Minimum required configuration
+                        // 
                         options.Configuration = new DiscordConfiguration
                         {
-                            Token = ""
+                            Token = "recommended to read bot token from configuration file"
                         };
+                    });
 
-                        options.Interactivity = new InteractivityConfiguration()
+                    /*
+                    services.AddDiscordCommandsNext(options =>
+                    {
+                        options.Configuration = new CommandsNextConfiguration()
+                        {
+                            StringPrefixes = new[] {">"},
+
+                            EnableDms = false,
+
+                            EnableMentionPrefix = true
+                        };
+                    });
+
+                    services.AddDiscordInteractivity(options =>
+                    {
+                        options.Configuration = new InteractivityConfiguration
                         {
                             PaginationBehaviour = PaginationBehaviour.WrapAround,
 
@@ -42,23 +74,23 @@ namespace WorkerExample
 
                             Timeout = TimeSpan.FromMinutes(2)
                         };
-
-                        options.CommandsNext = new CommandsNextConfiguration()
-                        {
-                            StringPrefixes = new[] { ">" },
-
-                            EnableDms = false,
-
-                            EnableMentionPrefix = true
-                        };
-
-                        options.RegisterCommands<AdminCommands>();
                     });
+                    */
 
-                    services.AddDiscordGuildEventsSubscriber<GuildEventsSubscriberExample01>();
-                    services.AddDiscordGuildMemberEventsSubscriber<GuildEventsSubscriberExample01>();
-                    services.AddDiscordGuildEventsSubscriber<GuildEventsSubscriberExample02>();
+                    //
+                    // Register your module(s) for every events interface it implements
+                    // 
+                    services.AddDiscordGuildEventsSubscriber<BotModuleForGuildAndMemberEvents>();
+                    services.AddDiscordGuildMemberEventsSubscriber<BotModuleForGuildAndMemberEvents>();
 
+                    //
+                    // Module reacting to different events
+                    // 
+                    services.AddDiscordMiscEventsSubscriber<BotModuleForMiscEvents>();
+
+                    //
+                    // Automatically host service and connect to gateway on boot
+                    // 
                     services.AddDiscordHostedService();
                 });
         }

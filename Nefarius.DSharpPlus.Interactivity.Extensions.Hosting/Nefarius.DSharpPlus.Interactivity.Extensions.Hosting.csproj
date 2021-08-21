@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>Benjamin Höglinger-Stelzer</Authors>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <LangVersion>8</LangVersion>
+    <OutputPath>$(SolutionDir)bin\</OutputPath>
+    <Copyright>Copyright © Benjamin Höglinger-Stelzer 2021</Copyright>
+    <Description>DSharpPlus UNOFFICIAL Microsoft.Extensions.DependencyInjection integration.</Description>
+    <RepositoryUrl>https://github.com/nefarius/Nefarius.DSharpPlus.Extensions.Hosting</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/nefarius/Nefarius.DSharpPlus.Extensions.Hosting</PackageProjectUrl>
+    <PackageTags>discord dsharpplus hosting extensions</PackageTags>
+    <Version>1.0.0</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="JetBrains.Annotations" Version="2021.2.0" PrivateAssets="All" />
+    <PackageReference Include="DSharpPlus" Version="4.1.0" />
+    <PackageReference Include="DSharpPlus.Interactivity" Version="4.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Nefarius.DSharpPlus.Extensions.Hosting\Nefarius.DSharpPlus.Extensions.Hosting.csproj" />
+  </ItemGroup>
+
+</Project>
