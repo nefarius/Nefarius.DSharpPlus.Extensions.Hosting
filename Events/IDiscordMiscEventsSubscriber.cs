@@ -8,5 +8,7 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting.Events
     {
         public Task DiscordOnComponentInteractionCreated(DiscordClient sender,
             ComponentInteractionCreateEventArgs args);
+
+        public Task DiscordOnClientErrored(DiscordClient sender, ClientErrorEventArgs args);
     }
 }

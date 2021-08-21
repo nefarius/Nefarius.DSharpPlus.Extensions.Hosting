@@ -734,8 +734,9 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
             #region Misc
 
             foreach (var subscriber in miscEventsSubscriber)
+            {
                 Client.ComponentInteractionCreated +=
-                    async delegate (DiscordClient sender, ComponentInteractionCreateEventArgs args)
+                    async delegate(DiscordClient sender, ComponentInteractionCreateEventArgs args)
                     {
                         using var workScope = Tracer
                             .BuildSpan(nameof(Client.ComponentInteractionCreated))
@@ -747,6 +748,18 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
 
                         await subscriber.DiscordOnComponentInteractionCreated(sender, args);
                     };
+
+                Client.ClientErrored += async delegate(DiscordClient sender, ClientErrorEventArgs args)
+                {
+                    using var workScope = Tracer
+                        .BuildSpan(nameof(Client.ClientErrored))
+                        .IgnoreActiveSpan()
+                        .StartActive(true);
+                    workScope.Span.SetTag("EventName", args.EventName);
+
+                    await subscriber.DiscordOnClientErrored(sender, args);
+                };
+            }
 
             #endregion
         }
