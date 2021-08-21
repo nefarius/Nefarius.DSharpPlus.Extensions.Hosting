@@ -1,9 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using DSharpPlus;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Nefarius.DSharpPlus.Extensions.Hosting;
+using OpenTracing;
+using OpenTracing.Mock;
 
 namespace WorkerExample
 {
@@ -14,11 +14,26 @@ namespace WorkerExample
             CreateHostBuilder(args).Build().Run();
         }
 
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
+        public static IHostBuilder CreateHostBuilder(string[] args)
+        {
+            return Host.CreateDefaultBuilder(args)
                 .ConfigureServices((hostContext, services) =>
                 {
-                    services.AddHostedService<Worker>();
+                    services.AddSingleton<ITracer>(provider => new MockTracer());
+
+                    services.AddDiscord(options =>
+                    {
+                        options.Configuration = new DiscordConfiguration
+                        {
+                            Token = ""
+                        };
+                    });
+
+                    services.AddDiscordGuildEventsSubscriber<GuildEventsSubscriberExample01>();
+                    services.AddDiscordGuildEventsSubscriber<GuildEventsSubscriberExample02>();
+
+                    services.AddDiscordHostedService();
                 });
+        }
     }
 }

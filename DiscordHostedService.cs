@@ -16,7 +16,9 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
 
         private readonly ITracer _tracer;
 
-        public DiscordHostedService(IDiscordClientService discordClient, ITracer tracer,
+        public DiscordHostedService(
+            IDiscordClientService discordClient,
+            ITracer tracer,
             ILogger<DiscordHostedService> logger)
         {
             _discordClient = discordClient;
@@ -26,6 +28,8 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
 
         public async Task StartAsync(CancellationToken cancellationToken)
         {
+            _discordClient.Initialize();
+
             using (_tracer.BuildSpan(nameof(_discordClient.Client.ConnectAsync)).StartActive(true))
             {
                 _logger.LogInformation("Connecting to Discord API...");
