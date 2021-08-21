@@ -1,4 +1,8 @@
+using System;
 using DSharpPlus;
+using DSharpPlus.CommandsNext;
+using DSharpPlus.Interactivity;
+using DSharpPlus.Interactivity.Enums;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Nefarius.DSharpPlus.Extensions.Hosting;
@@ -27,6 +31,28 @@ namespace WorkerExample
                         {
                             Token = ""
                         };
+
+                        options.Interactivity = new InteractivityConfiguration()
+                        {
+                            PaginationBehaviour = PaginationBehaviour.WrapAround,
+
+                            ResponseBehavior = InteractionResponseBehavior.Ack,
+
+                            ResponseMessage = "That's not a valid button",
+
+                            Timeout = TimeSpan.FromMinutes(2)
+                        };
+
+                        options.CommandsNext = new CommandsNextConfiguration()
+                        {
+                            StringPrefixes = new[] { ">" },
+
+                            EnableDms = false,
+
+                            EnableMentionPrefix = true
+                        };
+
+                        options.RegisterCommands<AdminCommands>();
                     });
 
                     services.AddDiscordGuildEventsSubscriber<GuildEventsSubscriberExample01>();

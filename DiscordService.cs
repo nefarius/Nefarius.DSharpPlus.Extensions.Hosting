@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Linq;
 using DSharpPlus;
+using DSharpPlus.CommandsNext;
 using DSharpPlus.EventArgs;
+using DSharpPlus.Interactivity;
+using DSharpPlus.Interactivity.Extensions;
 using JetBrains.Annotations;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -140,11 +143,35 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
 
             var configuration = new DiscordConfiguration(Options.Value.Configuration)
             {
+                //
+                // Overwrite with DI configured logging factory
+                // 
                 LoggerFactory = LogFactory,
                 Intents = intents
             };
 
             Client = new DiscordClient(configuration);
+
+            if (Options.Value.Interactivity != null)
+                Client.UseInteractivity(Options.Value.Interactivity);
+
+            if (Options.Value.CommandsNext != null)
+            {
+                var commandsNext = new CommandsNextConfiguration(Options.Value.CommandsNext)
+                {
+                    //
+                    // Overwrite with DI provider to have all other services available to command modules
+                    // 
+                    Services = ServiceProvider
+                };
+
+                var ext = Client.UseCommandsNext(commandsNext);
+
+                foreach (var module in Options.Value.CommandModules)
+                {
+                    ext.RegisterCommands(module);
+                }
+            }
 
             #region Channel
 
