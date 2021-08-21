@@ -30,6 +30,7 @@ namespace WorkerExample
                     });
 
                     services.AddDiscordGuildEventsSubscriber<GuildEventsSubscriberExample01>();
+                    services.AddDiscordGuildMemberEventsSubscriber<GuildEventsSubscriberExample01>();
                     services.AddDiscordGuildEventsSubscriber<GuildEventsSubscriberExample02>();
 
                     services.AddDiscordHostedService();

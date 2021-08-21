@@ -2,6 +2,7 @@
 using JetBrains.Annotations;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using Nefarius.DSharpPlus.Extensions.Hosting.Events;
 
 namespace Nefarius.DSharpPlus.Extensions.Hosting
 {
@@ -31,6 +32,15 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
             return services.AddHostedService<DiscordHostedService>();
         }
 
+        #region Subscribers
+        
+        [UsedImplicitly]
+        public static IServiceCollection AddDiscordChannelEventsSubscriber<T>(this IServiceCollection services)
+            where T : IDiscordChannelEventsSubscriber
+        {
+            return services.AddScoped(typeof(IDiscordChannelEventsSubscriber), typeof(T));
+        }
+
         [UsedImplicitly]
         public static IServiceCollection AddDiscordGuildEventsSubscriber<T>(this IServiceCollection services)
             where T : IDiscordGuildEventsSubscriber
@@ -39,10 +49,24 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
         }
 
         [UsedImplicitly]
+        public static IServiceCollection AddDiscordGuildBanEventsSubscriber<T>(this IServiceCollection services)
+            where T : IDiscordGuildBanEventsSubscriber
+        {
+            return services.AddScoped(typeof(IDiscordGuildBanEventsSubscriber), typeof(T));
+        }
+
+        [UsedImplicitly]
         public static IServiceCollection AddDiscordGuildMemberEventsSubscriber<T>(this IServiceCollection services)
             where T : IDiscordGuildMemberEventsSubscriber
         {
             return services.AddScoped(typeof(IDiscordGuildMemberEventsSubscriber), typeof(T));
+        }
+
+        [UsedImplicitly]
+        public static IServiceCollection AddDiscordGuildRoleEventsSubscriber<T>(this IServiceCollection services)
+            where T : IDiscordGuildRoleEventsSubscriber
+        {
+            return services.AddScoped(typeof(IDiscordGuildRoleEventsSubscriber), typeof(T));
         }
 
         [UsedImplicitly]
@@ -60,6 +84,20 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
         }
 
         [UsedImplicitly]
+        public static IServiceCollection AddDiscordMessageReactionAddedEventsSubscriber<T>(this IServiceCollection services)
+            where T : IDiscordMessageReactionAddedEventsSubscriber
+        {
+            return services.AddScoped(typeof(IDiscordMessageReactionAddedEventsSubscriber), typeof(T));
+        }
+
+        [UsedImplicitly]
+        public static IServiceCollection AddDiscordPresenceUserEventsSubscriber<T>(this IServiceCollection services)
+            where T : IDiscordPresenceUserEventsSubscriber
+        {
+            return services.AddScoped(typeof(IDiscordPresenceUserEventsSubscriber), typeof(T));
+        }
+
+        [UsedImplicitly]
         public static IServiceCollection AddDiscordVoiceEventsSubscriber<T>(this IServiceCollection services)
             where T : IDiscordVoiceEventsSubscriber
         {
@@ -67,10 +105,12 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
         }
 
         [UsedImplicitly]
-        public static IServiceCollection AddDiscordComponentInteractionEventsSubscriber<T>(this IServiceCollection services)
-            where T : IDiscordComponentInteractionEventsSubscriber
+        public static IServiceCollection AddDiscordMiscEventsSubscriber<T>(this IServiceCollection services)
+            where T : IDiscordMiscEventsSubscriber
         {
-            return services.AddScoped(typeof(IDiscordComponentInteractionEventsSubscriber), typeof(T));
+            return services.AddScoped(typeof(IDiscordMiscEventsSubscriber), typeof(T));
         }
+
+        #endregion
     }
 }
