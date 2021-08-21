@@ -35,6 +35,13 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
         #region Subscribers
         
         [UsedImplicitly]
+        public static IServiceCollection AddDiscordWebSocketEventSubscriber<T>(this IServiceCollection services)
+            where T : IDiscordWebSocketEventSubscriber
+        {
+            return services.AddScoped(typeof(IDiscordWebSocketEventSubscriber), typeof(T));
+        }
+
+        [UsedImplicitly]
         public static IServiceCollection AddDiscordChannelEventsSubscriber<T>(this IServiceCollection services)
             where T : IDiscordChannelEventsSubscriber
         {

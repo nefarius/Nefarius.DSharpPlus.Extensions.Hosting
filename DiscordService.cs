@@ -56,7 +56,12 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
             using var scope = ServiceProvider.CreateScope();
 
             #region Subscriber services
-            
+
+            var webSocketEventSubscriber = scope.ServiceProvider
+                .GetServices(typeof(IDiscordWebSocketEventSubscriber))
+                .Cast<IDiscordWebSocketEventSubscriber>()
+                .ToList();
+
             var channelEventsSubscriber = scope.ServiceProvider
                 .GetServices(typeof(IDiscordChannelEventsSubscriber))
                 .Cast<IDiscordChannelEventsSubscriber>()
@@ -172,6 +177,23 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
                     ext.RegisterCommands(module);
                 }
             }
+
+            #region WebSocket
+
+            foreach (var subscriber in webSocketEventSubscriber)
+            {
+                Client.Ready += async delegate(DiscordClient sender, ReadyEventArgs args)
+                {
+                    using var workScope = Tracer
+                        .BuildSpan(nameof(Client.ChannelCreated))
+                        .IgnoreActiveSpan()
+                        .StartActive(true);
+
+                    await subscriber.DiscordOnReady(sender, args);
+                };
+            }
+
+            #endregion
 
             #region Channel
 
