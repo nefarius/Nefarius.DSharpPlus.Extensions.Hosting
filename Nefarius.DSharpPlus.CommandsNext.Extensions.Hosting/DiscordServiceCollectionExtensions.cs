@@ -2,9 +2,9 @@
 using DSharpPlus.CommandsNext;
 using JetBrains.Annotations;
 using Microsoft.Extensions.DependencyInjection;
+using Nefarius.DSharpPlus.CommandsNext.Extensions.Hosting.Events;
 using Nefarius.DSharpPlus.CommandsNext.Extensions.Hosting.Util;
 using Nefarius.DSharpPlus.Extensions.Hosting;
-using Nefarius.DSharpPlus.Extensions.Hosting.Events.CommandsNext;
 
 namespace Nefarius.DSharpPlus.CommandsNext.Extensions.Hosting
 {

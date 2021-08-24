@@ -7,7 +7,7 @@ using Nefarius.DSharpPlus.Extensions.Hosting.Events;
 namespace Nefarius.DSharpPlus.Extensions.Hosting
 {
     [UsedImplicitly]
-    public static partial class DiscordServiceCollectionExtensions
+    public static class DiscordServiceCollectionExtensions
     {
         /// <summary>
         ///     Registers a <see cref="IDiscordClientService"/> with <see cref="DiscordServiceOptions"/>.

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Extensions.DependencyInjection;
-using Nefarius.DSharpPlus.Extensions.Hosting.Events.CommandsNext;
+using Nefarius.DSharpPlus.CommandsNext.Extensions.Hosting.Events;
 
 namespace Nefarius.DSharpPlus.CommandsNext.Extensions.Hosting.Util
 {

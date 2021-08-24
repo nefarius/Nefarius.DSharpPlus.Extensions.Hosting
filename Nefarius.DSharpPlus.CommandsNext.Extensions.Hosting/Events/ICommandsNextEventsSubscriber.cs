@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using DSharpPlus.CommandsNext;
 
-namespace Nefarius.DSharpPlus.Extensions.Hosting.Events.CommandsNext
+namespace Nefarius.DSharpPlus.CommandsNext.Extensions.Hosting.Events
 {
     public interface IDiscordCommandsNextEventsSubscriber
     {
