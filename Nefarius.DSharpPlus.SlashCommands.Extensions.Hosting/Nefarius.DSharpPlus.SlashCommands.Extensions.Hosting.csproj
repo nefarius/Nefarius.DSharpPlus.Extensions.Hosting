@@ -18,15 +18,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="IDoEverything.DSharpPlus.SlashCommands" Version="2.0.1" />
     <PackageReference Include="JetBrains.Annotations" Version="2021.2.0" PrivateAssets="All" />
-    <PackageReference Include="DSharpPlus" Version="4.2.0-nightly-00970" />
-    <PackageReference Include="DSharpPlus.CommandsNext" Version="4.2.0-nightly-00970" PrivateAssets="All" />
-    <PackageReference Include="DSharpPlus.Interactivity" Version="4.2.0-nightly-00970" PrivateAssets="All" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="5.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="5.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Options" Version="5.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="5.0.0" />
-    <PackageReference Include="OpenTracing" Version="0.12.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Nefarius.DSharpPlus.Extensions.Hosting\Nefarius.DSharpPlus.Extensions.Hosting.csproj" />
   </ItemGroup>
 
   <ItemGroup>
