@@ -19,7 +19,7 @@ namespace Nefarius.DSharpPlus.SlashCommands.Extensions.Hosting
         [UsedImplicitly]
         public static IServiceCollection AddDiscordSlashCommands(
             this IServiceCollection services,
-            Action<DiscordSlashCommandsOptions?> configure
+            Action<DiscordSlashCommandsOptions?> configure = null
         )
         {
             services.AddSingleton(typeof(IDiscordExtensionConfiguration), provider =>
