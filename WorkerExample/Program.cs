@@ -1,17 +1,19 @@
 using System;
 using DSharpPlus;
 
-/*
+#region OPTIONAL CommandsNext integration
 using DSharpPlus.CommandsNext;
+using Nefarius.DSharpPlus.CommandsNext.Extensions.Hosting;
+#endregion
+
+#region OPTIONAL Interactivity integration
 using DSharpPlus.Interactivity;
 using DSharpPlus.Interactivity.Enums;
-using Nefarius.DSharpPlus.CommandsNext.Extensions.Hosting;
 using Nefarius.DSharpPlus.Interactivity.Extensions.Hosting;
-*/
+#endregion
 
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-
 using Nefarius.DSharpPlus.Extensions.Hosting;
 using OpenTracing;
 using OpenTracing.Mock;
@@ -49,10 +51,11 @@ namespace WorkerExample
                         };
                     });
 
-                    /*
+                    #region OPTIONAL CommandsNext integration
+
                     services.AddDiscordCommandsNext(options =>
                     {
-                        options.Configuration = new CommandsNextConfiguration()
+                        options.Configuration = new CommandsNextConfiguration
                         {
                             StringPrefixes = new[] {">"},
 
@@ -61,6 +64,10 @@ namespace WorkerExample
                             EnableMentionPrefix = true
                         };
                     });
+
+                    #endregion
+
+                    #region OPTIONAL Interactivity integration
 
                     services.AddDiscordInteractivity(options =>
                     {
@@ -75,7 +82,8 @@ namespace WorkerExample
                             Timeout = TimeSpan.FromMinutes(2)
                         };
                     });
-                    */
+
+                    #endregion
 
                     //
                     // Register your module(s) for every events interface it implements

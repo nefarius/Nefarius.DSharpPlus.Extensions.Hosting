@@ -10,7 +10,7 @@ namespace Nefarius.DSharpPlus.Interactivity.Extensions.Hosting
     public static class DiscordServiceCollectionExtensions
     {
         /// <summary>
-        ///     Registers the <see cref="DiscordInteractivityOptions"/>.
+        ///     Adds Interactivity extension to <see cref="IDiscordClientService"/>.
         /// </summary>
         /// <param name="services">The <see cref="IServiceCollection"/>.</param>
         /// <param name="configure">The <see cref="DiscordInteractivityOptions"/>.</param>

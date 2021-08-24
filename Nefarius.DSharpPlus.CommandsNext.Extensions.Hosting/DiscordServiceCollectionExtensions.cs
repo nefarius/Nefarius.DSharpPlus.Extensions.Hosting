@@ -12,7 +12,7 @@ namespace Nefarius.DSharpPlus.CommandsNext.Extensions.Hosting
     public static class DiscordServiceCollectionExtensions
     {
         /// <summary>
-        ///     Registers the <see cref="DiscordCommandsNextOptions"/>.
+        ///     Adds CommandsNext extension to <see cref="IDiscordClientService"/>.
         /// </summary>
         /// <param name="services">The <see cref="IServiceCollection"/>.</param>
         /// <param name="configure">The <see cref="DiscordCommandsNextOptions"/>.</param>
@@ -28,6 +28,11 @@ namespace Nefarius.DSharpPlus.CommandsNext.Extensions.Hosting
                 var options = new DiscordCommandsNextOptions();
 
                 configure(options);
+
+                //
+                // Make all services available to bot commands
+                // 
+                options.Configuration.Services = provider;
 
                 var discord = provider.GetRequiredService<IDiscordClientService>().Client;
 
