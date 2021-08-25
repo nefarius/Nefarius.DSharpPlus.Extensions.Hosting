@@ -24,6 +24,10 @@ Optional. Adds support for [DSharpPlus.CommandsNext](https://dsharpplus.github.i
 
 Optional. Adds support for [DSharpPlus.Interactivity](https://dsharpplus.github.io/articles/interactivity.html) extension.
 
+### Nefarius.DSharpPlus.VoiceNext.Extensions.Hosting
+
+Optional. Adds support for [DSharpPlus.VoiceNext](https://dsharpplus.github.io/articles/audio/voicenext/prerequisites.html)
+
 ### Nefarius.DSharpPlus.SlashCommands.Extensions.Hosting
 
 Optional. Adds support for [DSharpPlus.SlashCommands](https://github.com/IDoEverything/DSharpPlus.SlashCommands) extension (3rd party).

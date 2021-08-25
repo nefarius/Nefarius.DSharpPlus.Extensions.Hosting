@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nefarius.DSharpPlus.Command
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nefarius.DSharpPlus.Interactivity.Extensions.Hosting", "Nefarius.DSharpPlus.Interactivity.Extensions.Hosting\Nefarius.DSharpPlus.Interactivity.Extensions.Hosting.csproj", "{9FE838B7-4A71-4BB0-AAC4-475F30A74089}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nefarius.DSharpPlus.SlashCommands.Extensions.Hosting", "Nefarius.DSharpPlus.SlashCommands.Extensions.Hosting\Nefarius.DSharpPlus.SlashCommands.Extensions.Hosting.csproj", "{4519D373-F84C-4B6C-A0E3-161F1913205C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nefarius.DSharpPlus.SlashCommands.Extensions.Hosting", "Nefarius.DSharpPlus.SlashCommands.Extensions.Hosting\Nefarius.DSharpPlus.SlashCommands.Extensions.Hosting.csproj", "{4519D373-F84C-4B6C-A0E3-161F1913205C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nefarius.DSharpPlus.VoiceNext.Extensions.Hosting", "Nefarius.DSharpPlus.VoiceNext.Extensions.Hosting\Nefarius.DSharpPlus.VoiceNext.Extensions.Hosting.csproj", "{0EA9DFC2-C3B2-452C-8C61-4DE5FF726B65}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{4519D373-F84C-4B6C-A0E3-161F1913205C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4519D373-F84C-4B6C-A0E3-161F1913205C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4519D373-F84C-4B6C-A0E3-161F1913205C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0EA9DFC2-C3B2-452C-8C61-4DE5FF726B65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0EA9DFC2-C3B2-452C-8C61-4DE5FF726B65}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0EA9DFC2-C3B2-452C-8C61-4DE5FF726B65}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0EA9DFC2-C3B2-452C-8C61-4DE5FF726B65}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
