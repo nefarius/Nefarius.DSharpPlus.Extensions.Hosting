@@ -10,6 +10,11 @@ Glues .NET Core Hosting and [DSharpPlus](https://github.com/DSharpPlus/DSharpPlu
 
 Work in progress!
 
+## To-Do
+
+- [ ] Documentation!
+- [ ] The lesser used events are not yet implemented (mainly WebSocket)
+
 ## Package overview
 
 ### Nefarius.DSharpPlus.Extensions.Hosting
