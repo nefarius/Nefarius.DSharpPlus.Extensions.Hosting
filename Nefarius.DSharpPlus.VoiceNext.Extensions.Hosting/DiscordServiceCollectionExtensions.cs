@@ -10,22 +10,25 @@ namespace Nefarius.DSharpPlus.VoiceNext.Extensions.Hosting
     public static class DiscordServiceCollectionExtensions
     {
         /// <summary>
-        ///     Adds VoiceNext extension to <see cref="IDiscordClientService"/>.
+        ///     Adds VoiceNext extension to <see cref="IDiscordClientService" />.
         /// </summary>
-        /// <param name="services">The <see cref="IServiceCollection"/>.</param>
-        /// <param name="configure">The <see cref="DiscordVoiceNextOptions"/>.</param>
-        /// <returns>The <see cref="IServiceCollection"/>.</returns>
+        /// <param name="services">The <see cref="IServiceCollection" />.</param>
+        /// <param name="configure">The <see cref="DiscordVoiceNextOptions" />.</param>
+        /// <returns>The <see cref="IServiceCollection" />.</returns>
         [UsedImplicitly]
         public static IServiceCollection AddDiscordVoiceNext(
             this IServiceCollection services,
-            Action<DiscordVoiceNextOptions> configure
+            Action<DiscordVoiceNextOptions?> configure = null
         )
         {
             services.AddSingleton(typeof(IDiscordExtensionConfiguration), provider =>
             {
                 var options = new DiscordVoiceNextOptions();
 
-                configure(options);
+                if (configure != null)
+                    configure(options);
+                else
+                    options.Configuration = new VoiceNextConfiguration();
 
                 var discord = provider.GetRequiredService<IDiscordClientService>().Client;
 
