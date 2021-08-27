@@ -14,6 +14,7 @@ Work in progress!
 
 - [ ] Documentation!
 - [ ] The lesser used events are not yet implemented (mainly WebSocket)
+- [ ] Implement missing extension methods for, uh, extensions
 
 ## Package overview
 
