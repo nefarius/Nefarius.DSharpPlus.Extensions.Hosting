@@ -1,6 +1,5 @@
 ﻿using System;
 using DSharpPlus.SlashCommands;
-using Emzi0767;
 using JetBrains.Annotations;
 using Microsoft.Extensions.DependencyInjection;
 using Nefarius.DSharpPlus.Extensions.Hosting;
@@ -45,6 +44,9 @@ namespace Nefarius.DSharpPlus.SlashCommands.Extensions.Hosting
                 // TODO: hook up events
                 // 
 
+                //
+                // This is intentional; we don't need this "service", just the execution flow ;)
+                // 
                 return null;
             });
 
