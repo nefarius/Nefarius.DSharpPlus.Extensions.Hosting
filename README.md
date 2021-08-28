@@ -2,7 +2,7 @@
 
 # DSharpPlus hosting extensions
 
-Glues .NET Core Hosting and [DSharpPlus](https://github.com/DSharpPlus/DSharpPlus) together for use with [DI](https://docs.microsoft.com/en-us/dotnet/core/extensions/dependency-injection).
+An extension for [DSharpPlus](https://github.com/DSharpPlus/DSharpPlus) to make hosting a Discord bot in [.NET Core Worker Services](https://docs.microsoft.com/en-us/dotnet/core/extensions/workers) easier.
 
 [![Build status](https://ci.appveyor.com/api/projects/status/qgix03imre2tya71?svg=true)](https://ci.appveyor.com/project/nefarius/nefarius-dsharpplus-extensions-hosting)
 
