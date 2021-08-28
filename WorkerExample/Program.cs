@@ -45,7 +45,7 @@ namespace WorkerExample
                         //
                         // Minimum required configuration
                         // 
-                        options.Token = "";
+                        options.Token = "recommended to read bot token from configuration file";
                     });
 
                     #region OPTIONAL CommandsNext integration
