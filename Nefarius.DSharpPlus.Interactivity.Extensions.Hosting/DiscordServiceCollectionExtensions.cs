@@ -1,4 +1,5 @@
 ﻿using System;
+using DSharpPlus.Interactivity;
 using DSharpPlus.Interactivity.Extensions;
 using JetBrains.Annotations;
 using Microsoft.Extensions.DependencyInjection;
@@ -13,25 +14,32 @@ namespace Nefarius.DSharpPlus.Interactivity.Extensions.Hosting
         ///     Adds Interactivity extension to <see cref="IDiscordClientService"/>.
         /// </summary>
         /// <param name="services">The <see cref="IServiceCollection"/>.</param>
-        /// <param name="configure">The <see cref="DiscordInteractivityOptions"/>.</param>
+        /// <param name="configuration">The <see cref="InteractivityConfiguration"/>.</param>
+        /// <param name="extension">The <see cref="InteractivityExtension"/></param>
         /// <returns>The <see cref="IServiceCollection"/>.</returns>
         [UsedImplicitly]
         public static IServiceCollection AddDiscordInteractivity(
             this IServiceCollection services,
-            Action<DiscordInteractivityOptions> configure
+            Action<InteractivityConfiguration> configuration,
+            Action<InteractivityExtension?> extension = null
         )
         {
             services.AddSingleton(typeof(IDiscordExtensionConfiguration), provider =>
             {
-                var options = new DiscordInteractivityOptions();
+                var options = new InteractivityConfiguration();
 
-                configure(options);
+                configuration(options);
 
                 var discord = provider.GetRequiredService<IDiscordClientService>().Client;
 
-                discord.UseInteractivity(options.Configuration);
+                var ext = discord.UseInteractivity(options);
 
-                return options;
+                extension?.Invoke(ext);
+
+                //
+                // This is intentional; we don't need this "service", just the execution flow ;)
+                // 
+                return null;
             });
 
             return services;

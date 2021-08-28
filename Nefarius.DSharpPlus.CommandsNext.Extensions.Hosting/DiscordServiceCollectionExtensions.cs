@@ -15,33 +15,32 @@ namespace Nefarius.DSharpPlus.CommandsNext.Extensions.Hosting
         ///     Adds CommandsNext extension to <see cref="IDiscordClientService"/>.
         /// </summary>
         /// <param name="services">The <see cref="IServiceCollection"/>.</param>
-        /// <param name="configure">The <see cref="DiscordCommandsNextOptions"/>.</param>
+        /// <param name="configuration">The <see cref="CommandsNextConfiguration"/>.</param>
+        /// <param name="extension">The <see cref="CommandsNextExtension"/>.</param>
         /// <returns>The <see cref="IServiceCollection"/>.</returns>
         [UsedImplicitly]
         public static IServiceCollection AddDiscordCommandsNext(
             this IServiceCollection services,
-            Action<DiscordCommandsNextOptions> configure
+            Action<CommandsNextConfiguration> configuration,
+            Action<CommandsNextExtension?> extension = null
         )
         {
             services.AddSingleton(typeof(IDiscordExtensionConfiguration), provider =>
             {
-                var options = new DiscordCommandsNextOptions();
+                var options = new CommandsNextConfiguration();
 
-                configure(options);
+                configuration(options);
 
                 //
                 // Make all services available to bot commands
                 // 
-                options.Configuration.Services = provider;
+                options.Services = provider;
 
                 var discord = provider.GetRequiredService<IDiscordClientService>().Client;
 
-                var ext = discord.UseCommandsNext(options.Configuration);
+                var ext = discord.UseCommandsNext(options);
 
-                foreach (var module in options.CommandModules)
-                {
-                    ext.RegisterCommands(module);
-                }
+                extension?.Invoke(ext);
 
                 ext.CommandExecuted += async delegate (CommandsNextExtension sender, CommandExecutionEventArgs args)
                 {
@@ -59,7 +58,10 @@ namespace Nefarius.DSharpPlus.CommandsNext.Extensions.Hosting
                         await eventsSubscriber.CommandsOnCommandErrored(sender, args);
                 };
 
-                return options;
+                //
+                // This is intentional; we don't need this "service", just the execution flow ;)
+                // 
+                return null;
             });
 
             return services;

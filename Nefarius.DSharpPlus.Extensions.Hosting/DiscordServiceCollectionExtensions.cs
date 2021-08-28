@@ -1,4 +1,5 @@
 ﻿using System;
+using DSharpPlus;
 using JetBrains.Annotations;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
@@ -13,12 +14,12 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
         ///     Registers a <see cref="IDiscordClientService"/> with <see cref="DiscordServiceOptions"/>.
         /// </summary>
         /// <param name="services">The <see cref="IServiceCollection"/>.</param>
-        /// <param name="configure">The <see cref="DiscordServiceOptions"/>.</param>
+        /// <param name="configure">The <see cref="DiscordConfiguration"/>.</param>
         /// <returns>The <see cref="IServiceCollection"/>.</returns>
         [UsedImplicitly]
         public static IServiceCollection AddDiscord(
             this IServiceCollection services,
-            Action<DiscordServiceOptions> configure
+            Action<DiscordConfiguration> configure
         )
         {
             services.Configure(configure);

@@ -39,7 +39,7 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
 
         protected readonly ILogger<DiscordService> Logger;
 
-        protected readonly IOptions<DiscordServiceOptions> DiscordOptions;
+        protected readonly IOptions<DiscordConfiguration> DiscordOptions;
         
         protected readonly IServiceProvider ServiceProvider;
 
@@ -50,7 +50,7 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
             ILoggerFactory logFactory,
             ILogger<DiscordService> logger,
             ITracer tracer,
-            IOptions<DiscordServiceOptions> discordOptions
+            IOptions<DiscordConfiguration> discordOptions
         )
         {
             ServiceProvider = serviceProvider;
@@ -66,7 +66,7 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
 
         public void Initialize()
         {
-            if (DiscordOptions.Value.Configuration is null)
+            if (DiscordOptions.Value is null)
                 throw new InvalidOperationException($"{nameof(DiscordConfiguration)} option is required");
 
             using var serviceScope = ServiceProvider.CreateScope();
@@ -102,7 +102,7 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
             // 
             var property = typeof(DiscordConfiguration).GetProperty("Intents");
             property = property.DeclaringType.GetProperty("Intents");
-            var intents = (DiscordIntents)property.GetValue(DiscordOptions.Value.Configuration,
+            var intents = (DiscordIntents)property.GetValue(DiscordOptions.Value,
                 BindingFlags.NonPublic | BindingFlags.Instance, null, null, null);
 
             //
@@ -132,7 +132,7 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
 
             #endregion
 
-            var configuration = new DiscordConfiguration(DiscordOptions.Value.Configuration)
+            var configuration = new DiscordConfiguration(DiscordOptions.Value)
             {
                 //
                 // Overwrite with DI configured logging factory

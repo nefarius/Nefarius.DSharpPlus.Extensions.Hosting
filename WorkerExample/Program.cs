@@ -45,24 +45,20 @@ namespace WorkerExample
                         //
                         // Minimum required configuration
                         // 
-                        options.Configuration = new DiscordConfiguration
-                        {
-                            Token = "recommended to read bot token from configuration file"
-                        };
+                        options.Token = "";
                     });
 
                     #region OPTIONAL CommandsNext integration
 
                     services.AddDiscordCommandsNext(options =>
                     {
-                        options.Configuration = new CommandsNextConfiguration
-                        {
-                            StringPrefixes = new[] {">"},
-
-                            EnableDms = false,
-
-                            EnableMentionPrefix = true
-                        };
+                        options.StringPrefixes = new[] {">"};
+                        options.EnableDms = false;
+                        options.EnableMentionPrefix = true;
+                    }, extension =>
+                    {
+                        extension.RegisterCommands<AdminCommands>();
+                        extension.RegisterCommands<MemberCommands>();
                     });
 
                     #endregion
@@ -71,16 +67,10 @@ namespace WorkerExample
 
                     services.AddDiscordInteractivity(options =>
                     {
-                        options.Configuration = new InteractivityConfiguration
-                        {
-                            PaginationBehaviour = PaginationBehaviour.WrapAround,
-
-                            ResponseBehavior = InteractionResponseBehavior.Ack,
-
-                            ResponseMessage = "That's not a valid button",
-
-                            Timeout = TimeSpan.FromMinutes(2)
-                        };
+                        options.PaginationBehaviour = PaginationBehaviour.WrapAround;
+                        options.ResponseBehavior = InteractionResponseBehavior.Ack;
+                        options.ResponseMessage = "That's not a valid button";
+                        options.Timeout = TimeSpan.FromMinutes(2);
                     });
 
                     #endregion
