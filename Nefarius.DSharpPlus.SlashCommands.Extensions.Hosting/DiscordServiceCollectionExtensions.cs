@@ -14,39 +14,38 @@ namespace Nefarius.DSharpPlus.SlashCommands.Extensions.Hosting
         ///     Adds Interactivity extension to <see cref="IDiscordClientService" />.
         /// </summary>
         /// <param name="services">The <see cref="IServiceCollection" />.</param>
-        /// <param name="configure">The <see cref="DiscordSlashCommandsOptions" />.</param>
+        /// <param name="configuration">The <see cref="SlashCommandsConfiguration" />.</param>
+        /// <param name="extension"></param>
         /// <returns>The <see cref="IServiceCollection" />.</returns>
         [UsedImplicitly]
         public static IServiceCollection AddDiscordSlashCommands(
             this IServiceCollection services,
-            Action<DiscordSlashCommandsOptions?> configure = null
+            Action<SlashCommandsConfiguration?> configuration = null,
+            Action<SlashCommandsExtension?> extension = null
         )
         {
             services.AddSingleton(typeof(IDiscordExtensionConfiguration), provider =>
             {
-                var options = new DiscordSlashCommandsOptions();
+                var options = new SlashCommandsConfiguration();
 
-                if (configure != null)
-                    configure(options);
-                else
-                    options.Configuration = new SlashCommandsConfiguration();
+                configuration?.Invoke(options);
 
                 //
                 // Make all services available to bot commands
                 // 
-                options.Configuration.Services = provider;
+                options.Services = provider;
 
                 var discord = provider.GetRequiredService<IDiscordClientService>().Client;
 
-                var ext = discord.UseSlashCommands(options.Configuration);
-
-                foreach (var (type, guildId) in options.CommandModules) ext.RegisterCommands(type, guildId);
+                var ext = discord.UseSlashCommands(options);
+                
+                extension?.Invoke(ext);
 
                 //
                 // TODO: hook up events
                 // 
 
-                return options;
+                return null;
             });
 
             return services;
