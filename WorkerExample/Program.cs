@@ -1,13 +1,10 @@
 using System;
-using DSharpPlus;
 
 #region OPTIONAL CommandsNext integration
-using DSharpPlus.CommandsNext;
 using Nefarius.DSharpPlus.CommandsNext.Extensions.Hosting;
 #endregion
 
 #region OPTIONAL Interactivity integration
-using DSharpPlus.Interactivity;
 using DSharpPlus.Interactivity.Enums;
 using Nefarius.DSharpPlus.Interactivity.Extensions.Hosting;
 #endregion
