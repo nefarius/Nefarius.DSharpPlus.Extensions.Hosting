@@ -13,7 +13,10 @@ Work in progress!
 ## To-Do
 
 - [ ] Documentation!
-- [ ] The lesser used events are not yet implemented (mainly WebSocket)
+- [ ] Implement missing events
+  - [ ] Integration
+  - [ ] Stage Instance
+  - [ ] Misc (partially)
 
 ## Package overview
 

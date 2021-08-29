@@ -72,6 +72,11 @@ namespace WorkerExample
         {
             throw new NotImplementedException();
         }
+
+        public async Task DiscordOnGuildMembersChunked(DiscordClient sender, GuildMembersChunkEventArgs args)
+        {
+            throw new NotImplementedException();
+        }
     }
 
     internal class BotModuleForMiscEvents : IDiscordMiscEventsSubscriber

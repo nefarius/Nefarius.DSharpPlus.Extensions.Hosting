@@ -102,9 +102,9 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
 
         [UsedImplicitly]
         public static IServiceCollection AddDiscordMessageReactionAddedEventsSubscriber<T>(this IServiceCollection services)
-            where T : IDiscordMessageReactionAddedEventsSubscriber
+            where T : IDiscordMessageReactionEventsSubscriber
         {
-            return services.AddScoped(typeof(IDiscordMessageReactionAddedEventsSubscriber), typeof(T));
+            return services.AddScoped(typeof(IDiscordMessageReactionEventsSubscriber), typeof(T));
         }
 
         [UsedImplicitly]

@@ -5,7 +5,7 @@ using Nefarius.DSharpPlus.Extensions.Hosting.Events;
 
 namespace Nefarius.DSharpPlus.Extensions.Hosting.Util
 {
-    internal static partial class ServiceScopeExtensions
+    internal static class ServiceScopeExtensions
     {
         public static IList<IDiscordWebSocketEventSubscriber> GetDiscordWebSocketEventSubscribers(
             this IServiceScope scope
@@ -87,13 +87,13 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting.Util
                 .ToList();
         }
 
-        public static IList<IDiscordMessageReactionAddedEventsSubscriber> GetDiscordMessageReactionAddedEventsSubscribers(
+        public static IList<IDiscordMessageReactionEventsSubscriber> GetDiscordMessageReactionAddedEventsSubscribers(
             this IServiceScope scope
         )
         {
             return scope.ServiceProvider
-                .GetServices(typeof(IDiscordMessageReactionAddedEventsSubscriber))
-                .Cast<IDiscordMessageReactionAddedEventsSubscriber>()
+                .GetServices(typeof(IDiscordMessageReactionEventsSubscriber))
+                .Cast<IDiscordMessageReactionEventsSubscriber>()
                 .ToList();
         }
 
