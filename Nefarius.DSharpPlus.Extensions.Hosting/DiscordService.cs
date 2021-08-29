@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Reflection;
 using DSharpPlus;
-using DSharpPlus.CommandsNext;
 using DSharpPlus.EventArgs;
 using JetBrains.Annotations;
 using Microsoft.Extensions.DependencyInjection;
@@ -24,7 +23,7 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
         public DiscordClient Client { get; }
 
         /// <summary>
-        ///     Configure the <see cref="DiscordClient"/> using <see cref="DiscordServiceOptions"/>.
+        ///     Configure the <see cref="DiscordClient"/> using <see cref="DiscordConfiguration"/>.
         /// </summary>
         public void Initialize();
     }
@@ -61,8 +60,6 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
         }
 
         public DiscordClient Client { get; private set; }
-
-        public CommandsNextConfiguration Cfg { get; set; }
 
         public void Initialize()
         {
@@ -152,10 +149,49 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
 
             #region WebSocket
 
+            Client.SocketErrored += async delegate (DiscordClient sender, SocketErrorEventArgs args)
+            {
+                using var workScope = Tracer
+                    .BuildSpan(nameof(Client.SocketErrored))
+                    .IgnoreActiveSpan()
+                    .StartActive(true);
+
+                using var scope = ServiceProvider.CreateScope();
+
+                foreach (var eventSubscriber in scope.GetDiscordWebSocketEventSubscribers())
+                    await eventSubscriber.DiscordOSocketErrored(sender, args);
+            };
+
+            Client.SocketOpened += async delegate (DiscordClient sender, SocketEventArgs args)
+            {
+                using var workScope = Tracer
+                    .BuildSpan(nameof(Client.SocketOpened))
+                    .IgnoreActiveSpan()
+                    .StartActive(true);
+
+                using var scope = ServiceProvider.CreateScope();
+
+                foreach (var eventSubscriber in scope.GetDiscordWebSocketEventSubscribers())
+                    await eventSubscriber.DiscordOnSocketOpened(sender, args);
+            };
+
+            Client.SocketClosed += async delegate (DiscordClient sender, SocketCloseEventArgs args)
+            {
+                using var workScope = Tracer
+                    .BuildSpan(nameof(Client.SocketClosed))
+                    .IgnoreActiveSpan()
+                    .StartActive(true);
+
+                using var scope = ServiceProvider.CreateScope();
+
+                foreach (var eventSubscriber in scope.GetDiscordWebSocketEventSubscribers())
+                    await eventSubscriber.DiscordOnSocketClosed(sender, args);
+            };
+
             Client.Ready += async delegate (DiscordClient sender, ReadyEventArgs args)
             {
                 using var workScope = Tracer
-                    .BuildSpan(nameof(Client.ChannelCreated))
+                    .BuildSpan(nameof(Client.Ready))
                     .IgnoreActiveSpan()
                     .StartActive(true);
 
@@ -163,6 +199,45 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
 
                 foreach (var eventSubscriber in scope.GetDiscordWebSocketEventSubscribers())
                     await eventSubscriber.DiscordOnReady(sender, args);
+            };
+
+            Client.Resumed += async delegate (DiscordClient sender, ReadyEventArgs args)
+            {
+                using var workScope = Tracer
+                    .BuildSpan(nameof(Client.Resumed))
+                    .IgnoreActiveSpan()
+                    .StartActive(true);
+
+                using var scope = ServiceProvider.CreateScope();
+
+                foreach (var eventSubscriber in scope.GetDiscordWebSocketEventSubscribers())
+                    await eventSubscriber.DiscordOnResumed(sender, args);
+            };
+
+            Client.Heartbeated += async delegate (DiscordClient sender, HeartbeatEventArgs args)
+            {
+                using var workScope = Tracer
+                    .BuildSpan(nameof(Client.Heartbeated))
+                    .IgnoreActiveSpan()
+                    .StartActive(true);
+
+                using var scope = ServiceProvider.CreateScope();
+
+                foreach (var eventSubscriber in scope.GetDiscordWebSocketEventSubscribers())
+                    await eventSubscriber.DiscordOnHeartbeated(sender, args);
+            };
+
+            Client.Zombied += async delegate (DiscordClient sender, ZombiedEventArgs args)
+            {
+                using var workScope = Tracer
+                    .BuildSpan(nameof(Client.Zombied))
+                    .IgnoreActiveSpan()
+                    .StartActive(true);
+
+                using var scope = ServiceProvider.CreateScope();
+
+                foreach (var eventSubscriber in scope.GetDiscordWebSocketEventSubscribers())
+                    await eventSubscriber.DiscordOnZombied(sender, args);
             };
 
             #endregion
