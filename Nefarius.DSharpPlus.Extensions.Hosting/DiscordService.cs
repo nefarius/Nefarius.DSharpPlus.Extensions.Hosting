@@ -144,7 +144,8 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
             Client = new DiscordClient(configuration);
 
             //
-            // Load 
+            // Load options that should load in before Connect call
+            // 
             ServiceProvider.GetServices<IDiscordExtensionConfiguration>();
 
             #region WebSocket
@@ -531,6 +532,20 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
 
                 foreach (var eventSubscriber in scope.GetDiscordGuildMemberEventsSubscribers())
                     await eventSubscriber.DiscordOnGuildMemberUpdated(sender, args);
+            };
+
+            Client.GuildMembersChunked += async delegate (DiscordClient sender, GuildMembersChunkEventArgs args)
+            {
+                using var workScope = Tracer
+                    .BuildSpan(nameof(Client.GuildMembersChunked))
+                    .IgnoreActiveSpan()
+                    .StartActive(true);
+                workScope.Span.SetTag("Guild.Id", args.Guild.Id);
+
+                using var scope = ServiceProvider.CreateScope();
+
+                foreach (var eventSubscriber in scope.GetDiscordGuildMemberEventsSubscribers())
+                    await eventSubscriber.DiscordOnGuildMembersChunked(sender, args);
             };
 
             #endregion
