@@ -23,3 +23,9 @@ build:
 artifacts:
 - path: 'bin**\*.nupkg'
 test: off
+deploy:
+- provider: Environment
+  name: nuget.org
+  on:
+    branch: master
+    appveyor_repo_tag: true
