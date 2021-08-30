@@ -2,8 +2,10 @@
 using System.Threading.Tasks;
 using DSharpPlus;
 using DSharpPlus.EventArgs;
+using Microsoft.Extensions.Logging;
 using Nefarius.DSharpPlus.Extensions.Hosting.Attributes;
 using Nefarius.DSharpPlus.Extensions.Hosting.Events;
+using OpenTracing;
 
 namespace WorkerExample
 {
@@ -13,6 +15,19 @@ namespace WorkerExample
         IDiscordGuildEventsSubscriber,
         IDiscordGuildMemberEventsSubscriber
     {
+        private readonly ILogger<BotModuleForGuildAndMemberEvents> _logger;
+
+        private readonly ITracer _tracer;
+
+        public BotModuleForGuildAndMemberEvents(
+            ILogger<BotModuleForGuildAndMemberEvents> logger,
+            ITracer tracer
+        )
+        {
+            _logger = logger;
+            _tracer = tracer;
+        }
+
         public Task DiscordOnGuildCreated(DiscordClient sender, GuildCreateEventArgs args)
         {
             return Task.CompletedTask;

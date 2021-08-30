@@ -180,4 +180,34 @@ internal class BotModuleForGuildAndMemberEvents :
 }
 ```
 
-To be continued...
+Now let's dissect what is happening here. The class gets decorated by the attributes `DiscordGuildEventsSubscriber` and `DiscordGuildMemberEventsSubscriber` (hint: you can use only one attribute for the event group you're interested in, you can use many more on the same class, doesn't matter, your choice) which causes it to get **automatically registered as subscribers for these event groups**.
+
+An alternative approach to registration is manually calling the extension methods, like
+
+```csharp
+services.AddDiscordGuildEventsSubscriber<BotModuleForGuildAndMemberEvents>();
+services.AddDiscordGuildMemberEventsSubscriber<BotModuleForGuildAndMemberEvents>();
+```
+
+from within `ConfigureServices`. Using the attributes instead ensures you don't forget to register your subscribers while coding vigorously!
+
+Implementing the interfaces `IDiscordGuildEventsSubscriber` and `IDiscordGuildMemberEventsSubscriber` ensures your subscriber class is actually callable by the Discord Client Service. You must complete every event callback you're not interested in with `return Task.CompletedTask;` as demonstrated or it will result in errors. In the example above we are only interested in `DiscordOnGuildAvailable` and print the guild name to the console. I'm sure you can think of more exciting tasks!
+
+And last but not least; your subscriber classes are fully dependency injection aware! You can access services via classic constructor injection:
+
+```csharp
+private readonly ILogger<BotModuleForGuildAndMemberEvents> _logger;
+
+private readonly ITracer _tracer;
+
+public BotModuleForGuildAndMemberEvents(
+ ILogger<BotModuleForGuildAndMemberEvents> logger,
+ ITracer tracer
+)
+{
+ _logger = logger;
+ _tracer = tracer;
+}
+```
+
+You can even inject **scoped services**, the subscriber object get invoked in their own scope by default. This allows for easy access for e.g. database contexts within each subscriber. Neat!
