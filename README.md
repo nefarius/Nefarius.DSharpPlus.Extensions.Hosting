@@ -210,4 +210,4 @@ public BotModuleForGuildAndMemberEvents(
 }
 ```
 
-You can even inject **scoped services**, the subscriber object get invoked in their own scope by default. This allows for easy access for e.g. database contexts within each subscriber. Neat!
+You can even inject **scoped services**, the subscriber objects get invoked in their own scope by default. This allows for easy access for e.g. database contexts within each subscriber. Neat!
