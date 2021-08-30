@@ -6,7 +6,7 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting.Util
 {
     internal static class AssemblyTypeHelper
     {
-        public static IEnumerable<Type> GetTypesWith<TAttribute>(bool inherit)
+        public static IEnumerable<Type> GetTypesWith<TAttribute>(bool inherit = true)
             where TAttribute : Attribute
         {
             return from a in AppDomain.CurrentDomain.GetAssemblies()
