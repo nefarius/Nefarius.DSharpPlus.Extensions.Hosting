@@ -8,7 +8,7 @@ using OpenTracing;
 namespace Nefarius.DSharpPlus.Extensions.Hosting
 {
     /// <summary>
-    ///     Brings a <see cref="IDiscordClientService"/> online.
+    ///     Brings a <see cref="IDiscordClientService" /> online.
     /// </summary>
     [UsedImplicitly]
     public class DiscordHostedService : IHostedService
@@ -31,7 +31,7 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
 
         public async Task StartAsync(CancellationToken cancellationToken)
         {
-            _discordClient.Initialize();
+            ((DiscordService) _discordClient).Initialize();
 
             using (_tracer.BuildSpan(nameof(_discordClient.Client.ConnectAsync)).StartActive(true))
             {

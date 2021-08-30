@@ -21,11 +21,6 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
         ///     The underlying <see cref="DiscordClient"/>.
         /// </summary>
         public DiscordClient Client { get; }
-
-        /// <summary>
-        ///     Configure the <see cref="DiscordClient"/> using <see cref="DiscordConfiguration"/>.
-        /// </summary>
-        public void Initialize();
     }
 
     /// <summary>
@@ -61,7 +56,7 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
 
         public DiscordClient Client { get; private set; }
 
-        public void Initialize()
+        internal void Initialize()
         {
             if (DiscordOptions.Value is null)
                 throw new InvalidOperationException($"{nameof(DiscordConfiguration)} option is required");
