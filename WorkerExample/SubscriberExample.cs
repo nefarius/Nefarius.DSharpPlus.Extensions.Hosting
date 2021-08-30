@@ -15,11 +15,14 @@ namespace WorkerExample
     {
         public Task DiscordOnGuildCreated(DiscordClient sender, GuildCreateEventArgs args)
         {
-            throw new NotImplementedException();
+            return Task.CompletedTask;
         }
 
         public Task DiscordOnGuildAvailable(DiscordClient sender, GuildCreateEventArgs args)
         {
+            //
+            // To see some action, output the guild name
+            // 
             Console.WriteLine(args.Guild.Name);
 
             return Task.CompletedTask;
@@ -27,12 +30,12 @@ namespace WorkerExample
 
         public Task DiscordOnGuildUpdated(DiscordClient sender, GuildUpdateEventArgs args)
         {
-            throw new NotImplementedException();
+            return Task.CompletedTask;
         }
 
         public Task DiscordOnGuildDeleted(DiscordClient sender, GuildDeleteEventArgs args)
         {
-            throw new NotImplementedException();
+            return Task.CompletedTask;
         }
 
         public Task DiscordOnGuildUnavailable(DiscordClient sender, GuildDeleteEventArgs args)
@@ -47,50 +50,50 @@ namespace WorkerExample
 
         public Task DiscordOnGuildEmojisUpdated(DiscordClient sender, GuildEmojisUpdateEventArgs args)
         {
-            throw new NotImplementedException();
+            return Task.CompletedTask;
         }
 
         public Task DiscordOnGuildStickersUpdated(DiscordClient sender, GuildStickersUpdateEventArgs args)
         {
-            throw new NotImplementedException();
+            return Task.CompletedTask;
         }
 
         public Task DiscordOnGuildIntegrationsUpdated(DiscordClient sender, GuildIntegrationsUpdateEventArgs args)
         {
-            throw new NotImplementedException();
+            return Task.CompletedTask;
         }
 
         public Task DiscordOnGuildMemberAdded(DiscordClient sender, GuildMemberAddEventArgs args)
         {
-            throw new NotImplementedException();
+            return Task.CompletedTask;
         }
 
         public Task DiscordOnGuildMemberRemoved(DiscordClient sender, GuildMemberRemoveEventArgs args)
         {
-            throw new NotImplementedException();
+            return Task.CompletedTask;
         }
 
         public Task DiscordOnGuildMemberUpdated(DiscordClient sender, GuildMemberUpdateEventArgs args)
         {
-            throw new NotImplementedException();
+            return Task.CompletedTask;
         }
 
-        public async Task DiscordOnGuildMembersChunked(DiscordClient sender, GuildMembersChunkEventArgs args)
+        public Task DiscordOnGuildMembersChunked(DiscordClient sender, GuildMembersChunkEventArgs args)
         {
-            throw new NotImplementedException();
+            return Task.CompletedTask;
         }
     }
 
     internal class BotModuleForMiscEvents : IDiscordMiscEventsSubscriber
     {
-        public async Task DiscordOnComponentInteractionCreated(DiscordClient sender, ComponentInteractionCreateEventArgs args)
+        public Task DiscordOnComponentInteractionCreated(DiscordClient sender, ComponentInteractionCreateEventArgs args)
         {
-            throw new NotImplementedException();
+            return Task.CompletedTask;
         }
 
-        public async Task DiscordOnClientErrored(DiscordClient sender, ClientErrorEventArgs args)
+        public Task DiscordOnClientErrored(DiscordClient sender, ClientErrorEventArgs args)
         {
-            throw new NotImplementedException();
+            return Task.CompletedTask;
         }
     }
 }
