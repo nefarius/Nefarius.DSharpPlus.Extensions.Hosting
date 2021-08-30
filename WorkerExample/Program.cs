@@ -75,8 +75,10 @@ namespace WorkerExample
                     //
                     // Register your module(s) for every events interface it implements
                     // 
+                    /*
                     services.AddDiscordGuildEventsSubscriber<BotModuleForGuildAndMemberEvents>();
                     services.AddDiscordGuildMemberEventsSubscriber<BotModuleForGuildAndMemberEvents>();
+                    */
 
                     //
                     // Module reacting to different events

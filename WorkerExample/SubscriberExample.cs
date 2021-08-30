@@ -2,11 +2,13 @@
 using System.Threading.Tasks;
 using DSharpPlus;
 using DSharpPlus.EventArgs;
+using Nefarius.DSharpPlus.Extensions.Hosting.Attributes;
 using Nefarius.DSharpPlus.Extensions.Hosting.Events;
 
 namespace WorkerExample
 {
-
+    [DiscordGuildEventsSubscriber]
+    [DiscordGuildMemberEventsSubscriber]
     internal class BotModuleForGuildAndMemberEvents : 
         IDiscordGuildEventsSubscriber,
         IDiscordGuildMemberEventsSubscriber
