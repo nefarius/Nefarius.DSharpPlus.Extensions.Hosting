@@ -54,7 +54,7 @@ Optional. Adds support for [DSharpPlus.SlashCommands](https://github.com/IDoEver
 
 ## Documentation
 
-If you're already familiar with .NET Core Workers or ASP.NET Core you'll have your bot up and running in 30 seconds 👌
+If you're already familiar with .NET Core Workers or ASP.NET Core you'll have your bot up and running in seconds 👌
 
 You can also take a look at [the reference example](../../WorkerExample) of this repository.
 
