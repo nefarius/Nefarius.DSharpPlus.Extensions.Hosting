@@ -79,10 +79,10 @@ services.AddSingleton<ITracer>(provider => new MockTracer());
 // 
 services.AddDiscord(options =>
 {
-	//
-	// Minimum required configuration
-	// 
-	options.Token = "recommended to read bot token from configuration file";
+ //
+ // Minimum required configuration
+ // 
+ options.Token = "recommended to read bot token from configuration file";
 });
 
 //
@@ -103,78 +103,78 @@ Now to the actual connveninece feature of this library! Creating one (or more) c
 [DiscordGuildEventsSubscriber]
 [DiscordGuildMemberEventsSubscriber]
 internal class BotModuleForGuildAndMemberEvents : 
-	IDiscordGuildEventsSubscriber,
-	IDiscordGuildMemberEventsSubscriber
+ IDiscordGuildEventsSubscriber,
+ IDiscordGuildMemberEventsSubscriber
 {
-	public Task DiscordOnGuildCreated(DiscordClient sender, GuildCreateEventArgs args)
-	{
-		return Task.CompletedTask;
-	}
+ public Task DiscordOnGuildCreated(DiscordClient sender, GuildCreateEventArgs args)
+ {
+  return Task.CompletedTask;
+ }
 
-	public Task DiscordOnGuildAvailable(DiscordClient sender, GuildCreateEventArgs args)
-	{
-		//
-		// To see some action, output the guild name
-		// 
-		Console.WriteLine(args.Guild.Name);
+ public Task DiscordOnGuildAvailable(DiscordClient sender, GuildCreateEventArgs args)
+ {
+  //
+  // To see some action, output the guild name
+  // 
+  Console.WriteLine(args.Guild.Name);
 
-		return Task.CompletedTask;
-	}
+  return Task.CompletedTask;
+ }
 
-	public Task DiscordOnGuildUpdated(DiscordClient sender, GuildUpdateEventArgs args)
-	{
-		return Task.CompletedTask;
-	}
+ public Task DiscordOnGuildUpdated(DiscordClient sender, GuildUpdateEventArgs args)
+ {
+  return Task.CompletedTask;
+ }
 
-	public Task DiscordOnGuildDeleted(DiscordClient sender, GuildDeleteEventArgs args)
-	{
-		return Task.CompletedTask;
-	}
+ public Task DiscordOnGuildDeleted(DiscordClient sender, GuildDeleteEventArgs args)
+ {
+  return Task.CompletedTask;
+ }
 
-	public Task DiscordOnGuildUnavailable(DiscordClient sender, GuildDeleteEventArgs args)
-	{
-		return Task.CompletedTask;
-	}
+ public Task DiscordOnGuildUnavailable(DiscordClient sender, GuildDeleteEventArgs args)
+ {
+  return Task.CompletedTask;
+ }
 
-	public Task DiscordOnGuildDownloadCompleted(DiscordClient sender, GuildDownloadCompletedEventArgs args)
-	{
-		return Task.CompletedTask;
-	}
+ public Task DiscordOnGuildDownloadCompleted(DiscordClient sender, GuildDownloadCompletedEventArgs args)
+ {
+  return Task.CompletedTask;
+ }
 
-	public Task DiscordOnGuildEmojisUpdated(DiscordClient sender, GuildEmojisUpdateEventArgs args)
-	{
-		return Task.CompletedTask;
-	}
+ public Task DiscordOnGuildEmojisUpdated(DiscordClient sender, GuildEmojisUpdateEventArgs args)
+ {
+  return Task.CompletedTask;
+ }
 
-	public Task DiscordOnGuildStickersUpdated(DiscordClient sender, GuildStickersUpdateEventArgs args)
-	{
-		return Task.CompletedTask;
-	}
+ public Task DiscordOnGuildStickersUpdated(DiscordClient sender, GuildStickersUpdateEventArgs args)
+ {
+  return Task.CompletedTask;
+ }
 
-	public Task DiscordOnGuildIntegrationsUpdated(DiscordClient sender, GuildIntegrationsUpdateEventArgs args)
-	{
-		return Task.CompletedTask;
-	}
+ public Task DiscordOnGuildIntegrationsUpdated(DiscordClient sender, GuildIntegrationsUpdateEventArgs args)
+ {
+  return Task.CompletedTask;
+ }
 
-	public Task DiscordOnGuildMemberAdded(DiscordClient sender, GuildMemberAddEventArgs args)
-	{
-		return Task.CompletedTask;
-	}
+ public Task DiscordOnGuildMemberAdded(DiscordClient sender, GuildMemberAddEventArgs args)
+ {
+  return Task.CompletedTask;
+ }
 
-	public Task DiscordOnGuildMemberRemoved(DiscordClient sender, GuildMemberRemoveEventArgs args)
-	{
-		return Task.CompletedTask;
-	}
+ public Task DiscordOnGuildMemberRemoved(DiscordClient sender, GuildMemberRemoveEventArgs args)
+ {
+  return Task.CompletedTask;
+ }
 
-	public Task DiscordOnGuildMemberUpdated(DiscordClient sender, GuildMemberUpdateEventArgs args)
-	{
-		return Task.CompletedTask;
-	}
+ public Task DiscordOnGuildMemberUpdated(DiscordClient sender, GuildMemberUpdateEventArgs args)
+ {
+  return Task.CompletedTask;
+ }
 
-	public Task DiscordOnGuildMembersChunked(DiscordClient sender, GuildMembersChunkEventArgs args)
-	{
-		return Task.CompletedTask;
-	}
+ public Task DiscordOnGuildMembersChunked(DiscordClient sender, GuildMembersChunkEventArgs args)
+ {
+  return Task.CompletedTask;
+ }
 }
 ```
 
