@@ -8,6 +8,8 @@ An extension for [DSharpPlus](https://github.com/DSharpPlus/DSharpPlus) to make 
 
 ## About
 
+**This is not an official DSharpPlus extension, use it at your own risk!**
+
 Work in progress!
 
 ## To-Do
