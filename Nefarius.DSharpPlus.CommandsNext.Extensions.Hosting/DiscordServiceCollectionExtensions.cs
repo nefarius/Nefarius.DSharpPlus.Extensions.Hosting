@@ -7,6 +7,7 @@ using Nefarius.DSharpPlus.CommandsNext.Extensions.Hosting.Events;
 using Nefarius.DSharpPlus.CommandsNext.Extensions.Hosting.Util;
 using Nefarius.DSharpPlus.Extensions.Hosting;
 using Nefarius.DSharpPlus.Extensions.Hosting.Util;
+using OpenTracing;
 
 namespace Nefarius.DSharpPlus.CommandsNext.Extensions.Hosting
 {
@@ -51,6 +52,12 @@ namespace Nefarius.DSharpPlus.CommandsNext.Extensions.Hosting
 
                 ext.CommandExecuted += async delegate(CommandsNextExtension sender, CommandExecutionEventArgs args)
                 {
+                    using var workScope = provider.GetRequiredService<ITracer>()
+                        .BuildSpan(nameof(ext.CommandExecuted))
+                        .IgnoreActiveSpan()
+                        .StartActive(true);
+                    workScope.Span.SetTag("Command.Name", args.Command.Name);
+
                     using var scope = provider.CreateScope();
 
                     foreach (var eventsSubscriber in scope.GetDiscordCommandsNextEventsSubscriber())
@@ -59,6 +66,12 @@ namespace Nefarius.DSharpPlus.CommandsNext.Extensions.Hosting
 
                 ext.CommandErrored += async delegate(CommandsNextExtension sender, CommandErrorEventArgs args)
                 {
+                    using var workScope = provider.GetRequiredService<ITracer>()
+                        .BuildSpan(nameof(ext.CommandErrored))
+                        .IgnoreActiveSpan()
+                        .StartActive(true);
+                    workScope.Span.SetTag("Command.Name", args.Command.Name);
+
                     using var scope = provider.CreateScope();
 
                     foreach (var eventsSubscriber in scope.GetDiscordCommandsNextEventsSubscriber())
