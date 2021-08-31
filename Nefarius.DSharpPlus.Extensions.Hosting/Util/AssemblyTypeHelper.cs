@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Nefarius.DSharpPlus.Extensions.Hosting.Util
 {
-    internal static class AssemblyTypeHelper
+    public static class AssemblyTypeHelper
     {
         public static IEnumerable<Type> GetTypesWith<TAttribute>(bool inherit = true)
             where TAttribute : Attribute
