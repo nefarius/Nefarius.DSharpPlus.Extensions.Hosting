@@ -246,8 +246,8 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
                     .BuildSpan(nameof(Client.ChannelCreated))
                     .IgnoreActiveSpan()
                     .StartActive(true);
-                workScope.Span.SetTag("Guild.Id", args.Guild.Id);
-                workScope.Span.SetTag("Channel.Id", args.Channel.Id);
+                workScope.Span.SetTag("Guild.Id", args.Guild.Id.ToString());
+                workScope.Span.SetTag("Channel.Id", args.Channel.Id.ToString());
 
                 using var scope = ServiceProvider.CreateScope();
 
@@ -261,9 +261,9 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
                     .BuildSpan(nameof(Client.ChannelUpdated))
                     .IgnoreActiveSpan()
                     .StartActive(true);
-                workScope.Span.SetTag("Guild.Id", args.Guild.Id);
-                workScope.Span.SetTag("ChannelBefore.Id", args.ChannelBefore.Id);
-                workScope.Span.SetTag("ChannelAfter.Id", args.ChannelAfter.Id);
+                workScope.Span.SetTag("Guild.Id", args.Guild.Id.ToString());
+                workScope.Span.SetTag("ChannelBefore.Id", args.ChannelBefore.Id.ToString());
+                workScope.Span.SetTag("ChannelAfter.Id", args.ChannelAfter.Id.ToString());
 
                 using var scope = ServiceProvider.CreateScope();
 
@@ -277,8 +277,8 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
                     .BuildSpan(nameof(Client.ChannelDeleted))
                     .IgnoreActiveSpan()
                     .StartActive(true);
-                workScope.Span.SetTag("Guild.Id", args.Guild.Id);
-                workScope.Span.SetTag("Channel.Id", args.Channel.Id);
+                workScope.Span.SetTag("Guild.Id", args.Guild.Id.ToString());
+                workScope.Span.SetTag("Channel.Id", args.Channel.Id.ToString());
 
                 using var scope = ServiceProvider.CreateScope();
 
@@ -292,7 +292,7 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
                     .BuildSpan(nameof(Client.DmChannelDeleted))
                     .IgnoreActiveSpan()
                     .StartActive(true);
-                workScope.Span.SetTag("Channel.Id", args.Channel.Id);
+                workScope.Span.SetTag("Channel.Id", args.Channel.Id.ToString());
 
                 using var scope = ServiceProvider.CreateScope();
 
@@ -306,8 +306,8 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
                     .BuildSpan(nameof(Client.ChannelPinsUpdated))
                     .IgnoreActiveSpan()
                     .StartActive(true);
-                workScope.Span.SetTag("Guild.Id", args.Guild.Id);
-                workScope.Span.SetTag("Channel.Id", args.Channel.Id);
+                workScope.Span.SetTag("Guild.Id", args.Guild.Id.ToString());
+                workScope.Span.SetTag("Channel.Id", args.Channel.Id.ToString());
 
                 using var scope = ServiceProvider.CreateScope();
 
@@ -325,7 +325,7 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
                     .BuildSpan(nameof(Client.GuildCreated))
                     .IgnoreActiveSpan()
                     .StartActive(true);
-                workScope.Span.SetTag("Guild.Id", args.Guild.Id);
+                workScope.Span.SetTag("Guild.Id", args.Guild.Id.ToString());
 
                 using var scope = ServiceProvider.CreateScope();
 
@@ -339,7 +339,7 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
                     .BuildSpan(nameof(Client.GuildAvailable))
                     .IgnoreActiveSpan()
                     .StartActive(true);
-                workScope.Span.SetTag("Guild.Id", args.Guild.Id);
+                workScope.Span.SetTag("Guild.Id", args.Guild.Id.ToString());
 
                 using var scope = ServiceProvider.CreateScope();
 
@@ -353,7 +353,7 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
                     .BuildSpan(nameof(Client.GuildUpdated))
                     .IgnoreActiveSpan()
                     .StartActive(true);
-                workScope.Span.SetTag("Guild.Id", args.GuildBefore.Id);
+                workScope.Span.SetTag("Guild.Id", args.GuildBefore.Id.ToString());
 
                 using var scope = ServiceProvider.CreateScope();
 
@@ -367,7 +367,7 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
                     .BuildSpan(nameof(Client.GuildDeleted))
                     .IgnoreActiveSpan()
                     .StartActive(true);
-                workScope.Span.SetTag("Guild.Id", args.Guild.Id);
+                workScope.Span.SetTag("Guild.Id", args.Guild.Id.ToString());
 
                 using var scope = ServiceProvider.CreateScope();
 
@@ -381,7 +381,7 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
                     .BuildSpan(nameof(Client.GuildUnavailable))
                     .IgnoreActiveSpan()
                     .StartActive(true);
-                workScope.Span.SetTag("Guild.Id", args.Guild.Id);
+                workScope.Span.SetTag("Guild.Id", args.Guild.Id.ToString());
 
                 using var scope = ServiceProvider.CreateScope();
 
@@ -409,7 +409,7 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
                     .BuildSpan(nameof(Client.GuildEmojisUpdated))
                     .IgnoreActiveSpan()
                     .StartActive(true);
-                workScope.Span.SetTag("Guild.Id", args.Guild.Id);
+                workScope.Span.SetTag("Guild.Id", args.Guild.Id.ToString());
 
                 using var scope = ServiceProvider.CreateScope();
 
@@ -423,7 +423,7 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
                     .BuildSpan(nameof(Client.GuildStickersUpdated))
                     .IgnoreActiveSpan()
                     .StartActive(true);
-                workScope.Span.SetTag("Guild.Id", args.Guild.Id);
+                workScope.Span.SetTag("Guild.Id", args.Guild.Id.ToString());
 
                 using var scope = ServiceProvider.CreateScope();
 
@@ -438,7 +438,7 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
                         .BuildSpan(nameof(Client.GuildIntegrationsUpdated))
                         .IgnoreActiveSpan()
                         .StartActive(true);
-                    workScope.Span.SetTag("Guild.Id", args.Guild.Id);
+                    workScope.Span.SetTag("Guild.Id", args.Guild.Id.ToString());
 
                     using var scope = ServiceProvider.CreateScope();
 
@@ -456,8 +456,8 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
                     .BuildSpan(nameof(Client.GuildBanAdded))
                     .IgnoreActiveSpan()
                     .StartActive(true);
-                workScope.Span.SetTag("Guild.Id", args.Guild.Id);
-                workScope.Span.SetTag("Member.Id", args.Member.Id);
+                workScope.Span.SetTag("Guild.Id", args.Guild.Id.ToString());
+                workScope.Span.SetTag("Member.Id", args.Member.Id.ToString());
 
                 using var scope = ServiceProvider.CreateScope();
 
@@ -471,8 +471,8 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
                     .BuildSpan(nameof(Client.GuildBanRemoved))
                     .IgnoreActiveSpan()
                     .StartActive(true);
-                workScope.Span.SetTag("Guild.Id", args.Guild.Id);
-                workScope.Span.SetTag("Member.Id", args.Member.Id);
+                workScope.Span.SetTag("Guild.Id", args.Guild.Id.ToString());
+                workScope.Span.SetTag("Member.Id", args.Member.Id.ToString());
 
                 using var scope = ServiceProvider.CreateScope();
 
@@ -490,8 +490,8 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
                     .BuildSpan(nameof(Client.GuildMemberAdded))
                     .IgnoreActiveSpan()
                     .StartActive(true);
-                workScope.Span.SetTag("Guild.Id", args.Guild.Id);
-                workScope.Span.SetTag("Member.Id", args.Member.Id);
+                workScope.Span.SetTag("Guild.Id", args.Guild.Id.ToString());
+                workScope.Span.SetTag("Member.Id", args.Member.Id.ToString());
 
                 using var scope = ServiceProvider.CreateScope();
 
@@ -505,8 +505,8 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
                     .BuildSpan(nameof(Client.GuildMemberRemoved))
                     .IgnoreActiveSpan()
                     .StartActive(true);
-                workScope.Span.SetTag("Guild.Id", args.Guild.Id);
-                workScope.Span.SetTag("Member.Id", args.Member.Id);
+                workScope.Span.SetTag("Guild.Id", args.Guild.Id.ToString());
+                workScope.Span.SetTag("Member.Id", args.Member.Id.ToString());
 
                 using var scope = ServiceProvider.CreateScope();
 
@@ -520,8 +520,8 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
                     .BuildSpan(nameof(Client.GuildMemberUpdated))
                     .IgnoreActiveSpan()
                     .StartActive(true);
-                workScope.Span.SetTag("Guild.Id", args.Guild.Id);
-                workScope.Span.SetTag("Member.Id", args.Member.Id);
+                workScope.Span.SetTag("Guild.Id", args.Guild.Id.ToString());
+                workScope.Span.SetTag("Member.Id", args.Member.Id.ToString());
 
                 using var scope = ServiceProvider.CreateScope();
 
@@ -535,7 +535,7 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
                     .BuildSpan(nameof(Client.GuildMembersChunked))
                     .IgnoreActiveSpan()
                     .StartActive(true);
-                workScope.Span.SetTag("Guild.Id", args.Guild.Id);
+                workScope.Span.SetTag("Guild.Id", args.Guild.Id.ToString());
 
                 using var scope = ServiceProvider.CreateScope();
 
@@ -553,8 +553,8 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
                     .BuildSpan(nameof(Client.GuildRoleCreated))
                     .IgnoreActiveSpan()
                     .StartActive(true);
-                workScope.Span.SetTag("Guild.Id", args.Guild.Id);
-                workScope.Span.SetTag("Role.Id", args.Role.Id);
+                workScope.Span.SetTag("Guild.Id", args.Guild.Id.ToString());
+                workScope.Span.SetTag("Role.Id", args.Role.Id.ToString());
 
                 using var scope = ServiceProvider.CreateScope();
 
@@ -568,9 +568,9 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
                     .BuildSpan(nameof(Client.GuildRoleUpdated))
                     .IgnoreActiveSpan()
                     .StartActive(true);
-                workScope.Span.SetTag("Guild.Id", args.Guild.Id);
-                workScope.Span.SetTag("RoleBefore.Id", args.RoleBefore.Id);
-                workScope.Span.SetTag("RoleAfter.Id", args.RoleAfter.Id);
+                workScope.Span.SetTag("Guild.Id", args.Guild.Id.ToString());
+                workScope.Span.SetTag("RoleBefore.Id", args.RoleBefore.Id.ToString());
+                workScope.Span.SetTag("RoleAfter.Id", args.RoleAfter.Id.ToString());
 
                 using var scope = ServiceProvider.CreateScope();
 
@@ -584,8 +584,8 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
                     .BuildSpan(nameof(Client.GuildRoleDeleted))
                     .IgnoreActiveSpan()
                     .StartActive(true);
-                workScope.Span.SetTag("Guild.Id", args.Guild.Id);
-                workScope.Span.SetTag("Role.Id", args.Role.Id);
+                workScope.Span.SetTag("Guild.Id", args.Guild.Id.ToString());
+                workScope.Span.SetTag("Role.Id", args.Role.Id.ToString());
 
                 using var scope = ServiceProvider.CreateScope();
 
@@ -603,9 +603,9 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
                         .BuildSpan(nameof(Client.InviteCreated))
                         .IgnoreActiveSpan()
                         .StartActive(true);
-                    workScope.Span.SetTag("Guild.Id", args.Guild.Id);
-                    workScope.Span.SetTag("Channel.Id", args.Channel.Id);
-                    workScope.Span.SetTag("Invite.Code", args.Invite.Code);
+                    workScope.Span.SetTag("Guild.Id", args.Guild.Id.ToString());
+                    workScope.Span.SetTag("Channel.Id", args.Channel.Id.ToString());
+                    workScope.Span.SetTag("Invite.Code", args.Invite.Code.ToString());
 
                     using var scope = ServiceProvider.CreateScope();
 
@@ -619,9 +619,9 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
                     .BuildSpan(nameof(Client.InviteDeleted))
                     .IgnoreActiveSpan()
                     .StartActive(true);
-                workScope.Span.SetTag("Guild.Id", args.Guild.Id);
-                workScope.Span.SetTag("Channel.Id", args.Channel.Id);
-                workScope.Span.SetTag("Invite.Code", args.Invite.Code);
+                workScope.Span.SetTag("Guild.Id", args.Guild.Id.ToString());
+                workScope.Span.SetTag("Channel.Id", args.Channel.Id.ToString());
+                workScope.Span.SetTag("Invite.Code", args.Invite.Code.ToString());
 
                 using var scope = ServiceProvider.CreateScope();
 
@@ -640,10 +640,10 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
                     .IgnoreActiveSpan()
                     .StartActive(true);
                 if (args.Guild != null)
-                    workScope.Span.SetTag("Guild.Id", args.Guild.Id);
-                workScope.Span.SetTag("Channel.Id", args.Channel.Id);
-                workScope.Span.SetTag("Author.Id", args.Author.Id);
-                workScope.Span.SetTag("Message.Id", args.Message.Id);
+                    workScope.Span.SetTag("Guild.Id", args.Guild.Id.ToString());
+                workScope.Span.SetTag("Channel.Id", args.Channel.Id.ToString());
+                workScope.Span.SetTag("Author.Id", args.Author.Id.ToString());
+                workScope.Span.SetTag("Message.Id", args.Message.Id.ToString());
 
                 using var scope = ServiceProvider.CreateScope();
 
@@ -657,8 +657,8 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
                     .BuildSpan(nameof(Client.MessageAcknowledged))
                     .IgnoreActiveSpan()
                     .StartActive(true);
-                workScope.Span.SetTag("Channel.Id", args.Channel.Id);
-                workScope.Span.SetTag("Message.Id", args.Message.Id);
+                workScope.Span.SetTag("Channel.Id", args.Channel.Id.ToString());
+                workScope.Span.SetTag("Message.Id", args.Message.Id.ToString());
 
                 using var scope = ServiceProvider.CreateScope();
 
@@ -673,10 +673,10 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
                     .IgnoreActiveSpan()
                     .StartActive(true);
                 if (args.Guild != null)
-                    workScope.Span.SetTag("Guild.Id", args.Guild.Id);
-                workScope.Span.SetTag("Channel.Id", args.Channel.Id);
-                workScope.Span.SetTag("Author.Id", args.Author.Id);
-                workScope.Span.SetTag("Message.Id", args.Message.Id);
+                    workScope.Span.SetTag("Guild.Id", args.Guild.Id.ToString());
+                workScope.Span.SetTag("Channel.Id", args.Channel.Id.ToString());
+                workScope.Span.SetTag("Author.Id", args.Author.Id.ToString());
+                workScope.Span.SetTag("Message.Id", args.Message.Id.ToString());
 
                 using var scope = ServiceProvider.CreateScope();
 
@@ -691,9 +691,9 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
                     .IgnoreActiveSpan()
                     .StartActive(true);
                 if (args.Guild != null)
-                    workScope.Span.SetTag("Guild.Id", args.Guild.Id);
-                workScope.Span.SetTag("Channel.Id", args.Channel.Id);
-                workScope.Span.SetTag("Message.Id", args.Message.Id);
+                    workScope.Span.SetTag("Guild.Id", args.Guild.Id.ToString());
+                workScope.Span.SetTag("Channel.Id", args.Channel.Id.ToString());
+                workScope.Span.SetTag("Message.Id", args.Message.Id.ToString());
 
                 using var scope = ServiceProvider.CreateScope();
 
@@ -708,8 +708,8 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
                     .IgnoreActiveSpan()
                     .StartActive(true);
                 if (args.Guild != null)
-                    workScope.Span.SetTag("Guild.Id", args.Guild.Id);
-                workScope.Span.SetTag("Channel.Id", args.Channel.Id);
+                    workScope.Span.SetTag("Guild.Id", args.Guild.Id.ToString());
+                workScope.Span.SetTag("Channel.Id", args.Channel.Id.ToString());
 
                 using var scope = ServiceProvider.CreateScope();
 
@@ -745,10 +745,10 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
                         .BuildSpan(nameof(Client.MessageReactionRemoved))
                         .IgnoreActiveSpan()
                         .StartActive(true);
-                    workScope.Span.SetTag("Guild.Id", args.Guild.Id);
-                    workScope.Span.SetTag("Channel.Id", args.Channel.Id);
-                    workScope.Span.SetTag("User.Id", args.User.Id);
-                    workScope.Span.SetTag("Message.Id", args.Message.Id);
+                    workScope.Span.SetTag("Guild.Id", args.Guild.Id.ToString());
+                    workScope.Span.SetTag("Channel.Id", args.Channel.Id.ToString());
+                    workScope.Span.SetTag("User.Id", args.User.Id.ToString());
+                    workScope.Span.SetTag("Message.Id", args.Message.Id.ToString());
 
                     using var scope = ServiceProvider.CreateScope();
 
@@ -763,9 +763,9 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
                         .BuildSpan(nameof(Client.MessageReactionsCleared))
                         .IgnoreActiveSpan()
                         .StartActive(true);
-                    workScope.Span.SetTag("Guild.Id", args.Guild.Id);
-                    workScope.Span.SetTag("Channel.Id", args.Channel.Id);
-                    workScope.Span.SetTag("Message.Id", args.Message.Id);
+                    workScope.Span.SetTag("Guild.Id", args.Guild.Id.ToString());
+                    workScope.Span.SetTag("Channel.Id", args.Channel.Id.ToString());
+                    workScope.Span.SetTag("Message.Id", args.Message.Id.ToString());
 
                     using var scope = ServiceProvider.CreateScope();
 
@@ -780,10 +780,10 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
                         .BuildSpan(nameof(Client.MessageReactionRemovedEmoji))
                         .IgnoreActiveSpan()
                         .StartActive(true);
-                    workScope.Span.SetTag("Guild.Id", args.Guild.Id);
-                    workScope.Span.SetTag("Channel.Id", args.Channel.Id);
-                    workScope.Span.SetTag("Message.Id", args.Message.Id);
-                    workScope.Span.SetTag("Emoji.Id", args.Emoji.Id);
+                    workScope.Span.SetTag("Guild.Id", args.Guild.Id.ToString());
+                    workScope.Span.SetTag("Channel.Id", args.Channel.Id.ToString());
+                    workScope.Span.SetTag("Message.Id", args.Message.Id.ToString());
+                    workScope.Span.SetTag("Emoji.Id", args.Emoji.Id.ToString());
 
                     using var scope = ServiceProvider.CreateScope();
 
@@ -801,7 +801,7 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
                     .BuildSpan(nameof(Client.PresenceUpdated))
                     .IgnoreActiveSpan()
                     .StartActive(true);
-                workScope.Span.SetTag("User.Id", args.User.Id);
+                workScope.Span.SetTag("User.Id", args.User.Id.ToString());
 
                 using var scope = ServiceProvider.CreateScope();
 
@@ -815,7 +815,7 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
                     .BuildSpan(nameof(Client.UserSettingsUpdated))
                     .IgnoreActiveSpan()
                     .StartActive(true);
-                workScope.Span.SetTag("User.Id", args.User.Id);
+                workScope.Span.SetTag("User.Id", args.User.Id.ToString());
 
                 using var scope = ServiceProvider.CreateScope();
 
@@ -829,8 +829,8 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
                     .BuildSpan(nameof(Client.UserUpdated))
                     .IgnoreActiveSpan()
                     .StartActive(true);
-                workScope.Span.SetTag("UserBefore.Id", args.UserBefore.Id);
-                workScope.Span.SetTag("UserBefore.Id", args.UserBefore.Id);
+                workScope.Span.SetTag("UserBefore.Id", args.UserBefore.Id.ToString());
+                workScope.Span.SetTag("UserBefore.Id", args.UserBefore.Id.ToString());
 
                 using var scope = ServiceProvider.CreateScope();
 
@@ -848,10 +848,10 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
                     .BuildSpan(nameof(Client.VoiceStateUpdated))
                     .IgnoreActiveSpan()
                     .StartActive(true);
-                workScope.Span.SetTag("Guild.Id", args.Guild.Id);
+                workScope.Span.SetTag("Guild.Id", args.Guild.Id.ToString());
                 if (args.Channel != null)
-                    workScope.Span.SetTag("Channel.Id", args.Channel.Id);
-                workScope.Span.SetTag("User.Id", args.User.Id);
+                    workScope.Span.SetTag("Channel.Id", args.Channel.Id.ToString());
+                workScope.Span.SetTag("User.Id", args.User.Id.ToString());
 
                 using var scope = ServiceProvider.CreateScope();
 
@@ -865,7 +865,7 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
                     .BuildSpan(nameof(Client.VoiceServerUpdated))
                     .IgnoreActiveSpan()
                     .StartActive(true);
-                workScope.Span.SetTag("Guild.Id", args.Guild.Id);
+                workScope.Span.SetTag("Guild.Id", args.Guild.Id.ToString());
 
                 using var scope = ServiceProvider.CreateScope();
 
@@ -884,9 +884,9 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
                         .BuildSpan(nameof(Client.ComponentInteractionCreated))
                         .IgnoreActiveSpan()
                         .StartActive(true);
-                    workScope.Span.SetTag("Guild.Id", args.Guild.Id);
-                    workScope.Span.SetTag("Channel.Id", args.Channel.Id);
-                    workScope.Span.SetTag("User.Id", args.User.Id);
+                    workScope.Span.SetTag("Guild.Id", args.Guild.Id.ToString());
+                    workScope.Span.SetTag("Channel.Id", args.Channel.Id.ToString());
+                    workScope.Span.SetTag("User.Id", args.User.Id.ToString());
 
                     using var scope = ServiceProvider.CreateScope();
 
@@ -900,7 +900,7 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
                     .BuildSpan(nameof(Client.ClientErrored))
                     .IgnoreActiveSpan()
                     .StartActive(true);
-                workScope.Span.SetTag("EventName", args.EventName);
+                workScope.Span.SetTag("EventName", args.EventName.ToString());
 
                 using var scope = ServiceProvider.CreateScope();
 
