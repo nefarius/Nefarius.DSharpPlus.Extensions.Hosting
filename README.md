@@ -72,11 +72,6 @@ Most of the heavy lifting is done in the `ConfigureServices` method, so we will 
 
 ```csharp
 //
-// Tracer is required, if you don't use one, use the MockTracer
-// 
-services.AddSingleton<ITracer>(provider => new MockTracer());
-
-//
 // Adds DiscordClient singleton service you can use everywhere
 // 
 services.AddDiscord(options =>
