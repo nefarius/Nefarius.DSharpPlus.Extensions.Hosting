@@ -44,13 +44,13 @@ Optional. Adds support for [DSharpPlus.Interactivity](https://dsharpplus.github.
 
 [![NuGet](https://img.shields.io/nuget/vpre/Nefarius.DSharpPlus.VoiceNext.Extensions.Hosting.svg)](https://nuget.org/packages/Nefarius.DSharpPlus.VoiceNext.Extensions.Hosting)
 
-Optional. Adds support for [DSharpPlus.VoiceNext](https://dsharpplus.github.io/articles/audio/voicenext/prerequisites.html)
+Optional. Adds support for [DSharpPlus.VoiceNext](https://dsharpplus.github.io/articles/audio/voicenext/prerequisites.html) extension.
 
 ### Nefarius.DSharpPlus.SlashCommands.Extensions.Hosting
 
 [![NuGet](https://img.shields.io/nuget/vpre/Nefarius.DSharpPlus.SlashCommands.Extensions.Hosting.svg)](https://nuget.org/packages/Nefarius.DSharpPlus.SlashCommands.Extensions.Hosting)
 
-Optional. Adds support for [DSharpPlus.SlashCommands](https://github.com/IDoEverything/DSharpPlus.SlashCommands) extension (3rd party).
+Optional. Adds support for [DSharpPlus.SlashCommands](https://github.com/DSharpPlus/DSharpPlus/tree/master/DSharpPlus.SlashCommands) extension.
 
 ## Documentation
 
@@ -95,11 +95,11 @@ services.AddDiscordHostedService();
 
 That's pretty much it! When you launch your worker with a valid bot token you should see your bot come online in an instant, congratulations! ✨
 
-You probably wonder what's the deal with the tracing dependency. I've taken liberty to implement [OpenTracing](https://github.com/opentracing/opentracing-csharp) within all event subscribers, so if your bot stuggles with performance, you can easily analyse it with the addition of e.g. [Jaeger Tracing](https://github.com/jaegertracing/jaeger-client-csharp). If you don't know what that means or don't care about tracing at all, just register the mock tracer as displayed above and it will be happy.
+You probably wonder what's the deal with the tracing dependency. I've taken liberty to implement [OpenTracing](https://github.com/opentracing/opentracing-csharp) within all event subscribers, so if your bot struggles with performance, you can easily analyse it with the addition of e.g. [Jaeger Tracing](https://github.com/jaegertracing/jaeger-client-csharp). If you don't know what that means or don't care about tracing at all, just register the mock tracer as displayed above and it will be happy.
 
 ### Handling Discord Events
 
-Now to the actual connveninece feature of this library! Creating one (or more) class(es) that handle events, like when a guild came online or a message got created. Let's wire one up that gets general guild and member change events:
+Now to the actual convenience feature of this library! Creating one (or more) class(es) that handle events, like when a guild came online or a message got created. Let's wire one up that gets general guild and member change events:
 
 ```csharp
 [DiscordGuildEventsSubscriber]
