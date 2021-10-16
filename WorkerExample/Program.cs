@@ -9,11 +9,8 @@ using DSharpPlus.Interactivity.Enums;
 using Nefarius.DSharpPlus.Interactivity.Extensions.Hosting;
 #endregion
 
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Nefarius.DSharpPlus.Extensions.Hosting;
-using OpenTracing;
-using OpenTracing.Mock;
 
 namespace WorkerExample
 {
@@ -29,11 +26,6 @@ namespace WorkerExample
             return Host.CreateDefaultBuilder(args)
                 .ConfigureServices((hostContext, services) =>
                 {
-                    //
-                    // Tracer is required, if you don't use one, use the MockTracer
-                    // 
-                    services.AddSingleton<ITracer>(provider => new MockTracer());
-
                     //
                     // Adds DiscordClient singleton service you can use everywhere
                     // 
