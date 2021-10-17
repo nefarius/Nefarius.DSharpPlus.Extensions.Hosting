@@ -90,7 +90,33 @@ services.AddDiscordHostedService();
 
 That's pretty much it! When you launch your worker with a valid bot token you should see your bot come online in an instant, congratulations! ✨
 
-You probably wonder what's the deal with the tracing dependency. I've taken liberty to implement [OpenTracing](https://github.com/opentracing/opentracing-csharp) within all event subscribers, so if your bot struggles with performance, you can easily analyse it with the addition of e.g. [Jaeger Tracing](https://github.com/jaegertracing/jaeger-client-csharp). If you don't know what that means or don't care about tracing at all, just register the mock tracer as displayed above and it will be happy.
+### OpenTracing (Optional)
+
+You probably wonder what's the deal with the tracing dependency. I've taken liberty to implement [OpenTracing](https://github.com/opentracing/opentracing-csharp) within all event subscribers, so if your bot struggles with performance, you can easily analyse it with the addition of e.g. [Jaeger Tracing](https://github.com/jaegertracing/jaeger-client-csharp). If you don't know what that means or don't care about tracing at all, just skip this section. To utilise tracing, you can use this snippet to get you up and running (although I highly recommend you check out the Jaeger docs beforehand anyway):
+
+```csharp
+// Adds the Jaeger Tracer.
+services.AddSingleton<ITracer>(serviceProvider =>
+{
+ var serviceName = "MyBot";
+ var loggerFactory = serviceProvider.GetRequiredService<ILoggerFactory>();
+
+ // This is necessary to pick the correct sender, otherwise a NoopSender is used!
+ Configuration.SenderConfiguration.DefaultSenderResolver = new SenderResolver(loggerFactory)
+  .RegisterSenderFactory<ThriftSenderFactory>();
+
+ // This will log to a default localhost installation of Jaeger.
+ var tracer = new Tracer.Builder(serviceName)
+  .WithLoggerFactory(loggerFactory)
+  .WithSampler(new ConstSampler(true))
+  .Build();
+
+ // Allows code that can't use DI to also access the tracer.
+ GlobalTracer.Register(tracer);
+
+ return tracer;
+});
+```
 
 ### Handling Discord Events
 
