@@ -118,6 +118,8 @@ services.AddSingleton<ITracer>(serviceProvider =>
 });
 ```
 
+Make sure you call this **before** `AddDiscord` or the Mock Tracer will be used by default which will not collect or publish any metrics.
+
 ### Handling Discord Events
 
 Now to the actual convenience feature of this library! Creating one (or more) class(es) that handle events, like when a guild came online or a message got created. Let's wire one up that gets general guild and member change events:
