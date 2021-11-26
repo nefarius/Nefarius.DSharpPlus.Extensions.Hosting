@@ -19,9 +19,7 @@
 
   <ItemGroup>
     <PackageReference Include="JetBrains.Annotations" Version="2021.2.0" PrivateAssets="All" />
-    <PackageReference Include="DSharpPlus" Version="4.2.0-nightly-01030" />
-    <PackageReference Include="DSharpPlus.CommandsNext" Version="4.2.0-nightly-01030" PrivateAssets="All" />
-    <PackageReference Include="DSharpPlus.Interactivity" Version="4.2.0-nightly-01030" PrivateAssets="All" />
+    <PackageReference Include="DSharpPlus" Version="4.2.0-nightly-01045" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="5.0.0" />
     <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="5.0.0" />
     <PackageReference Include="Microsoft.Extensions.Options" Version="5.0.0" />
