@@ -125,10 +125,10 @@ Make sure you call this **before** `AddDiscord` or the Mock Tracer will be used 
 Now to the actual convenience feature of this library! Creating one (or more) class(es) that handle events, like when a guild came online or a message got created. Let's wire one up that gets general guild and member change events:
 
 ```csharp
-[DiscordGuildEventsSubscriber]
+[DiscordGuildEventsSubscriber] // Optional attributes make this class auto-register!
 [DiscordGuildMemberEventsSubscriber]
 internal class BotModuleForGuildAndMemberEvents : 
- IDiscordGuildEventsSubscriber,
+ IDiscordGuildEventsSubscriber, // One or more interfaces grouping event handlers
  IDiscordGuildMemberEventsSubscriber
 {
  public Task DiscordOnGuildCreated(DiscordClient sender, GuildCreateEventArgs args)
