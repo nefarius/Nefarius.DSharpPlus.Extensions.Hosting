@@ -14,6 +14,7 @@ namespace WorkerExample
     // this does the same as calling services.AddDiscordGuildMemberEventsSubscriber<BotModuleForGuildAndMemberEvents>();
     [DiscordGuildMemberEventsSubscriber]
     internal class BotModuleForGuildAndMemberEvents :
+        // you can implement one or many interfaces for event handlers in one class or split it however you like. Your choice!
         IDiscordGuildEventsSubscriber,
         IDiscordGuildMemberEventsSubscriber
     {
@@ -21,17 +22,31 @@ namespace WorkerExample
 
         private readonly ITracer _tracer;
 
+        /// <summary>
+        ///     Optional constructor for Dependency Injection. parameters get populated automatically with you services.
+        /// </summary>
+        /// <param name="logger">The logger service instance.</param>
+        /// <param name="tracer">The tracer service instance.</param>
         public BotModuleForGuildAndMemberEvents(
             ILogger<BotModuleForGuildAndMemberEvents> logger,
             ITracer tracer
         )
         {
+            //
+            // Do whatever you like with these. It's recommended to not do heavy tasks in 
+            // constructors, just store your service references for later use!
+            // 
+            // You can inject scoped services like database contexts as well!
+            // 
             _logger = logger;
             _tracer = tracer;
         }
 
         public Task DiscordOnGuildCreated(DiscordClient sender, GuildCreateEventArgs args)
         {
+            //
+            // You are not interested in this event? Just return a Task.CompletedTask:
+            // 
             return Task.CompletedTask;
         }
 
@@ -42,8 +57,22 @@ namespace WorkerExample
             // 
             Console.WriteLine(args.Guild.Name);
 
+            //
+            // Usage of injected logger service
+            // 
+            _logger.LogInformation("Guild {Guild} came online", args.Guild);
+
+            //
+            // Return successful execution
+            // 
             return Task.CompletedTask;
         }
+
+        //
+        // It might get a bit cluttered when you're only interested in a few events.
+        // You can #region and hide them or make this class partial. Thinking of a
+        // less verbose and crude solution in a future design. Maybe :)
+        // 
 
         public Task DiscordOnGuildUpdated(DiscordClient sender, GuildUpdateEventArgs args)
         {
