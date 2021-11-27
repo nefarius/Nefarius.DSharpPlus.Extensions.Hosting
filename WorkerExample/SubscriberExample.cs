@@ -9,9 +9,11 @@ using OpenTracing;
 
 namespace WorkerExample
 {
+    // this does the same as calling services.AddDiscordGuildEventsSubscriber<BotModuleForGuildAndMemberEvents>();
     [DiscordGuildEventsSubscriber]
+    // this does the same as calling services.AddDiscordGuildMemberEventsSubscriber<BotModuleForGuildAndMemberEvents>();
     [DiscordGuildMemberEventsSubscriber]
-    internal class BotModuleForGuildAndMemberEvents : 
+    internal class BotModuleForGuildAndMemberEvents :
         IDiscordGuildEventsSubscriber,
         IDiscordGuildMemberEventsSubscriber
     {
@@ -99,6 +101,7 @@ namespace WorkerExample
         }
     }
 
+    // no attributes, so services.AddDiscordMiscEventsSubscriber<BotModuleForMiscEvents>(); needs to be called manually!
     internal class BotModuleForMiscEvents : IDiscordMiscEventsSubscriber
     {
         public Task DiscordOnComponentInteractionCreated(DiscordClient sender, ComponentInteractionCreateEventArgs args)
