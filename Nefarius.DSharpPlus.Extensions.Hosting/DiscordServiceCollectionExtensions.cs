@@ -5,7 +5,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Nefarius.DSharpPlus.Extensions.Hosting.Attributes;
 using Nefarius.DSharpPlus.Extensions.Hosting.Util;
-using Newtonsoft.Json.Serialization;
 using OpenTracing;
 using OpenTracing.Mock;
 
