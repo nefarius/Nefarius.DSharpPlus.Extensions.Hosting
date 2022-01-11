@@ -6,6 +6,7 @@ registries:
 
 updates:
   - package-ecosystem: "nuget"
+    directory: "/"
     registries:
       - slimget
     schedule:
