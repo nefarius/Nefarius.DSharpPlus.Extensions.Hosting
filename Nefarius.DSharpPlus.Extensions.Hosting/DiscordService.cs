@@ -155,7 +155,7 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
                 using var scope = ServiceProvider.CreateScope();
 
                 foreach (var eventSubscriber in scope.GetDiscordWebSocketEventSubscribers())
-                    await eventSubscriber.DiscordOSocketErrored(sender, args);
+                    await eventSubscriber.DiscordOnSocketErrored(sender, args);
             };
 
             Client.SocketOpened += async delegate (DiscordClient sender, SocketEventArgs args)

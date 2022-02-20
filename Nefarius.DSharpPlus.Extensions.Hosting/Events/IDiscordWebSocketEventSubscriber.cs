@@ -9,7 +9,7 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting.Events
         /// <summary>
         ///     Fired whenever a WebSocket error occurs within the client.
         /// </summary>
-        public Task DiscordOSocketErrored(DiscordClient sender, SocketErrorEventArgs args);
+        public Task DiscordOnSocketErrored(DiscordClient sender, SocketErrorEventArgs args);
 
         /// <summary>
         ///     Fired whenever WebSocket connection is established.
