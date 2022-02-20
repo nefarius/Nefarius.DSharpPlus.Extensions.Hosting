@@ -15,10 +15,6 @@ Work in progress!
 ## To-Do
 
 - [ ] Documentation!
-- [ ] Implement missing events
-  - [ ] Integration
-  - [ ] Stage Instance
-  - [ ] Misc (partially)
 
 ## Package overview
 
