@@ -43,8 +43,4 @@
     <ProjectReference Include="..\Nefarius.DSharpPlus.Extensions.Generators\Nefarius.DSharpPlus.Extensions.Generators.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Generators\" />
-  </ItemGroup>
-
 </Project>
