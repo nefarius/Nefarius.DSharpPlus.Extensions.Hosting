@@ -14,8 +14,4 @@
     <ProjectReference Include="..\Nefarius.DSharpPlus.Extensions.Hosting\Nefarius.DSharpPlus.Extensions.Hosting.csproj" />
     <ProjectReference Include="..\Nefarius.DSharpPlus.Interactivity.Extensions.Hosting\Nefarius.DSharpPlus.Interactivity.Extensions.Hosting.csproj" />
   </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Nefarius.DSharpPlus.Extensions.Generators\Nefarius.DSharpPlus.Extensions.Generators.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
-  </ItemGroup>
 </Project>
