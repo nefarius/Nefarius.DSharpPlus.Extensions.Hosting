@@ -1,16 +1,19 @@
 using System;
+using Microsoft.Extensions.Hosting;
+using Nefarius.DSharpPlus.Extensions.Hosting;
 
 #region OPTIONAL CommandsNext integration
+
 using Nefarius.DSharpPlus.CommandsNext.Extensions.Hosting;
+
 #endregion
 
 #region OPTIONAL Interactivity integration
+
 using DSharpPlus.Interactivity.Enums;
 using Nefarius.DSharpPlus.Interactivity.Extensions.Hosting;
-#endregion
 
-using Microsoft.Extensions.Hosting;
-using Nefarius.DSharpPlus.Extensions.Hosting;
+#endregion
 
 namespace WorkerExample
 {
@@ -41,7 +44,7 @@ namespace WorkerExample
 
                     services.AddDiscordCommandsNext(options =>
                     {
-                        options.StringPrefixes = new[] {">"};
+                        options.StringPrefixes = new[] { ">" };
                         options.EnableDms = false;
                         options.EnableMentionPrefix = true;
                     }, extension =>

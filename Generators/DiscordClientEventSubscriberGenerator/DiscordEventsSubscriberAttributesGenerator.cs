@@ -9,6 +9,7 @@ namespace DiscordClientEventSubscriberGenerator
     {
         public void Initialize(GeneratorInitializationContext context)
         {
+            
         }
 
         public void Execute(GeneratorExecutionContext context)
