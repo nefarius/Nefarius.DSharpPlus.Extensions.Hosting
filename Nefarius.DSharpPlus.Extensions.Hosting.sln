@@ -15,6 +15,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nefarius.DSharpPlus.SlashCo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nefarius.DSharpPlus.VoiceNext.Extensions.Hosting", "Nefarius.DSharpPlus.VoiceNext.Extensions.Hosting\Nefarius.DSharpPlus.VoiceNext.Extensions.Hosting.csproj", "{0EA9DFC2-C3B2-452C-8C61-4DE5FF726B65}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Generators", "Generators", "{83D656DB-9F92-441C-93CE-5FADAEF7F49E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiscordClientEventSubscriberGenerator", "Generators\DiscordClientEventSubscriberGenerator\DiscordClientEventSubscriberGenerator.csproj", "{1815BEB2-7010-489D-9069-ADCF424C7452}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,9 +49,16 @@ Global
 		{0EA9DFC2-C3B2-452C-8C61-4DE5FF726B65}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0EA9DFC2-C3B2-452C-8C61-4DE5FF726B65}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0EA9DFC2-C3B2-452C-8C61-4DE5FF726B65}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1815BEB2-7010-489D-9069-ADCF424C7452}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1815BEB2-7010-489D-9069-ADCF424C7452}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1815BEB2-7010-489D-9069-ADCF424C7452}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1815BEB2-7010-489D-9069-ADCF424C7452}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1815BEB2-7010-489D-9069-ADCF424C7452} = {83D656DB-9F92-441C-93CE-5FADAEF7F49E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {58B2CD89-4D43-4712-BAC6-09BE34B8F795}
