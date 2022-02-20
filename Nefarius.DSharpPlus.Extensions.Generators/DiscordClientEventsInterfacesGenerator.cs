@@ -40,8 +40,6 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting.Generators
 
             var eventsSyntax = discordClientClassSyntax.Members.OfType<EventDeclarationSyntax>();
 
-            //var names = eventsSyntax.Select(syntax => syntax.Identifier.ToString()).ToList();
-
             var sourceBuilder = new StringBuilder(@"using System;
 using System.Threading.Tasks;
 using DSharpPlus;
