@@ -7,16 +7,6 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting.Util
 {
     internal static class ServiceScopeExtensions
     {
-        public static IList<IDiscordWebSocketEventSubscriber> GetDiscordWebSocketEventSubscribers(
-            this IServiceScope scope
-        )
-        {
-            return scope.ServiceProvider
-                .GetServices(typeof(IDiscordWebSocketEventSubscriber))
-                .Cast<IDiscordWebSocketEventSubscriber>()
-                .ToList();
-        }
-
         public static IList<IDiscordChannelEventsSubscriber> GetDiscordChannelEventsSubscribers(
             this IServiceScope scope
         )
@@ -114,16 +104,6 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting.Util
             return scope.ServiceProvider
                 .GetServices(typeof(IDiscordVoiceEventsSubscriber))
                 .Cast<IDiscordVoiceEventsSubscriber>()
-                .ToList();
-        }
-
-        public static IList<IDiscordMiscEventsSubscriber> GetDiscordMiscEventsSubscribers(
-            this IServiceScope scope
-        )
-        {
-            return scope.ServiceProvider
-                .GetServices(typeof(IDiscordMiscEventsSubscriber))
-                .Cast<IDiscordMiscEventsSubscriber>()
                 .ToList();
         }
     }
