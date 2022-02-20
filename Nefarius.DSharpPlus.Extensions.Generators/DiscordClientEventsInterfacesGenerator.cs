@@ -7,6 +7,9 @@ using Nefarius.DSharpPlus.Extensions.Generators.Util;
 
 namespace Nefarius.DSharpPlus.Extensions.Generators
 {
+    /// <summary>
+    ///     Builds the attributes and interfaces to decorate and implement event subscribers
+    /// </summary>
     [Generator]
     public class DiscordClientEventsInterfacesGenerator : ISourceGenerator
     {
