@@ -140,6 +140,7 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
 
             //
             // Load options that should load in before Connect call
+            // TODO: this is a messy workaround, come up with something smarter!
             // 
             ServiceProvider.GetServices<IDiscordExtensionConfiguration>();
 
