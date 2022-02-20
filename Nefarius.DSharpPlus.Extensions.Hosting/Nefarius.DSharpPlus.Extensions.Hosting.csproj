@@ -5,7 +5,7 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>Benjamin Höglinger-Stelzer</Authors>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <LangVersion>8</LangVersion>
+    <LangVersion>9</LangVersion>
     <OutputPath>$(SolutionDir)bin\</OutputPath>
     <Copyright>Copyright © Benjamin Höglinger-Stelzer 2021</Copyright>
     <Description>DSharpPlus UNOFFICIAL Microsoft.Extensions.DependencyInjection integration.</Description>
