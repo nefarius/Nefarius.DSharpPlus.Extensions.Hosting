@@ -49,6 +49,9 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting.Events
 ");
 
                 sourceBuilder.Append($@"
+    /// <summary>
+    ///     Implements a DiscordOn{name} event handler.
+    /// </summary>
     public interface IDiscord{name}Subscriber
     {{
         public Task DiscordOn{name}({senderType} sender, {argsType} args);
