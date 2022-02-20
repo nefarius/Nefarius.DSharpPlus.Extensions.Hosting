@@ -39,6 +39,8 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
             if (!autoRegisterSubscribers)
                 return services;
 
+            RegisterSubscribers(services);
+
             foreach (var type in AssemblyTypeHelper.GetTypesWith<DiscordChannelEventsSubscriberAttribute>())
                 services.AddDiscordChannelEventsSubscriber(type);
 

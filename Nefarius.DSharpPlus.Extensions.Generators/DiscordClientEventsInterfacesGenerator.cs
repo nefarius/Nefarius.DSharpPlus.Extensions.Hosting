@@ -45,14 +45,14 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting.Events
     ///     Marks this class as a receiver of <see cref=""IDiscord{name}Subscriber"" /> events.
     /// </summary>
     [AttributeUsage(AttributeTargets.Class)]
-    public sealed class Discord{name}SubscriberAttribute : Attribute {{ }}
+    public sealed class Discord{name}EventSubscriberAttribute : Attribute {{ }}
 ");
 
                 sourceBuilder.Append($@"
     /// <summary>
     ///     Implements a DiscordOn{name} event handler.
     /// </summary>
-    public interface IDiscord{name}Subscriber
+    public interface IDiscord{name}EventSubscriber
     {{
         public Task DiscordOn{name}({senderType} sender, {argsType} args);
     }}

@@ -62,8 +62,8 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
                 using var scope = ServiceProvider.CreateScope();
                 
                 var subscribers = scope.ServiceProvider
-                    .GetServices(typeof(IDiscord{name}Subscriber))
-                    .Cast<IDiscord{name}Subscriber>();
+                    .GetServices(typeof(IDiscord{name}EventSubscriber))
+                    .Cast<IDiscord{name}EventSubscriber>();
 
                 foreach (var eventSubscriber in subscribers)
                     await eventSubscriber.DiscordOn{name}(sender, args);
