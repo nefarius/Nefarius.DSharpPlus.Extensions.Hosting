@@ -25,7 +25,6 @@ using DSharpPlus;
 using JetBrains.Annotations;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
-using Nefarius.DSharpPlus.Extensions.Hosting.Attributes;
 using Nefarius.DSharpPlus.Extensions.Hosting.Util;
 using Nefarius.DSharpPlus.Extensions.Hosting.Events;
 using OpenTracing;
