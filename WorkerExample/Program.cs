@@ -73,14 +73,15 @@ namespace WorkerExample
                     // do the same for you automatically. Isn't that nice of them? :)
                     // 
                     /*
-                    services.AddDiscordGuildEventsSubscriber<BotModuleForGuildAndMemberEvents>();
-                    services.AddDiscordGuildMemberEventsSubscriber<BotModuleForGuildAndMemberEvents>();
+                    services.AddDiscordGuildAvailableEventSubscriber<BotModuleForGuildAndMemberEvents>();
+                    services.AddDiscordGuildMemberAddedEventSubscriber<BotModuleForGuildAndMemberEvents>();
                     */
 
                     //
                     // Module reacting to different events
                     // 
-                    services.AddDiscordMiscEventsSubscriber<BotModuleForMiscEvents>();
+                    services.AddDiscordComponentInteractionCreatedEventSubscriber<BotModuleForMiscEvents>();
+                    services.AddDiscordClientErroredEventSubscriber<BotModuleForMiscEvents>();
 
                     //
                     // Automatically host service and connect to gateway on boot

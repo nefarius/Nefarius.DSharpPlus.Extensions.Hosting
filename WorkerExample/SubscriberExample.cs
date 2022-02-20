@@ -3,20 +3,19 @@ using System.Threading.Tasks;
 using DSharpPlus;
 using DSharpPlus.EventArgs;
 using Microsoft.Extensions.Logging;
-using Nefarius.DSharpPlus.Extensions.Hosting.Attributes;
 using Nefarius.DSharpPlus.Extensions.Hosting.Events;
 using OpenTracing;
 
 namespace WorkerExample
 {
-    // this does the same as calling services.AddDiscordGuildEventsSubscriber<BotModuleForGuildAndMemberEvents>();
-    [DiscordGuildEventsSubscriber]
-    // this does the same as calling services.AddDiscordGuildMemberEventsSubscriber<BotModuleForGuildAndMemberEvents>();
-    [DiscordGuildMemberEventsSubscriber]
+    // this does the same as calling services.AddDiscordGuildAvailableEventSubscriber<BotModuleForGuildAndMemberEvents>();
+    [DiscordGuildAvailableEventSubscriber]
+    // this does the same as calling services.AddDiscordGuildMemberAddedEventSubscriber<BotModuleForGuildAndMemberEvents>();
+    [DiscordGuildMemberAddedEventSubscriber]
     internal class BotModuleForGuildAndMemberEvents :
         // you can implement one or many interfaces for event handlers in one class or split it however you like. Your choice!
-        IDiscordGuildEventsSubscriber,
-        IDiscordGuildMemberEventsSubscriber
+        IDiscordGuildAvailableEventSubscriber,
+        IDiscordGuildMemberAddedEventSubscriber
     {
         private readonly ILogger<BotModuleForGuildAndMemberEvents> _logger;
 
@@ -42,14 +41,6 @@ namespace WorkerExample
             _tracer = tracer;
         }
 
-        public Task DiscordOnGuildCreated(DiscordClient sender, GuildCreateEventArgs args)
-        {
-            //
-            // You are not interested in this event? Just return a Task.CompletedTask:
-            // 
-            return Task.CompletedTask;
-        }
-
         public Task DiscordOnGuildAvailable(DiscordClient sender, GuildCreateEventArgs args)
         {
             //
@@ -68,70 +59,24 @@ namespace WorkerExample
             return Task.CompletedTask;
         }
 
-        //
-        // It might get a bit cluttered when you're only interested in a few events.
-        // You can #region and hide them or make this class partial. Thinking of a
-        // less verbose and crude solution in a future design. Maybe :)
-        // 
-
-        public Task DiscordOnGuildUpdated(DiscordClient sender, GuildUpdateEventArgs args)
-        {
-            return Task.CompletedTask;
-        }
-
-        public Task DiscordOnGuildDeleted(DiscordClient sender, GuildDeleteEventArgs args)
-        {
-            return Task.CompletedTask;
-        }
-
-        public Task DiscordOnGuildUnavailable(DiscordClient sender, GuildDeleteEventArgs args)
-        {
-            return Task.CompletedTask;
-        }
-
-        public Task DiscordOnGuildDownloadCompleted(DiscordClient sender, GuildDownloadCompletedEventArgs args)
-        {
-            return Task.CompletedTask;
-        }
-
-        public Task DiscordOnGuildEmojisUpdated(DiscordClient sender, GuildEmojisUpdateEventArgs args)
-        {
-            return Task.CompletedTask;
-        }
-
-        public Task DiscordOnGuildStickersUpdated(DiscordClient sender, GuildStickersUpdateEventArgs args)
-        {
-            return Task.CompletedTask;
-        }
-
-        public Task DiscordOnGuildIntegrationsUpdated(DiscordClient sender, GuildIntegrationsUpdateEventArgs args)
-        {
-            return Task.CompletedTask;
-        }
-
         public Task DiscordOnGuildMemberAdded(DiscordClient sender, GuildMemberAddEventArgs args)
         {
-            return Task.CompletedTask;
-        }
+            //
+            // Fired when a new member has joined, exciting!
+            // 
+            _logger.LogInformation("New member {Member} joined!", args.Member);
 
-        public Task DiscordOnGuildMemberRemoved(DiscordClient sender, GuildMemberRemoveEventArgs args)
-        {
-            return Task.CompletedTask;
-        }
-
-        public Task DiscordOnGuildMemberUpdated(DiscordClient sender, GuildMemberUpdateEventArgs args)
-        {
-            return Task.CompletedTask;
-        }
-
-        public Task DiscordOnGuildMembersChunked(DiscordClient sender, GuildMembersChunkEventArgs args)
-        {
+            //
+            // Return successful execution
+            // 
             return Task.CompletedTask;
         }
     }
 
-    // no attributes, so services.AddDiscordMiscEventsSubscriber<BotModuleForMiscEvents>(); needs to be called manually!
-    internal class BotModuleForMiscEvents : IDiscordMiscEventsSubscriber
+    // no attributes, so services.AddDiscordXXXEventsSubscriber<BotModuleForMiscEvents>(); needs to be called manually!
+    internal class BotModuleForMiscEvents : 
+        IDiscordComponentInteractionCreatedEventSubscriber,
+        IDiscordClientErroredEventSubscriber
     {
         public Task DiscordOnComponentInteractionCreated(DiscordClient sender, ComponentInteractionCreateEventArgs args)
         {
