@@ -4,7 +4,7 @@ using System.Net;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 
-namespace Nefarius.DSharpPlus.Extensions.Hosting.Generators.Util
+namespace Nefarius.DSharpPlus.CommandsNext.Extensions.Hosting.Generators.Util
 {
     /// <summary>
     ///     Converts the latest Discord Client sources into parsed objects.

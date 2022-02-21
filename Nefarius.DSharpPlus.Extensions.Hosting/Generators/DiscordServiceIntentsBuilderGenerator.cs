@@ -4,7 +4,7 @@ using System.Text;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.Text;
-using Nefarius.DSharpPlus.Extensions.Generators.Util;
+using Nefarius.DSharpPlus.Extensions.Hosting.Generators.Util;
 
 namespace Nefarius.DSharpPlus.Extensions.Hosting.Generators
 {
