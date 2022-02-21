@@ -128,70 +128,70 @@ Make sure you call this **before** `AddDiscord` or the Mock Tracer will be used 
 Now to the actual convenience feature of this library! Creating one (or more) class(es) that handle events, like when a guild came online or a message got created. Let's wire one up that gets general guild and member change events:
 
 ```csharp
-    // this does the same as calling services.AddDiscordGuildAvailableEventSubscriber<BotModuleForGuildAndMemberEvents>();
-    [DiscordGuildAvailableEventSubscriber]
-    // this does the same as calling services.AddDiscordGuildMemberAddedEventSubscriber<BotModuleForGuildAndMemberEvents>();
-    [DiscordGuildMemberAddedEventSubscriber]
-    internal class BotModuleForGuildAndMemberEvents :
-        // you can implement one or many interfaces for event handlers in one class or split it however you like. Your choice!
-        IDiscordGuildAvailableEventSubscriber,
-        IDiscordGuildMemberAddedEventSubscriber
+// this does the same as calling services.AddDiscordGuildAvailableEventSubscriber<BotModuleForGuildAndMemberEvents>();
+[DiscordGuildAvailableEventSubscriber]
+// this does the same as calling services.AddDiscordGuildMemberAddedEventSubscriber<BotModuleForGuildAndMemberEvents>();
+[DiscordGuildMemberAddedEventSubscriber]
+internal class BotModuleForGuildAndMemberEvents :
+    // you can implement one or many interfaces for event handlers in one class or split it however you like. Your choice!
+    IDiscordGuildAvailableEventSubscriber,
+    IDiscordGuildMemberAddedEventSubscriber
+{
+    private readonly ILogger<BotModuleForGuildAndMemberEvents> _logger;
+
+    private readonly ITracer _tracer;
+
+    /// <summary>
+    ///     Optional constructor for Dependency Injection. parameters get populated automatically with you services.
+    /// </summary>
+    /// <param name="logger">The logger service instance.</param>
+    /// <param name="tracer">The tracer service instance.</param>
+    public BotModuleForGuildAndMemberEvents(
+        ILogger<BotModuleForGuildAndMemberEvents> logger,
+        ITracer tracer
+    )
     {
-        private readonly ILogger<BotModuleForGuildAndMemberEvents> _logger;
-
-        private readonly ITracer _tracer;
-
-        /// <summary>
-        ///     Optional constructor for Dependency Injection. parameters get populated automatically with you services.
-        /// </summary>
-        /// <param name="logger">The logger service instance.</param>
-        /// <param name="tracer">The tracer service instance.</param>
-        public BotModuleForGuildAndMemberEvents(
-            ILogger<BotModuleForGuildAndMemberEvents> logger,
-            ITracer tracer
-        )
-        {
-            //
-            // Do whatever you like with these. It's recommended to not do heavy tasks in 
-            // constructors, just store your service references for later use!
-            // 
-            // You can inject scoped services like database contexts as well!
-            // 
-            _logger = logger;
-            _tracer = tracer;
-        }
-
-        public Task DiscordOnGuildAvailable(DiscordClient sender, GuildCreateEventArgs args)
-        {
-            //
-            // To see some action, output the guild name
-            // 
-            Console.WriteLine(args.Guild.Name);
-
-            //
-            // Usage of injected logger service
-            // 
-            _logger.LogInformation("Guild {Guild} came online", args.Guild);
-
-            //
-            // Return successful execution
-            // 
-            return Task.CompletedTask;
-        }
-
-        public Task DiscordOnGuildMemberAdded(DiscordClient sender, GuildMemberAddEventArgs args)
-        {
-            //
-            // Fired when a new member has joined, exciting!
-            // 
-            _logger.LogInformation("New member {Member} joined!", args.Member);
-
-            //
-            // Return successful execution
-            // 
-            return Task.CompletedTask;
-        }
+        //
+        // Do whatever you like with these. It's recommended to not do heavy tasks in 
+        // constructors, just store your service references for later use!
+        // 
+        // You can inject scoped services like database contexts as well!
+        // 
+        _logger = logger;
+        _tracer = tracer;
     }
+
+    public Task DiscordOnGuildAvailable(DiscordClient sender, GuildCreateEventArgs args)
+    {
+        //
+        // To see some action, output the guild name
+        // 
+        Console.WriteLine(args.Guild.Name);
+
+        //
+        // Usage of injected logger service
+        // 
+        _logger.LogInformation("Guild {Guild} came online", args.Guild);
+
+        //
+        // Return successful execution
+        // 
+        return Task.CompletedTask;
+    }
+
+    public Task DiscordOnGuildMemberAdded(DiscordClient sender, GuildMemberAddEventArgs args)
+    {
+        //
+        // Fired when a new member has joined, exciting!
+        // 
+        _logger.LogInformation("New member {Member} joined!", args.Member);
+
+        //
+        // Return successful execution
+        // 
+        return Task.CompletedTask;
+    }
+}
 ```
 
 Now let's dissect what is happening here. The class gets decorated by the attributes `DiscordGuildAvailableEventSubscriber` and `DiscordGuildMemberAddedEventSubscriber` (hint: you can use only one attribute for the event group you're interested in, you can use many more on the same class, doesn't matter, your choice) which causes it to get **automatically registered as subscribers for these events**.
