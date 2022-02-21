@@ -128,12 +128,15 @@ Make sure you call this **before** `AddDiscord` or the Mock Tracer will be used 
 Now to the actual convenience feature of this library! Creating one (or more) class(es) that handle events, like when a guild came online or a message got created. Let's wire one up that gets general guild and member change events:
 
 ```csharp
-// this does the same as calling services.AddDiscordGuildAvailableEventSubscriber<BotModuleForGuildAndMemberEvents>();
+// this does the same as calling
+//   services.AddDiscordGuildAvailableEventSubscriber<BotModuleForGuildAndMemberEvents>();
 [DiscordGuildAvailableEventSubscriber]
-// this does the same as calling services.AddDiscordGuildMemberAddedEventSubscriber<BotModuleForGuildAndMemberEvents>();
+// this does the same as calling
+//   services.AddDiscordGuildMemberAddedEventSubscriber<BotModuleForGuildAndMemberEvents>();
 [DiscordGuildMemberAddedEventSubscriber]
 internal class BotModuleForGuildAndMemberEvents :
-    // you can implement one or many interfaces for event handlers in one class or split it however you like. Your choice!
+    // you can implement one or many interfaces for event handlers in one class 
+    // or split it however you like. Your choice!
     IDiscordGuildAvailableEventSubscriber,
     IDiscordGuildMemberAddedEventSubscriber
 {
