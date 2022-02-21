@@ -72,6 +72,9 @@ namespace Nefarius.DSharpPlus.Extensions.Generators.Util
         /// </summary>
         public ClassDeclarationSyntax DiscordClient { get; }
 
+        /// <summary>
+        ///     The Discord Intents declaration.
+        /// </summary>
         public EnumDeclarationSyntax DiscordIntents { get; }
 
         /// <summary>
