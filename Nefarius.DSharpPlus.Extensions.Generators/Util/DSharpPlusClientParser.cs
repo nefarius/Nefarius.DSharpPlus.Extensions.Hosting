@@ -46,7 +46,7 @@ namespace Nefarius.DSharpPlus.Extensions.Generators.Util
             var namespaceSyntax = root.Members.OfType<NamespaceDeclarationSyntax>().First();
 
             //
-            // One class definition expected
+            // One Class definition expected
             // 
             DiscordClient = namespaceSyntax.Members.OfType<ClassDeclarationSyntax>().First();
 
@@ -61,6 +61,9 @@ namespace Nefarius.DSharpPlus.Extensions.Generators.Util
             // 
             namespaceSyntax = root.Members.OfType<NamespaceDeclarationSyntax>().First();
 
+            //
+            // One Enum definition expected
+            // 
             DiscordIntents = namespaceSyntax.Members.OfType<EnumDeclarationSyntax>().First();
         }
 
