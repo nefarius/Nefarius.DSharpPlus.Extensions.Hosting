@@ -17,7 +17,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nefarius.DSharpPlus.VoiceNe
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Generators", "Generators", "{83D656DB-9F92-441C-93CE-5FADAEF7F49E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nefarius.DSharpPlus.Extensions.Generators", "Nefarius.DSharpPlus.Extensions.Generators\Nefarius.DSharpPlus.Extensions.Generators.csproj", "{9D0D767B-F784-458B-8B70-364847173F44}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nefarius.DSharpPlus.Extensions.Hosting.Generators", "Nefarius.DSharpPlus.Extensions.Hosting\Generators\Nefarius.DSharpPlus.Extensions.Hosting.Generators.csproj", "{9D0D767B-F784-458B-8B70-364847173F44}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

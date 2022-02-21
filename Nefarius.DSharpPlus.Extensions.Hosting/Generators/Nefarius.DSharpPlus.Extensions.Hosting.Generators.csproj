@@ -26,7 +26,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="..\assets\NSS-128x128.png">
+    <None Include="..\..\assets\NSS-128x128.png">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
