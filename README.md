@@ -145,7 +145,8 @@ internal class BotModuleForGuildAndMemberEvents :
     private readonly ITracer _tracer;
 
     /// <summary>
-    ///     Optional constructor for Dependency Injection. parameters get populated automatically with you services.
+    ///     Optional constructor for Dependency Injection.
+    ///     Parameters get populated automatically with you services.
     /// </summary>
     /// <param name="logger">The logger service instance.</param>
     /// <param name="tracer">The tracer service instance.</param>
