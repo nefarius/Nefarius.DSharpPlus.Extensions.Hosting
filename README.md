@@ -16,7 +16,11 @@ Work in progress! API-breaking changes might occur until the pre-release suffix 
 
 ---
 
-This set of libraries abstracts away a lot of the plumbing code required to get DSharpPlus up and running in a .NET Core Worker Service (or simply a plain old Console Application) and provides Dependency-Injection-friendly integration. It also offers a new feature/concept on top: event subscribers! Changes happening in the Discord universe is represented in DSharpPlus by a (rather large) number of events that can be subscribed to. The library offers an interface for every event of the Discord Client your "event subscriber" class can implement. These interface methods will be called when the corresponding event occurs. But there's a convenience extra: within the callback method you will have access to scoped services, like database contexts! And if that wasn't enough, here's another one: intents will be automatically registered if you're using an interface/event that requires them! Yay automation!
+This set of libraries abstracts away a lot of the plumbing code required to get DSharpPlus up and running in a .NET Core Worker Service (or simply a plain old Console Application) and provides Dependency-Injection-friendly integration.
+
+It also offers a new feature/concept on top: event subscribers! Changes happening in the Discord universe are represented in DSharpPlus by a (rather large) number of events that can be subscribed to. The library offers an interface for every event of the Discord Client your "event subscriber" class can implement. These interface methods will be called when the corresponding event occurs. But there's a convenience extra: within the callback method you will have access to scoped services, like database contexts!
+
+And if that wasn't enough, here's another one: intents will be automatically registered if you're using an interface/event that requires them! Yay automation!
 
 ## To-Do
 
