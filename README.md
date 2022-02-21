@@ -146,7 +146,7 @@ internal class BotModuleForGuildAndMemberEvents :
 
     /// <summary>
     ///     Optional constructor for Dependency Injection.
-    ///     Parameters get populated automatically with you services.
+    ///     Parameters get populated automatically with your services.
     /// </summary>
     /// <param name="logger">The logger service instance.</param>
     /// <param name="tracer">The tracer service instance.</param>
