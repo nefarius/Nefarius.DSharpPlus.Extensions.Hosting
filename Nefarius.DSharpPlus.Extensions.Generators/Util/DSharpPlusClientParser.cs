@@ -15,10 +15,10 @@ namespace Nefarius.DSharpPlus.Extensions.Generators.Util
         ///     The client source file to download and parse.
         /// </summary>
         public const string DSharpPlusClientSourceUri =
-            "https://raw.githubusercontent.com/DSharpPlus/DSharpPlus/master/DSharpPlus/Clients/DiscordClient.Events.cs";
+            "https://raw.githubusercontent.com/DSharpPlus/DSharpPlus/8642c06b9c733d75fabf412f9375588e5f99ec61/DSharpPlus/Clients/DiscordClient.Events.cs";
 
         public const string DSharpPlusIntentsSourceUri =
-            "https://raw.githubusercontent.com/DSharpPlus/DSharpPlus/master/DSharpPlus/DiscordIntents.cs";
+            "https://raw.githubusercontent.com/DSharpPlus/DSharpPlus/3a50fb33bebb2de647fda37cae6b5a8f46c7e264/DSharpPlus/DiscordIntents.cs";
 
         private static readonly Lazy<DSharpPlusClientParser> LazyParser = new(() => new DSharpPlusClientParser());
 
