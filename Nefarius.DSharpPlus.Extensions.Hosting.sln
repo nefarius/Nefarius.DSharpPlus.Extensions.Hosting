@@ -19,8 +19,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Generators", "Generators", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nefarius.DSharpPlus.Extensions.Hosting.Generators", "Nefarius.DSharpPlus.Extensions.Hosting\Generators\Nefarius.DSharpPlus.Extensions.Hosting.Generators.csproj", "{9D0D767B-F784-458B-8B70-364847173F44}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nefarius.DSharpPlus.SlashCommands.Extensions.Hosting", "Nefarius.DSharpPlus.SlashCommands.Extensions.Hosting\Generators\Nefarius.DSharpPlus.SlashCommands.Extensions.Hosting.csproj", "{8ECAC916-6FD2-4D99-AA97-6F557D801704}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,17 +53,12 @@ Global
 		{9D0D767B-F784-458B-8B70-364847173F44}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9D0D767B-F784-458B-8B70-364847173F44}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9D0D767B-F784-458B-8B70-364847173F44}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8ECAC916-6FD2-4D99-AA97-6F557D801704}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8ECAC916-6FD2-4D99-AA97-6F557D801704}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8ECAC916-6FD2-4D99-AA97-6F557D801704}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8ECAC916-6FD2-4D99-AA97-6F557D801704}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{9D0D767B-F784-458B-8B70-364847173F44} = {83D656DB-9F92-441C-93CE-5FADAEF7F49E}
-		{8ECAC916-6FD2-4D99-AA97-6F557D801704} = {83D656DB-9F92-441C-93CE-5FADAEF7F49E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {58B2CD89-4D43-4712-BAC6-09BE34B8F795}
