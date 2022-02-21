@@ -33,14 +33,4 @@
     </None>
   </ItemGroup>
 
-  <ItemGroup>
-    <Compile Remove="Generators\**" />
-    <EmbeddedResource Remove="Generators\**" />
-    <None Remove="Generators\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="Generators\Nefarius.DSharpPlus.CommandsNext.Extensions.Hosting.Generators.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
-  </ItemGroup>
-
 </Project>

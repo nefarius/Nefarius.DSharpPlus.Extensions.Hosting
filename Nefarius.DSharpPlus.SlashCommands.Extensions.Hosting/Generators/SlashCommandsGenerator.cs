@@ -3,7 +3,7 @@
 namespace Nefarius.DSharpPlus.CommandsNext.Extensions.Hosting.Generators
 {
     [Generator]
-    public class CommandsNextGenerator : ISourceGenerator
+    public class SlashCommandsGenerator : ISourceGenerator
     {
         public void Initialize(GeneratorInitializationContext context)
         {
