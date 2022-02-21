@@ -6,7 +6,7 @@ using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.Text;
 using Nefarius.DSharpPlus.Extensions.Generators.Util;
 
-namespace Nefarius.DSharpPlus.Extensions.Generators
+namespace Nefarius.DSharpPlus.Extensions.Hosting.Generators
 {
     [Generator]
     public class DiscordServiceIntentsBuilderGenerator : ISourceGenerator
