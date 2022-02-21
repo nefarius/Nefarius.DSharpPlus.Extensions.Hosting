@@ -68,7 +68,7 @@ namespace WorkerExample
                     #endregion
 
                     //
-                    // Register your module(s) for every events interface it implements
+                    // Register your module(s) for every events interface it implements.
                     // Commented out because the attributes on the subscriber classes
                     // do the same for you automatically. Isn't that nice of them? :)
                     // 

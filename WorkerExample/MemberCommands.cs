@@ -18,7 +18,7 @@ namespace WorkerExample
             // users know we're working
             await ctx.TriggerTypingAsync();
 
-            // let's make the message a bit more colourful
+            // let's make the message a bit more colorful
             var emoji = DiscordEmoji.FromName(ctx.Client, ":ping_pong:");
 
             // respond with ping
