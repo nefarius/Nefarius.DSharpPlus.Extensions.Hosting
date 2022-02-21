@@ -77,6 +77,9 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
 {
     public partial class DiscordService
     {
+        /// <summary>
+        ///     Source-generated utility method to auto-detect intents required by registered services.
+        /// </summary>
         private static DiscordIntents BuildIntents(IServiceScope scope, DiscordIntents intents)
         {
 ");

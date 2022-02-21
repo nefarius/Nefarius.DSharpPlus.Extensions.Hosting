@@ -37,6 +37,9 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
 {
     public partial class DiscordService
     {
+        /// <summary>
+        ///     Source-generated utility method to hook event handlers to services.
+        /// </summary>
         internal void HookEvents()
         {
 ");
