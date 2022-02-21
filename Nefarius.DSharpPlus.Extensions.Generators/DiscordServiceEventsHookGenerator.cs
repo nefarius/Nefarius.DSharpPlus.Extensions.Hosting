@@ -12,7 +12,6 @@ namespace Nefarius.DSharpPlus.Extensions.Generators
     {
         public void Initialize(GeneratorInitializationContext context)
         {
-            
         }
 
         public void Execute(GeneratorExecutionContext context)
@@ -20,7 +19,7 @@ namespace Nefarius.DSharpPlus.Extensions.Generators
             var discordClientClassSyntax = DSharpPlusClientParser.Instance.DiscordClient;
 
             var eventsSyntax = discordClientClassSyntax.Members.OfType<EventDeclarationSyntax>();
-            
+
             var sourceBuilder = new StringBuilder(@"using System;
 using System.Linq;
 using System.Reflection;
@@ -77,7 +76,8 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
 }
 ");
 
-            context.AddSource("DiscordServiceEventsHookGenerated", SourceText.From(sourceBuilder.ToString(), Encoding.UTF8));
+            context.AddSource("DiscordServiceEventsHookGenerated",
+                SourceText.From(sourceBuilder.ToString(), Encoding.UTF8));
         }
     }
 }

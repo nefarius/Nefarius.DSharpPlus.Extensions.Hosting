@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection;
 using DSharpPlus;
 using JetBrains.Annotations;
 using Microsoft.Extensions.DependencyInjection;
@@ -57,7 +58,17 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
             if (DiscordOptions.Value is null)
                 throw new InvalidOperationException($"{nameof(DiscordConfiguration)} option is required");
 
+            //
+            // Grab the content of the user-set intents and merge them with what the subscribers need
+            // 
+            var property = typeof(DiscordConfiguration).GetProperty("Intents");
+            property = property.DeclaringType.GetProperty("Intents");
+            var intents = (DiscordIntents)property.GetValue(DiscordOptions.Value,
+                BindingFlags.NonPublic | BindingFlags.Instance, null, null, null);
+            
             using var serviceScope = ServiceProvider.CreateScope();
+
+            intents = BuildIntents(serviceScope, intents);
 
             var configuration = new DiscordConfiguration(DiscordOptions.Value)
             {
@@ -68,9 +79,7 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
                 //
                 // Use merged intents
                 // 
-                // TODO: need new logic!
-                // 
-                //Intents = intents
+                Intents = intents
             };
 
             Client = new DiscordClient(configuration);

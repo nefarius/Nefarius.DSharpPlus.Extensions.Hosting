@@ -12,10 +12,13 @@ namespace Nefarius.DSharpPlus.Extensions.Generators.Util
     internal class DSharpPlusClientParser
     {
         /// <summary>
-        ///     The source file to download and parse.
+        ///     The client source file to download and parse.
         /// </summary>
-        public const string DSharpPlusSourceUri =
+        public const string DSharpPlusClientSourceUri =
             "https://raw.githubusercontent.com/DSharpPlus/DSharpPlus/master/DSharpPlus/Clients/DiscordClient.Events.cs";
+
+        public const string DSharpPlusIntentsSourceUri =
+            "https://raw.githubusercontent.com/DSharpPlus/DSharpPlus/master/DSharpPlus/DiscordIntents.cs";
 
         private static readonly Lazy<DSharpPlusClientParser> LazyParser = new(() => new DSharpPlusClientParser());
 
@@ -31,7 +34,7 @@ namespace Nefarius.DSharpPlus.Extensions.Generators.Util
                 "(compatible; MSIE 6.0; Windows NT 5.1; " +
                 ".NET CLR 1.1.4322; .NET CLR 2.0.50727)";
 
-            var response = client.DownloadString(DSharpPlusSourceUri);
+            var response = client.DownloadString(DSharpPlusClientSourceUri);
 
             var syntaxTree = CSharpSyntaxTree.ParseText(response);
 
@@ -46,12 +49,27 @@ namespace Nefarius.DSharpPlus.Extensions.Generators.Util
             // One class definition expected
             // 
             DiscordClient = namespaceSyntax.Members.OfType<ClassDeclarationSyntax>().First();
+
+            response = client.DownloadString(DSharpPlusIntentsSourceUri);
+
+            syntaxTree = CSharpSyntaxTree.ParseText(response);
+
+            root = syntaxTree.GetCompilationUnitRoot();
+
+            //
+            // One namespace expected
+            // 
+            namespaceSyntax = root.Members.OfType<NamespaceDeclarationSyntax>().First();
+
+            DiscordIntents = namespaceSyntax.Members.OfType<EnumDeclarationSyntax>().First();
         }
 
         /// <summary>
         ///     The Discord Client declaration.
         /// </summary>
         public ClassDeclarationSyntax DiscordClient { get; }
+
+        public EnumDeclarationSyntax DiscordIntents { get; }
 
         /// <summary>
         ///     Singleton instance.
