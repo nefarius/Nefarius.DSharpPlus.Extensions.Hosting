@@ -3,8 +3,6 @@ using DSharpPlus;
 using JetBrains.Annotations;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
-using Nefarius.DSharpPlus.Extensions.Hosting.Attributes;
-using Nefarius.DSharpPlus.Extensions.Hosting.Util;
 using OpenTracing;
 using OpenTracing.Mock;
 
@@ -39,41 +37,7 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
             if (!autoRegisterSubscribers)
                 return services;
 
-            foreach (var type in AssemblyTypeHelper.GetTypesWith<DiscordChannelEventsSubscriberAttribute>())
-                services.AddDiscordChannelEventsSubscriber(type);
-
-            foreach (var type in AssemblyTypeHelper.GetTypesWith<DiscordGuildBanEventsSubscriberAttribute>())
-                services.AddDiscordGuildBanEventsSubscriber(type);
-
-            foreach (var type in AssemblyTypeHelper.GetTypesWith<DiscordGuildEventsSubscriberAttribute>())
-                services.AddDiscordGuildEventsSubscriber(type);
-
-            foreach (var type in AssemblyTypeHelper.GetTypesWith<DiscordGuildMemberEventsSubscriberAttribute>())
-                services.AddDiscordGuildMemberEventsSubscriber(type);
-
-            foreach (var type in AssemblyTypeHelper.GetTypesWith<DiscordGuildRoleEventsSubscriberAttribute>())
-                services.AddDiscordGuildRoleEventsSubscriber(type);
-
-            foreach (var type in AssemblyTypeHelper.GetTypesWith<DiscordInviteEventsSubscriberAttribute>())
-                services.AddDiscordInviteEventsSubscriber(type);
-
-            foreach (var type in AssemblyTypeHelper.GetTypesWith<DiscordMessageEventsSubscriberAttribute>())
-                services.AddDiscordMessageEventsSubscriber(type);
-
-            foreach (var type in AssemblyTypeHelper.GetTypesWith<DiscordMessageReactionEventsSubscriberAttribute>())
-                services.AddDiscordMessageReactionAddedEventsSubscriber(type);
-
-            foreach (var type in AssemblyTypeHelper.GetTypesWith<DiscordMiscEventsSubscriberAttribute>())
-                services.AddDiscordMiscEventsSubscriber(type);
-
-            foreach (var type in AssemblyTypeHelper.GetTypesWith<DiscordPresenceUserEventsSubscriberAttribute>())
-                services.AddDiscordPresenceUserEventsSubscriber(type);
-
-            foreach (var type in AssemblyTypeHelper.GetTypesWith<DiscordVoiceEventsSubscriberAttribute>())
-                services.AddDiscordVoiceEventsSubscriber(type);
-
-            foreach (var type in AssemblyTypeHelper.GetTypesWith<DiscordWebSocketEventSubscriberAttribute>())
-                services.AddDiscordWebSocketEventSubscriber(type);
+            RegisterSubscribers(services);
 
             return services;
         }

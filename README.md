@@ -15,10 +15,6 @@ Work in progress!
 ## To-Do
 
 - [ ] Documentation!
-- [ ] Implement missing events
-  - [ ] Integration
-  - [ ] Stage Instance
-  - [ ] Misc (partially)
 
 ## Package overview
 
@@ -125,96 +121,84 @@ Make sure you call this **before** `AddDiscord` or the Mock Tracer will be used 
 Now to the actual convenience feature of this library! Creating one (or more) class(es) that handle events, like when a guild came online or a message got created. Let's wire one up that gets general guild and member change events:
 
 ```csharp
-[DiscordGuildEventsSubscriber] // Optional attributes make this class auto-register!
-[DiscordGuildMemberEventsSubscriber]
-internal class BotModuleForGuildAndMemberEvents : 
- IDiscordGuildEventsSubscriber, // One or more interfaces grouping event handlers
- IDiscordGuildMemberEventsSubscriber
-{
- public Task DiscordOnGuildCreated(DiscordClient sender, GuildCreateEventArgs args)
- {
-  return Task.CompletedTask;
- }
+    // this does the same as calling services.AddDiscordGuildAvailableEventSubscriber<BotModuleForGuildAndMemberEvents>();
+    [DiscordGuildAvailableEventSubscriber]
+    // this does the same as calling services.AddDiscordGuildMemberAddedEventSubscriber<BotModuleForGuildAndMemberEvents>();
+    [DiscordGuildMemberAddedEventSubscriber]
+    internal class BotModuleForGuildAndMemberEvents :
+        // you can implement one or many interfaces for event handlers in one class or split it however you like. Your choice!
+        IDiscordGuildAvailableEventSubscriber,
+        IDiscordGuildMemberAddedEventSubscriber
+    {
+        private readonly ILogger<BotModuleForGuildAndMemberEvents> _logger;
 
- public Task DiscordOnGuildAvailable(DiscordClient sender, GuildCreateEventArgs args)
- {
-  //
-  // To see some action, output the guild name
-  // 
-  Console.WriteLine(args.Guild.Name);
+        private readonly ITracer _tracer;
 
-  return Task.CompletedTask;
- }
+        /// <summary>
+        ///     Optional constructor for Dependency Injection. parameters get populated automatically with you services.
+        /// </summary>
+        /// <param name="logger">The logger service instance.</param>
+        /// <param name="tracer">The tracer service instance.</param>
+        public BotModuleForGuildAndMemberEvents(
+            ILogger<BotModuleForGuildAndMemberEvents> logger,
+            ITracer tracer
+        )
+        {
+            //
+            // Do whatever you like with these. It's recommended to not do heavy tasks in 
+            // constructors, just store your service references for later use!
+            // 
+            // You can inject scoped services like database contexts as well!
+            // 
+            _logger = logger;
+            _tracer = tracer;
+        }
 
- public Task DiscordOnGuildUpdated(DiscordClient sender, GuildUpdateEventArgs args)
- {
-  return Task.CompletedTask;
- }
+        public Task DiscordOnGuildAvailable(DiscordClient sender, GuildCreateEventArgs args)
+        {
+            //
+            // To see some action, output the guild name
+            // 
+            Console.WriteLine(args.Guild.Name);
 
- public Task DiscordOnGuildDeleted(DiscordClient sender, GuildDeleteEventArgs args)
- {
-  return Task.CompletedTask;
- }
+            //
+            // Usage of injected logger service
+            // 
+            _logger.LogInformation("Guild {Guild} came online", args.Guild);
 
- public Task DiscordOnGuildUnavailable(DiscordClient sender, GuildDeleteEventArgs args)
- {
-  return Task.CompletedTask;
- }
+            //
+            // Return successful execution
+            // 
+            return Task.CompletedTask;
+        }
 
- public Task DiscordOnGuildDownloadCompleted(DiscordClient sender, GuildDownloadCompletedEventArgs args)
- {
-  return Task.CompletedTask;
- }
+        public Task DiscordOnGuildMemberAdded(DiscordClient sender, GuildMemberAddEventArgs args)
+        {
+            //
+            // Fired when a new member has joined, exciting!
+            // 
+            _logger.LogInformation("New member {Member} joined!", args.Member);
 
- public Task DiscordOnGuildEmojisUpdated(DiscordClient sender, GuildEmojisUpdateEventArgs args)
- {
-  return Task.CompletedTask;
- }
-
- public Task DiscordOnGuildStickersUpdated(DiscordClient sender, GuildStickersUpdateEventArgs args)
- {
-  return Task.CompletedTask;
- }
-
- public Task DiscordOnGuildIntegrationsUpdated(DiscordClient sender, GuildIntegrationsUpdateEventArgs args)
- {
-  return Task.CompletedTask;
- }
-
- public Task DiscordOnGuildMemberAdded(DiscordClient sender, GuildMemberAddEventArgs args)
- {
-  return Task.CompletedTask;
- }
-
- public Task DiscordOnGuildMemberRemoved(DiscordClient sender, GuildMemberRemoveEventArgs args)
- {
-  return Task.CompletedTask;
- }
-
- public Task DiscordOnGuildMemberUpdated(DiscordClient sender, GuildMemberUpdateEventArgs args)
- {
-  return Task.CompletedTask;
- }
-
- public Task DiscordOnGuildMembersChunked(DiscordClient sender, GuildMembersChunkEventArgs args)
- {
-  return Task.CompletedTask;
- }
-}
+            //
+            // Return successful execution
+            // 
+            return Task.CompletedTask;
+        }
+    }
 ```
 
-Now let's dissect what is happening here. The class gets decorated by the attributes `DiscordGuildEventsSubscriber` and `DiscordGuildMemberEventsSubscriber` (hint: you can use only one attribute for the event group you're interested in, you can use many more on the same class, doesn't matter, your choice) which causes it to get **automatically registered as subscribers for these event groups**.
+Now let's dissect what is happening here. The class gets decorated by the attributes `DiscordGuildAvailableEventSubscriber` and `DiscordGuildMemberAddedEventSubscriber` (hint: you can use only one attribute for the event group you're interested in, you can use many more on the same class, doesn't matter, your choice) which causes it to get **automatically registered as subscribers for these events**.
 
-An alternative approach to registration is manually calling the extension methods, like
+An *alternative* approach to registration is manually calling the extension methods, like
 
 ```csharp
-services.AddDiscordGuildEventsSubscriber<BotModuleForGuildAndMemberEvents>();
-services.AddDiscordGuildMemberEventsSubscriber<BotModuleForGuildAndMemberEvents>();
+services.AddDiscordGuildAvailableEventSubscriber<BotModuleForGuildAndMemberEvents>();
+services.AddDiscordGuildMemberAddedEventSubscriber<BotModuleForGuildAndMemberEvents>();
 ```
 
 from within `ConfigureServices`. Using the attributes instead ensures you don't forget to register your subscribers while coding vigorously!
 
-Implementing the interfaces `IDiscordGuildEventsSubscriber` and `IDiscordGuildMemberEventsSubscriber` ensures your subscriber class is actually callable by the Discord Client Service. You must complete every event callback you're not interested in with `return Task.CompletedTask;` as demonstrated or it will result in errors. In the example above we are only interested in `DiscordOnGuildAvailable` and print the guild name to the console. I'm sure you can think of more exciting tasks!
+Implementing the interfaces `IDiscordGuildAvailableEventSubscriber` and `IDiscordGuildMemberEventsSubscriber` ensures your subscriber class is actually callable by the Discord Client Service. You must complete every event callback you're not interested in with `return Task.CompletedTask;` as demonstrated or it will result in errors. In the example above we are only interested in `DiscordOnGuildAvailable` and print the guild name to the console. I'm sure you can think of more exciting tasks!
 
 And last but not least; your subscriber classes are fully dependency injection aware! You can access services via classic constructor injection:
 
