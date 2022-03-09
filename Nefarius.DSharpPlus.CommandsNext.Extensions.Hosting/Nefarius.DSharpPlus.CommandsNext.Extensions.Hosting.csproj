@@ -19,7 +19,7 @@
 
   <ItemGroup>
     <PackageReference Include="JetBrains.Annotations" Version="2021.2.0" PrivateAssets="All" />
-    <PackageReference Include="DSharpPlus.CommandsNext" Version="4.2.0-nightly-01079" />
+    <PackageReference Include="DSharpPlus.CommandsNext" Version="4.2.0-nightly-01084" />
   </ItemGroup>
 
   <ItemGroup>
