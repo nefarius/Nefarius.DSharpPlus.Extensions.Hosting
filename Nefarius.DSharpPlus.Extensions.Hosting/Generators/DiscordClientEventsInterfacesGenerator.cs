@@ -42,7 +42,7 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting.Events
 
                 sourceBuilder.Append($@"
     /// <summary>
-    ///     Marks this class as a receiver of <see cref=""IDiscord{name}Subscriber"" /> events.
+    ///     Marks this class as a receiver of <see cref=""IDiscord{name}EventSubscriber"" /> events.
     /// </summary>
     [AttributeUsage(AttributeTargets.Class)]
     public sealed class Discord{name}EventSubscriberAttribute : Attribute {{ }}
@@ -54,6 +54,9 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting.Events
     /// </summary>
     public interface IDiscord{name}EventSubscriber
     {{
+        /// <summary>
+        ///     Handles <see cref=""{argsType}"" />.
+        /// </summary>
         public Task DiscordOn{name}({senderType} sender, {argsType} args);
     }}
 ");

@@ -37,6 +37,9 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
 
             foreach (var name in eventsSyntax.Select(eventSyntax => eventSyntax.Identifier.ToString()))
                 sourceBuilder.Append($@"
+        /// <summary>
+        ///     Marks this class as a receiver of <see cref=""IDiscord{name}EventSubscriber"" /> events.
+        /// </summary>
         public static IServiceCollection AddDiscord{name}EventSubscriber<T>(this IServiceCollection services)
             where T : IDiscord{name}EventSubscriber
         {{
