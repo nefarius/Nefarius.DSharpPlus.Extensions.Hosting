@@ -27,8 +27,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Nefarius.DSharpPlus.Extensions.Hosting.Util;
 using Nefarius.DSharpPlus.Extensions.Hosting.Events;
-using OpenTracing;
-using OpenTracing.Mock;
 
 namespace Nefarius.DSharpPlus.Extensions.Hosting
 {
@@ -38,14 +36,23 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
             foreach (var name in eventsSyntax.Select(eventSyntax => eventSyntax.Identifier.ToString()))
                 sourceBuilder.Append($@"
         /// <summary>
-        ///     Marks this class as a receiver of <see cref=""IDiscord{name}EventSubscriber"" /> events.
+        ///     Registers an event subscriber implementation.
         /// </summary>
+        /// <typeparam name=""T"">An implementation of <see cref=""IDiscord{name}EventSubscriber""/>.</typeparam>
+        /// <param name=""services"">The <see cref=""IServiceCollection""/>.</param>
+        /// <returns>The <see cref=""IServiceCollection""/>.</returns>
         public static IServiceCollection AddDiscord{name}EventSubscriber<T>(this IServiceCollection services)
             where T : IDiscord{name}EventSubscriber
         {{
             return services.AddDiscord{name}EventSubscriber(typeof(T));
         }}
 
+        /// <summary>
+        ///     Registers an event subscriber implementation.
+        /// </summary>
+        /// <param name=""services"">The <see cref=""IServiceCollection""/>.</param>
+        /// <param name=""t"">The type of the subscriber implementation.</param>
+        /// <returns>The <see cref=""IServiceCollection""/>.</returns>
         public static IServiceCollection AddDiscord{name}EventSubscriber(this IServiceCollection services, Type t)
         {{
             return services.AddScoped(typeof(IDiscord{name}EventSubscriber), t);

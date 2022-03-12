@@ -127,6 +127,12 @@ namespace Nefarius.DSharpPlus.SlashCommands.Extensions.Hosting
 
         #region Subscribers
 
+        /// <summary>
+        ///     Registers an event subscriber implementation.
+        /// </summary>
+        /// <typeparam name="T">An implementation of <see cref="IDiscordSlashCommandsEventsSubscriber"/>.</typeparam>
+        /// <param name="services">The <see cref="IServiceCollection"/>.</param>
+        /// <returns>The <see cref="IServiceCollection"/>.</returns>
         [UsedImplicitly]
         public static IServiceCollection AddDiscordSlashCommandsEventsSubscriber<T>(this IServiceCollection services)
             where T : IDiscordSlashCommandsEventsSubscriber
@@ -134,6 +140,12 @@ namespace Nefarius.DSharpPlus.SlashCommands.Extensions.Hosting
             return services.AddDiscordSlashCommandsEventsSubscriber(typeof(T));
         }
 
+        /// <summary>
+        ///     Registers an event subscriber implementation.
+        /// </summary>
+        /// <param name="services">The <see cref="IServiceCollection"/>.</param>
+        /// <param name="t">The type of the subscriber implementation.</param>
+        /// <returns>The <see cref="IServiceCollection"/>.</returns>
         public static IServiceCollection AddDiscordSlashCommandsEventsSubscriber(this IServiceCollection services,
             Type t)
         {
