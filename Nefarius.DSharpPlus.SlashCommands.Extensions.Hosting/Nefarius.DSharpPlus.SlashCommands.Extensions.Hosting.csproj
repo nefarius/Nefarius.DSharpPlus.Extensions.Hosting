@@ -25,7 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="DSharpPlus.SlashCommands" Version="4.2.0-nightly-01084" />
+    <PackageReference Include="DSharpPlus.SlashCommands" Version="4.2.0-nightly-01091" />
     <PackageReference Include="JetBrains.Annotations" Version="2021.2.0" PrivateAssets="All" />
   </ItemGroup>
 
