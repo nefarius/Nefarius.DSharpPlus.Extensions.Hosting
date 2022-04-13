@@ -69,7 +69,7 @@ You can also take a look at [the reference example](WorkerExample) of this repos
 
 Create a new .NET Core Worker project either via Visual Studio templates or using the command `dotnet new worker` in a fresh directory.
 
-The current version of the library depends on the DSharpPlus nightly version. If you're using the stable nuget version, [update to the nightly version](https://dsharpplus.github.io/articles/misc/nightly_builds.html).
+The current version of the library depends on the DSharpPlus nightly version. If you're using the stable nuget version, [update to the nightly version](https://github.com/DSharpPlus/DSharpPlus#installing).
 
 Add the core hosting package (and optional extensions, if you need them) via NuGet package manager.
 
