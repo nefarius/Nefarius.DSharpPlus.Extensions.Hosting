@@ -1,13 +1,7 @@
 version: 2
-registries:
-  slimget:
-    type: nuget-feed
-    url: https://nuget.emzi0767.com/v3/index.json
 
 updates:
   - package-ecosystem: "nuget"
     directory: "/"
-    registries:
-      - slimget
     schedule:
       interval: "weekly"
