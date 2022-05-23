@@ -4,9 +4,6 @@ configuration:
 - Release
 install:
 - cmd: git submodule -q update --init
-- cmd: choco install dotnet-sdk
-- ps: Invoke-WebRequest -Uri https://aka.ms/vs/17/release/vs_community.exe -OutFile vs_community.exe
-- cmd: .\vs_community.exe updateall --passive
 dotnet_csproj:
   patch: true
   file: '**\*.csproj'
