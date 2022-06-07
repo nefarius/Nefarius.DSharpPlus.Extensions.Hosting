@@ -12,8 +12,6 @@ An extension for [DSharpPlus](https://github.com/DSharpPlus/DSharpPlus) to make 
 
 **This is not an official DSharpPlus extension, use it at your own risk!**
 
-Work in progress! API-breaking changes might occur until the pre-release suffix disappears!
-
 ---
 
 This set of libraries abstracts away a lot of the plumbing code required to get DSharpPlus up and running in a .NET Core Worker Service (or simply a plain old Console Application) and provides Dependency-Injection-friendly integration.
