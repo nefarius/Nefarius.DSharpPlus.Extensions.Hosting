@@ -20,7 +20,7 @@
 
   <ItemGroup>
     <PackageReference Include="JetBrains.Annotations" Version="2022.1.0" PrivateAssets="All" />
-    <PackageReference Include="DSharpPlus.VoiceNext" Version="4.3.0-nightly-01149" />
+    <PackageReference Include="DSharpPlus.VoiceNext" Version="4.3.0-nightly-01151" />
   </ItemGroup>
 
   <ItemGroup>
