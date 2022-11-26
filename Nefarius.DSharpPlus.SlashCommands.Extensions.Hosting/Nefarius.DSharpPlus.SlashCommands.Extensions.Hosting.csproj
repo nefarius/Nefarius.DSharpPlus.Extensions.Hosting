@@ -7,7 +7,7 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <LangVersion>8</LangVersion>
     <OutputPath>$(SolutionDir)bin\</OutputPath>
-    <Copyright>Copyright © Benjamin Höglinger-Stelzer 2021</Copyright>
+    <Copyright>Copyright © Benjamin Höglinger-Stelzer 2021-2022</Copyright>
     <Description>DSharpPlus.SlashCommands UNOFFICIAL Microsoft.Extensions.DependencyInjection integration.</Description>
     <RepositoryUrl>https://github.com/nefarius/Nefarius.DSharpPlus.Extensions.Hosting</RepositoryUrl>
     <PackageProjectUrl>https://github.com/nefarius/Nefarius.DSharpPlus.Extensions.Hosting</PackageProjectUrl>
