@@ -22,7 +22,6 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting.Generators
 
             var sourceBuilder = new StringBuilder(@"using System;
 using DSharpPlus;
-using JetBrains.Annotations;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Nefarius.DSharpPlus.Extensions.Hosting.Util;

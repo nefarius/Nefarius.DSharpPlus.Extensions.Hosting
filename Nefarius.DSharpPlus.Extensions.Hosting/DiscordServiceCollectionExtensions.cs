@@ -1,6 +1,6 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using DSharpPlus;
-using JetBrains.Annotations;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using OpenTracing;
@@ -8,7 +8,11 @@ using OpenTracing.Mock;
 
 namespace Nefarius.DSharpPlus.Extensions.Hosting
 {
-    [UsedImplicitly]
+	/// <summary>
+	///     Extensions methods for <see cref="IServiceCollection"/>.
+	/// </summary>
+	[SuppressMessage("ReSharper", "UnusedMember.Global")]
+	[SuppressMessage("ReSharper", "ClassNeverInstantiated.Global")]
     public static partial class DiscordServiceCollectionExtensions
     {
         /// <summary>
@@ -21,7 +25,6 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
         ///     subscribers automatically. This is the default.
         /// </param>
         /// <returns>The <see cref="IServiceCollection" />.</returns>
-        [UsedImplicitly]
         public static IServiceCollection AddDiscord(
             this IServiceCollection services,
             Action<DiscordConfiguration> configure,
@@ -47,7 +50,6 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
         /// </summary>
         /// <param name="services">The <see cref="IServiceCollection" />.</param>
         /// <returns>The <see cref="IServiceCollection" />.</returns>
-        [UsedImplicitly]
         public static IServiceCollection AddDiscordHostedService(
             this IServiceCollection services
         )

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Net;
 using Microsoft.CodeAnalysis.CSharp;
@@ -9,6 +10,7 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting.Generators.Util
     /// <summary>
     ///     Converts the latest Discord Client sources into parsed objects.
     /// </summary>
+    [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
     internal class DSharpPlusClientParser
     {
         /// <summary>

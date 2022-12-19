@@ -1,7 +1,7 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using DSharpPlus.SlashCommands;
 using DSharpPlus.SlashCommands.EventArgs;
-using JetBrains.Annotations;
 using Microsoft.Extensions.DependencyInjection;
 using Nefarius.DSharpPlus.Extensions.Hosting;
 using Nefarius.DSharpPlus.Extensions.Hosting.Util;
@@ -12,7 +12,11 @@ using OpenTracing;
 
 namespace Nefarius.DSharpPlus.SlashCommands.Extensions.Hosting
 {
-    [UsedImplicitly]
+	/// <summary>
+	///     Extensions methods for <see cref="IServiceCollection"/>.
+	/// </summary>
+	[SuppressMessage("ReSharper", "UnusedMember.Global")]
+	[SuppressMessage("ReSharper", "ClassNeverInstantiated.Global")]
     public static class DiscordServiceCollectionExtensions
     {
         /// <summary>
@@ -26,7 +30,6 @@ namespace Nefarius.DSharpPlus.SlashCommands.Extensions.Hosting
         ///     subscribers automatically. This is the default.
         /// </param>
         /// <returns>The <see cref="IServiceCollection" />.</returns>
-        [UsedImplicitly]
         public static IServiceCollection AddDiscordSlashCommands(
             this IServiceCollection services,
             Action<SlashCommandsConfiguration?> configuration = null,
@@ -133,7 +136,6 @@ namespace Nefarius.DSharpPlus.SlashCommands.Extensions.Hosting
         /// <typeparam name="T">An implementation of <see cref="IDiscordSlashCommandsEventsSubscriber"/>.</typeparam>
         /// <param name="services">The <see cref="IServiceCollection"/>.</param>
         /// <returns>The <see cref="IServiceCollection"/>.</returns>
-        [UsedImplicitly]
         public static IServiceCollection AddDiscordSlashCommandsEventsSubscriber<T>(this IServiceCollection services)
             where T : IDiscordSlashCommandsEventsSubscriber
         {

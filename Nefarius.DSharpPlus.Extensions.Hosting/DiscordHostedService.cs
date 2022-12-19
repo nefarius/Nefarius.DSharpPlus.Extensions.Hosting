@@ -1,6 +1,6 @@
-﻿using System.Threading;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Threading;
 using System.Threading.Tasks;
-using JetBrains.Annotations;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using OpenTracing;
@@ -10,7 +10,8 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
     /// <summary>
     ///     Brings a <see cref="IDiscordClientService" /> online.
     /// </summary>
-    [UsedImplicitly]
+    [SuppressMessage("ReSharper", "UnusedMember.Global")]
+    [SuppressMessage("ReSharper", "ClassNeverInstantiated.Global")]
     public class DiscordHostedService : IHostedService
     {
         private readonly IDiscordClientService _discordClient;

@@ -1,7 +1,7 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using DSharpPlus;
-using JetBrains.Annotations;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
@@ -23,7 +23,8 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
     /// <summary>
     ///     An implementation of <see cref="IDiscordClientService"/>.
     /// </summary>
-    [UsedImplicitly]
+    [SuppressMessage("ReSharper", "UnusedMember.Global")]
+    [SuppressMessage("ReSharper", "ClassNeverInstantiated.Global")]
     public partial class DiscordService : IDiscordClientService
     {
         protected readonly ILoggerFactory LogFactory;

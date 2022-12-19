@@ -1,13 +1,17 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using DSharpPlus.Interactivity;
 using DSharpPlus.Interactivity.Extensions;
-using JetBrains.Annotations;
 using Microsoft.Extensions.DependencyInjection;
 using Nefarius.DSharpPlus.Extensions.Hosting;
 
 namespace Nefarius.DSharpPlus.Interactivity.Extensions.Hosting
 {
-    [UsedImplicitly]
+	/// <summary>
+	///     Extensions methods for <see cref="IServiceCollection"/>.
+	/// </summary>
+	[SuppressMessage("ReSharper", "UnusedMember.Global")]
+	[SuppressMessage("ReSharper", "ClassNeverInstantiated.Global")]
     public static class DiscordServiceCollectionExtensions
     {
         /// <summary>
@@ -17,7 +21,6 @@ namespace Nefarius.DSharpPlus.Interactivity.Extensions.Hosting
         /// <param name="configuration">The <see cref="InteractivityConfiguration"/>.</param>
         /// <param name="extension">The <see cref="InteractivityExtension"/></param>
         /// <returns>The <see cref="IServiceCollection"/>.</returns>
-        [UsedImplicitly]
         public static IServiceCollection AddDiscordInteractivity(
             this IServiceCollection services,
             Action<InteractivityConfiguration> configuration,

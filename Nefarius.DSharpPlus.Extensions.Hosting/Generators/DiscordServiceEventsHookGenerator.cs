@@ -25,7 +25,6 @@ using System.Linq;
 using System.Reflection;
 using DSharpPlus;
 using DSharpPlus.EventArgs;
-using JetBrains.Annotations;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
