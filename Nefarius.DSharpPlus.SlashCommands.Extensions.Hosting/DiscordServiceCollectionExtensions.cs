@@ -17,7 +17,8 @@ namespace Nefarius.DSharpPlus.SlashCommands.Extensions.Hosting
 	/// </summary>
 	[SuppressMessage("ReSharper", "UnusedMember.Global")]
 	[SuppressMessage("ReSharper", "ClassNeverInstantiated.Global")]
-    public static class DiscordServiceCollectionExtensions
+	[SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
+	public static class DiscordServiceCollectionExtensions
     {
         /// <summary>
         ///     Adds Interactivity extension to <see cref="IDiscordClientService" />.
