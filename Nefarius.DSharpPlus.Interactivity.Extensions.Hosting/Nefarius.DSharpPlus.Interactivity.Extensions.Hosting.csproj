@@ -19,7 +19,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="DSharpPlus.Interactivity" Version="4.3.0-nightly-01223" />
+    <PackageReference Include="DSharpPlus.Interactivity" Version="4.3.0" />
   </ItemGroup>
 
   <ItemGroup>
