@@ -231,3 +231,18 @@ public BotModuleForGuildAndMemberEvents(
 ```
 
 You can even inject **scoped services**, the subscriber objects get invoked in their own scope by default. This allows for easy access for e.g. database contexts within each subscriber. Neat!
+
+### Intents
+
+The library tries to assume the required intents from the event subscribers used, but not all intents can be derived with that method. For example, if you need to read user message contents within a slash command module, you need to manually set the required intents on Discord initialization like so:
+
+```cs
+serviceCollection.AddDiscord(discordConfiguration =>
+{
+	discordConfiguration.Intents = DiscordIntents.GuildMessages |
+								   DiscordIntents.DirectMessages |
+								   DiscordIntents.MessageContents;
+});
+```
+
+Otherwise your code "might" work but you'll experience weird side effects like empty message contents.
