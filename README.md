@@ -246,3 +246,7 @@ serviceCollection.AddDiscord(discordConfiguration =>
 ```
 
 Otherwise your code "might" work but you'll experience weird side effects like empty message contents.
+
+### Accessing `DiscordClient`
+
+Inject `IDiscordClientService`, there you can access the `Client` property.
