@@ -239,9 +239,9 @@ The library tries to assume the required intents from the event subscribers used
 ```cs
 serviceCollection.AddDiscord(discordConfiguration =>
 {
-	discordConfiguration.Intents = DiscordIntents.GuildMessages |
-								   DiscordIntents.DirectMessages |
-								   DiscordIntents.MessageContents;
+    discordConfiguration.Intents = DiscordIntents.GuildMessages |
+                                   DiscordIntents.DirectMessages |
+                                   DiscordIntents.MessageContents;
 });
 ```
 
