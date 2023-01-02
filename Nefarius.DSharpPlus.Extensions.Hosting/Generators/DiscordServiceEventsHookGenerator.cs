@@ -55,12 +55,12 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
                 sourceBuilder.Append($@"
             Client.{name} += async delegate ({senderType} sender, {argsType} args)
             {{
-                using var workScope = Tracer
+                using var workScope = _tracer
                     .BuildSpan(nameof(Client.{name}))
                     .IgnoreActiveSpan()
                     .StartActive(true);
 
-                using var scope = ServiceProvider.CreateScope();
+                using var scope = _serviceProvider.CreateScope();
                 
                 var subscribers = scope.ServiceProvider
                     .GetServices(typeof(IDiscord{name}EventSubscriber))

@@ -13,7 +13,8 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
 	/// </summary>
 	[SuppressMessage("ReSharper", "UnusedMember.Global")]
 	[SuppressMessage("ReSharper", "ClassNeverInstantiated.Global")]
-    public static partial class DiscordServiceCollectionExtensions
+	[SuppressMessage("ReSharper", "UnusedMethodReturnValue.Global")]
+	public static partial class DiscordServiceCollectionExtensions
     {
         /// <summary>
         ///     Registers a <see cref="IDiscordClientService" /> with <see cref="DiscordConfiguration" />.

@@ -27,16 +27,16 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
     [SuppressMessage("ReSharper", "ClassNeverInstantiated.Global")]
     public partial class DiscordService : IDiscordClientService
     {
-        protected readonly ILoggerFactory LogFactory;
+	    private readonly ILoggerFactory _logFactory;
 
-        protected readonly ILogger<DiscordService> Logger;
+	    private readonly ILogger<DiscordService> _logger;
 
-        protected readonly IOptions<DiscordConfiguration> DiscordOptions;
+	    private readonly IOptions<DiscordConfiguration> _discordOptions;
+
+	    private readonly IServiceProvider _serviceProvider;
+
+	    private readonly ITracer _tracer;
         
-        protected readonly IServiceProvider ServiceProvider;
-
-        protected readonly ITracer Tracer;
-
         public DiscordService(
             IServiceProvider serviceProvider,
             ILoggerFactory logFactory,
@@ -45,18 +45,21 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
             IOptions<DiscordConfiguration> discordOptions
         )
         {
-            ServiceProvider = serviceProvider;
-            Logger = logger;
-            Tracer = tracer;
-            DiscordOptions = discordOptions;
-            LogFactory = logFactory;
+            _serviceProvider = serviceProvider;
+            _logger = logger;
+            _tracer = tracer;
+            _discordOptions = discordOptions;
+            _logFactory = logFactory;
         }
 
+        /// <summary>
+        ///     Gets the <see cref="DiscordClient"/>.
+        /// </summary>
         public DiscordClient Client { get; private set; }
 
         internal void Initialize()
         {
-            if (DiscordOptions.Value is null)
+            if (_discordOptions.Value is null)
                 throw new InvalidOperationException($"{nameof(DiscordConfiguration)} option is required");
 
             //
@@ -64,19 +67,19 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
             // 
             var property = typeof(DiscordConfiguration).GetProperty("Intents");
             property = property.DeclaringType.GetProperty("Intents");
-            var intents = (DiscordIntents)property.GetValue(DiscordOptions.Value,
+            var intents = (DiscordIntents)property.GetValue(_discordOptions.Value,
                 BindingFlags.NonPublic | BindingFlags.Instance, null, null, null);
             
-            using var serviceScope = ServiceProvider.CreateScope();
+            using var serviceScope = _serviceProvider.CreateScope();
 
             intents = BuildIntents(serviceScope, intents);
 
-            var configuration = new DiscordConfiguration(DiscordOptions.Value)
+            var configuration = new DiscordConfiguration(_discordOptions.Value)
             {
                 //
                 // Overwrite with DI configured logging factory
                 // 
-                LoggerFactory = LogFactory,
+                LoggerFactory = _logFactory,
                 //
                 // Use merged intents
                 // 
@@ -89,7 +92,7 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
             // Load options that should load in before Connect call
             // TODO: this is a messy workaround, come up with something smarter!
             // 
-            ServiceProvider.GetServices<IDiscordExtensionConfiguration>();
+            _serviceProvider.GetServices<IDiscordExtensionConfiguration>();
 
             HookEvents();
         }

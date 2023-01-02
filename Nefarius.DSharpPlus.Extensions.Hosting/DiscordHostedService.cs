@@ -30,6 +30,7 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
             _logger = logger;
         }
 
+        /// <inheritdoc />
         public async Task StartAsync(CancellationToken cancellationToken)
         {
             ((DiscordService) _discordClient).Initialize();
@@ -42,6 +43,7 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
             }
         }
 
+        /// <inheritdoc />
         public async Task StopAsync(CancellationToken cancellationToken)
         {
             await _discordClient.Client.DisconnectAsync();
