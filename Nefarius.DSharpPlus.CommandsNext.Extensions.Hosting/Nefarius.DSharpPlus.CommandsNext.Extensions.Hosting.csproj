@@ -19,7 +19,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="DSharpPlus.CommandsNext" Version="4.4.0-nightly-01390" />
+    <PackageReference Include="DSharpPlus.CommandsNext" Version="4.4.0-nightly-01393" />
   </ItemGroup>
 
   <ItemGroup>
