@@ -19,7 +19,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="DSharpPlus.VoiceNext" Version="4.4.0-nightly-01429" />
+    <PackageReference Include="DSharpPlus.VoiceNext" Version="4.4.0-nightly-01436" />
   </ItemGroup>
 
   <ItemGroup>
