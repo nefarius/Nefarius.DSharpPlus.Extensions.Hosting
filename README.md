@@ -250,3 +250,31 @@ Otherwise your code "might" work but you'll experience weird side effects like e
 ### Accessing `DiscordClient`
 
 Inject `IDiscordClientService`, there you can access the `Client` property.
+
+### Registering Shalsh Commands
+
+Let's assume you have one or more slash command classes like the following:
+
+```cs
+[SlashCommandGroup("apply", "Apply for server membership.")]
+[SuppressMessage("ReSharper", "UnusedMember.Global")]
+[SuppressMessage("ReSharper", "ClassNeverInstantiated.Global")]
+public sealed class OnBoardingApplicationCommands : ApplicationCommandModule
+{
+    [SlashRequirePermissions(Permissions.SendMessages)]
+    [SlashCommand("member", "Apply for regular membership.")]
+    public async Task Member(
+        InteractionContext ctx
+    )
+    {
+        ...
+```
+
+You'd simply register it loke so:
+
+```cs
+    serviceCollection.AddDiscordSlashCommands(extension: extension =>
+    {
+        extension.RegisterCommands<OnBoardingApplicationCommands>();
+    });
+```
