@@ -30,7 +30,6 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Nefarius.DSharpPlus.Extensions.Hosting.Util;
 using Nefarius.DSharpPlus.Extensions.Hosting.Events;
-using OpenTracing;
 
 namespace Nefarius.DSharpPlus.Extensions.Hosting
 {
@@ -55,11 +54,6 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
                 sourceBuilder.Append($@"
             Client.{name} += async delegate ({senderType} sender, {argsType} args)
             {{
-                using var workScope = _tracer
-                    .BuildSpan(nameof(Client.{name}))
-                    .IgnoreActiveSpan()
-                    .StartActive(true);
-
                 using var scope = _serviceProvider.CreateScope();
                 
                 var subscribers = scope.ServiceProvider

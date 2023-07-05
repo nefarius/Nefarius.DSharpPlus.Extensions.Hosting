@@ -4,7 +4,6 @@ using DSharpPlus;
 using DSharpPlus.EventArgs;
 using Microsoft.Extensions.Logging;
 using Nefarius.DSharpPlus.Extensions.Hosting.Events;
-using OpenTracing;
 
 namespace WorkerExample
 {
@@ -19,16 +18,13 @@ namespace WorkerExample
     {
         private readonly ILogger<BotModuleForGuildAndMemberEvents> _logger;
 
-        private readonly ITracer _tracer;
-
         /// <summary>
         ///     Optional constructor for Dependency Injection. parameters get populated automatically with you services.
         /// </summary>
         /// <param name="logger">The logger service instance.</param>
         /// <param name="tracer">The tracer service instance.</param>
         public BotModuleForGuildAndMemberEvents(
-            ILogger<BotModuleForGuildAndMemberEvents> logger,
-            ITracer tracer
+            ILogger<BotModuleForGuildAndMemberEvents> logger
         )
         {
             //
@@ -38,7 +34,6 @@ namespace WorkerExample
             // You can inject scoped services like database contexts as well!
             // 
             _logger = logger;
-            _tracer = tracer;
         }
 
         public Task DiscordOnGuildAvailable(DiscordClient sender, GuildCreateEventArgs args)

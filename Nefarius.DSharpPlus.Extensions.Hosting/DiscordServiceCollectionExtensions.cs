@@ -3,8 +3,6 @@ using System.Diagnostics.CodeAnalysis;
 using DSharpPlus;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
-using OpenTracing;
-using OpenTracing.Mock;
 
 namespace Nefarius.DSharpPlus.Extensions.Hosting
 {
@@ -33,8 +31,6 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
         )
         {
             services.Configure(configure);
-
-            services.TryAddSingleton<ITracer>(provider => new MockTracer());
 
             services.TryAddSingleton<IDiscordClientService, DiscordService>();
 

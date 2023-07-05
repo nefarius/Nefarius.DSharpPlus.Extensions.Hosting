@@ -5,7 +5,6 @@ using DSharpPlus;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using OpenTracing;
 
 namespace Nefarius.DSharpPlus.Extensions.Hosting
 {
@@ -35,19 +34,15 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
 
 	    private readonly IServiceProvider _serviceProvider;
 
-	    private readonly ITracer _tracer;
-        
         public DiscordService(
             IServiceProvider serviceProvider,
             ILoggerFactory logFactory,
             ILogger<DiscordService> logger,
-            ITracer tracer,
             IOptions<DiscordConfiguration> discordOptions
         )
         {
             _serviceProvider = serviceProvider;
             _logger = logger;
-            _tracer = tracer;
             _discordOptions = discordOptions;
             _logFactory = logFactory;
         }

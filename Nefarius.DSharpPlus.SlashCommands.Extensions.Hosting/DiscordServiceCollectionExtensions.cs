@@ -8,7 +8,6 @@ using Nefarius.DSharpPlus.Extensions.Hosting.Util;
 using Nefarius.DSharpPlus.SlashCommands.Extensions.Hosting.Attributes;
 using Nefarius.DSharpPlus.SlashCommands.Extensions.Hosting.Events;
 using Nefarius.DSharpPlus.SlashCommands.Extensions.Hosting.Util;
-using OpenTracing;
 
 namespace Nefarius.DSharpPlus.SlashCommands.Extensions.Hosting
 {
@@ -57,12 +56,6 @@ namespace Nefarius.DSharpPlus.SlashCommands.Extensions.Hosting
 
                 ext.ContextMenuErrored += async delegate(SlashCommandsExtension sender, ContextMenuErrorEventArgs args)
                 {
-                    using var workScope = provider.GetRequiredService<ITracer>()
-                        .BuildSpan(nameof(ext.ContextMenuErrored))
-                        .IgnoreActiveSpan()
-                        .StartActive(true);
-                    workScope.Span.SetTag("Context.CommandName", args.Context.CommandName);
-
                     using var scope = provider.CreateScope();
 
                     foreach (var eventsSubscriber in scope.GetDiscordSlashCommandsEventsSubscriber())
@@ -72,12 +65,6 @@ namespace Nefarius.DSharpPlus.SlashCommands.Extensions.Hosting
                 ext.ContextMenuExecuted +=
                     async delegate(SlashCommandsExtension sender, ContextMenuExecutedEventArgs args)
                     {
-                        using var workScope = provider.GetRequiredService<ITracer>()
-                            .BuildSpan(nameof(ext.ContextMenuExecuted))
-                            .IgnoreActiveSpan()
-                            .StartActive(true);
-                        workScope.Span.SetTag("Context.CommandName", args.Context.CommandName);
-
                         using var scope = provider.CreateScope();
 
                         foreach (var eventsSubscriber in scope.GetDiscordSlashCommandsEventsSubscriber())
@@ -87,12 +74,6 @@ namespace Nefarius.DSharpPlus.SlashCommands.Extensions.Hosting
                 ext.SlashCommandErrored +=
                     async delegate(SlashCommandsExtension sender, SlashCommandErrorEventArgs args)
                     {
-                        using var workScope = provider.GetRequiredService<ITracer>()
-                            .BuildSpan(nameof(ext.SlashCommandErrored))
-                            .IgnoreActiveSpan()
-                            .StartActive(true);
-                        workScope.Span.SetTag("Context.CommandName", args.Context.CommandName);
-
                         using var scope = provider.CreateScope();
 
                         foreach (var eventsSubscriber in scope.GetDiscordSlashCommandsEventsSubscriber())
@@ -102,12 +83,6 @@ namespace Nefarius.DSharpPlus.SlashCommands.Extensions.Hosting
                 ext.SlashCommandExecuted +=
                     async delegate(SlashCommandsExtension sender, SlashCommandExecutedEventArgs args)
                     {
-                        using var workScope = provider.GetRequiredService<ITracer>()
-                            .BuildSpan(nameof(ext.SlashCommandExecuted))
-                            .IgnoreActiveSpan()
-                            .StartActive(true);
-                        workScope.Span.SetTag("Context.CommandName", args.Context.CommandName);
-
                         using var scope = provider.CreateScope();
 
                         foreach (var eventsSubscriber in scope.GetDiscordSlashCommandsEventsSubscriber())

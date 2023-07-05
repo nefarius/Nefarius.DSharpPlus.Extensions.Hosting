@@ -70,7 +70,6 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Nefarius.DSharpPlus.Extensions.Hosting.Util;
 using Nefarius.DSharpPlus.Extensions.Hosting.Events;
-using OpenTracing;
 
 namespace Nefarius.DSharpPlus.Extensions.Hosting
 {

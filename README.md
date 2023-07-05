@@ -95,36 +95,6 @@ services.AddDiscordHostedService();
 
 That's pretty much it! When you launch your worker with a valid bot token you should see your bot come online in an instant, congratulations! ✨
 
-### OpenTracing (Optional)
-
-You probably wonder what's the deal with the tracing dependency. I've taken liberty to implement [OpenTracing](https://github.com/opentracing/opentracing-csharp) within all event subscribers, so if your bot struggles with performance, you can easily analyse it with the addition of e.g. [Jaeger Tracing](https://github.com/jaegertracing/jaeger-client-csharp). If you don't know what that means or don't care about tracing at all, just skip this section. To utilise tracing, you can use this snippet to get you up and running (although I highly recommend you check out the Jaeger docs beforehand anyway):
-
-```csharp
-// Adds the Jaeger Tracer.
-services.AddSingleton<ITracer>(serviceProvider =>
-{
- var serviceName = "MyBot";
- var loggerFactory = serviceProvider.GetRequiredService<ILoggerFactory>();
-
- // This is necessary to pick the correct sender, otherwise a NoopSender is used!
- Configuration.SenderConfiguration.DefaultSenderResolver = new SenderResolver(loggerFactory)
-  .RegisterSenderFactory<ThriftSenderFactory>();
-
- // This will log to a default localhost installation of Jaeger.
- var tracer = new Tracer.Builder(serviceName)
-  .WithLoggerFactory(loggerFactory)
-  .WithSampler(new ConstSampler(true))
-  .Build();
-
- // Allows code that can't use DI to also access the tracer.
- GlobalTracer.Register(tracer);
-
- return tracer;
-});
-```
-
-Make sure you call this **before** `AddDiscord` or the Mock Tracer will be used by default which will not collect or publish any metrics.
-
 ### Handling Discord Events
 
 Now to the actual convenience feature of this library! Creating one (or more) class(es) that handle events, like when a guild came online or a message got created. Let's wire one up that gets general guild and member change events:
@@ -144,8 +114,6 @@ internal class BotModuleForGuildAndMemberEvents :
 {
     private readonly ILogger<BotModuleForGuildAndMemberEvents> _logger;
 
-    private readonly ITracer _tracer;
-
     /// <summary>
     ///     Optional constructor for Dependency Injection.
     ///     Parameters get populated automatically with your services.
@@ -153,8 +121,7 @@ internal class BotModuleForGuildAndMemberEvents :
     /// <param name="logger">The logger service instance.</param>
     /// <param name="tracer">The tracer service instance.</param>
     public BotModuleForGuildAndMemberEvents(
-        ILogger<BotModuleForGuildAndMemberEvents> logger,
-        ITracer tracer
+        ILogger<BotModuleForGuildAndMemberEvents> logger
     )
     {
         //
@@ -164,7 +131,6 @@ internal class BotModuleForGuildAndMemberEvents :
         // You can inject scoped services like database contexts as well!
         // 
         _logger = logger;
-        _tracer = tracer;
     }
 
     public Task DiscordOnGuildAvailable(DiscordClient sender, GuildCreateEventArgs args)
