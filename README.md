@@ -22,7 +22,7 @@ And if that wasn't enough, here's another one: intents will be automatically reg
 
 ## To-Do
 
-- [ ] Documentation
+- [ ] More documentation 😇
 - [ ] Support the sharded client
 
 ## Package overview
