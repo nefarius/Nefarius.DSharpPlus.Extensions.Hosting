@@ -27,6 +27,8 @@ And if that wasn't enough, here's another one: intents will be automatically reg
 
 ## Package overview
 
+I try my best to publish stable releases with every major DSharpPlus update. I try to stick to their `Major`.`Minor` version prefixes, but the `Build` is out of sync as it increments every time I trigger a CI build. Overall the library is considered stable and production-ready. Even in pre-releases I try to not introduce critical bugs or API-breaking changes unless documented otherwise.
+
 ### Nefarius.DSharpPlus.Extensions.Hosting
 
 [![NuGet](https://img.shields.io/nuget/vpre/Nefarius.DSharpPlus.Extensions.Hosting.svg)](https://nuget.org/packages/Nefarius.DSharpPlus.Extensions.Hosting)
