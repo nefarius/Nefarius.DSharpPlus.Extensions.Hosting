@@ -186,15 +186,11 @@ And last but not least; your subscriber classes are fully dependency injection a
 ```csharp
 private readonly ILogger<BotModuleForGuildAndMemberEvents> _logger;
 
-private readonly ITracer _tracer;
-
 public BotModuleForGuildAndMemberEvents(
- ILogger<BotModuleForGuildAndMemberEvents> logger,
- ITracer tracer
+ ILogger<BotModuleForGuildAndMemberEvents> logger
 )
 {
  _logger = logger;
- _tracer = tracer;
 }
 ```
 
