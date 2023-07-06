@@ -219,7 +219,7 @@ Otherwise your code "might" work but you'll experience weird side effects like e
 
 Inject `IDiscordClientService`, there you can access the `Client` property.
 
-### Registering Shalsh Commands
+### Registering Slash Commands
 
 Let's assume you have one or more slash command classes like the following:
 
