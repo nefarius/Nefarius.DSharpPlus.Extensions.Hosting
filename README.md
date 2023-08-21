@@ -209,7 +209,7 @@ serviceCollection.AddDiscord(discordConfiguration =>
 });
 ```
 
-Otherwise your code "might" work but you'll experience weird side effects like empty message contents.
+Otherwise your code "might" work but you'll experience weird side effects like empty message contents. If you do assign intents like demonstrated, they will be merged with your subscribers intents automatically, so you do not need to specify them manually again!
 
 ### Accessing `DiscordClient`
 
