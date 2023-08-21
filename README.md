@@ -234,7 +234,7 @@ public sealed class OnBoardingApplicationCommands : ApplicationCommandModule
         ...
 ```
 
-You'd simply register it loke so:
+You'd simply register it like so:
 
 ```cs
     serviceCollection.AddDiscordSlashCommands(extension: extension =>
