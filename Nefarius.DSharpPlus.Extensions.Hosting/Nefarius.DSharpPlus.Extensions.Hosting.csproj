@@ -1,21 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Authors>Benjamin Höglinger-Stelzer</Authors>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <LangVersion>9</LangVersion>
-    <OutputPath>$(SolutionDir)bin\</OutputPath>
-    <Copyright>Copyright © Benjamin Höglinger-Stelzer 2021-2022</Copyright>
     <Description>DSharpPlus UNOFFICIAL Microsoft.Extensions.DependencyInjection integration.</Description>
-    <RepositoryUrl>https://github.com/nefarius/Nefarius.DSharpPlus.Extensions.Hosting</RepositoryUrl>
-    <PackageProjectUrl>https://github.com/nefarius/Nefarius.DSharpPlus.Extensions.Hosting</PackageProjectUrl>
-    <PackageTags>discord dsharpplus hosting extensions</PackageTags>
     <Version>1.0.0</Version>
-    <PackageIcon>NSS-128x128.png</PackageIcon>
-    <PackageIconUrl />
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -39,13 +26,6 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.5.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="..\assets\NSS-128x128.png">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
   </ItemGroup>
 
   <ItemGroup>
