@@ -17,10 +17,10 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting.Generators.Util
         ///     The client source file to download and parse.
         /// </summary>
         public const string DSharpPlusClientSourceUri =
-            "https://raw.githubusercontent.com/DSharpPlus/DSharpPlus/bc8e9b4d93c1fc19eaac5b5ca7b10ae2d83bd357/DSharpPlus/Clients/DiscordClient.Events.cs";
+            "https://raw.githubusercontent.com/DSharpPlus/DSharpPlus/master/DSharpPlus/Clients/DiscordClient.Events.cs";
 
         public const string DSharpPlusIntentsSourceUri =
-            "https://raw.githubusercontent.com/DSharpPlus/DSharpPlus/bc8e9b4d93c1fc19eaac5b5ca7b10ae2d83bd357/DSharpPlus/DiscordIntents.cs";
+            "https://raw.githubusercontent.com/DSharpPlus/DSharpPlus/master/DSharpPlus/DiscordIntents.cs";
 
         private static readonly Lazy<DSharpPlusClientParser> LazyParser = new(() => new DSharpPlusClientParser());
 
@@ -45,7 +45,7 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting.Generators.Util
             //
             // One namespace expected
             // 
-            var namespaceSyntax = root.Members.OfType<NamespaceDeclarationSyntax>().First();
+            var namespaceSyntax = root.Members.OfType<FileScopedNamespaceDeclarationSyntax>().First();
 
             //
             // One Class definition expected
@@ -61,7 +61,7 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting.Generators.Util
             //
             // One namespace expected
             // 
-            namespaceSyntax = root.Members.OfType<NamespaceDeclarationSyntax>().First();
+            namespaceSyntax = root.Members.OfType<FileScopedNamespaceDeclarationSyntax>().First();
 
             //
             // One Enum definition expected
