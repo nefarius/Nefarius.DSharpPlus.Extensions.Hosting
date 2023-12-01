@@ -1,25 +1,6 @@
-branches:
-  master:
-    regex: ^master$|^main$
-    mode: ContinuousDelivery
-    tag: ''
-    increment: Patch
-    prevent-increment-of-merged-branch-version: true
-    track-merge-target: false
-    source-branches: [ 'devel' ]
-    tracks-release-branches: false
-    is-release-branch: false
-    is-mainline: true
-    pre-release-weight: 55000
-  devel:
-    regex: ^devel$
-    mode: ContinuousDeployment
-    tag: alpha
-    increment: Minor
-    prevent-increment-of-merged-branch-version: false
-    track-merge-target: true
-    source-branches: []
-    tracks-release-branches: true
-    is-release-branch: false
-    is-mainline: false
-    pre-release-weight: 0
+mode: ContinuousDelivery
+next-version: 5.0.0
+branches: {}
+ignore:
+  sha: []
+merge-message-formats: {}
