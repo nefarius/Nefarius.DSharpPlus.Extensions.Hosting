@@ -20,6 +20,11 @@ It also offers a new feature/concept on top: event subscribers! Changes happenin
 
 And if that wasn't enough, here's another one: intents will be automatically registered if you're using an interface/event that requires them! Yay automation!
 
+## Branches
+
+- `master` - follows the stable releases of DSharpPlus.
+- `develop` - follows the pre-releases ("nightlies") of DSharpPlus.
+
 ## To-Do
 
 - [ ] More documentation 😇
