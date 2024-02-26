@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="DSharpPlus.Interactivity" Version="5.0.0-nightly-02074" />
+    <PackageReference Include="DSharpPlus.Interactivity" Version="$(DSharpPlusVersion)" />
     <PackageReference Include="MinVer" Version="4.3.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

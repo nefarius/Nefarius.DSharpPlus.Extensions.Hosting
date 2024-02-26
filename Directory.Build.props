@@ -9,7 +9,10 @@
     <!-- MinVer-specific -->
     <MinVerTagPrefix>v</MinVerTagPrefix>
     <MinVerDefaultPreReleaseIdentifiers>nightly.0</MinVerDefaultPreReleaseIdentifiers>
-    
+
+    <!-- DSharpPlus version -->
+    <DSharpPlusVersion>5.0.0-nightly-02115</DSharpPlusVersion>
+ 
     <!-- Copyright information -->
     <Authors>Benjamin Höglinger-Stelzer</Authors>
     <Copyright>Copyright © Benjamin Höglinger-Stelzer 2021-2024</Copyright>
@@ -32,6 +35,21 @@
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
   </PropertyGroup>
 
+  <!--
+  <Choose>
+    <When Condition="'$(MinVerPreRelease)' != ''">
+      <PropertyGroup>
+        <DSharpPlusVersion>5.0.0-nightly-02074</DSharpPlusVersion>  
+      </PropertyGroup>      
+    </When>
+    <Otherwise>
+      <PropertyGroup>
+        <DSharpPlusVersion>4.4.6</DSharpPlusVersion>  
+      </PropertyGroup>      
+    </Otherwise>
+  </Choose>
+  -->
+  
   <ItemGroup>
     <None Include="$(SolutionDir)assets\NSS-128x128.png">
       <Pack>True</Pack>
