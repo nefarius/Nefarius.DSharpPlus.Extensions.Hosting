@@ -8,6 +8,7 @@
 
     <!-- MinVer-specific -->
     <MinVerTagPrefix>v</MinVerTagPrefix>
+    <MinVerDefaultPreReleaseIdentifiers>nightly.0</MinVerDefaultPreReleaseIdentifiers>
     
     <!-- Copyright information -->
     <Authors>Benjamin Höglinger-Stelzer</Authors>
