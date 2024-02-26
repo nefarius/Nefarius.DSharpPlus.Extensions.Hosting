@@ -6,6 +6,9 @@
     <PackageProjectUrl>https://github.com/nefarius/Nefarius.DSharpPlus.Extensions.Hosting</PackageProjectUrl>
     <PackageTags>discord dsharpplus hosting extensions</PackageTags>
 
+    <!-- MinVer-specific -->
+    <MinVerTagPrefix>v</MinVerTagPrefix>
+    
     <!-- Copyright information -->
     <Authors>Benjamin Höglinger-Stelzer</Authors>
     <Copyright>Copyright © Benjamin Höglinger-Stelzer 2021-2024</Copyright>

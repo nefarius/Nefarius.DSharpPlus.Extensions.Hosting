@@ -13,10 +13,6 @@
 
   <ItemGroup>
     <PackageReference Include="DSharpPlus.SlashCommands" Version="5.0.0-nightly-02074" />
-    <PackageReference Include="GitVersion.MsBuild" Version="5.12.0">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
   </ItemGroup>
 
   <ItemGroup>

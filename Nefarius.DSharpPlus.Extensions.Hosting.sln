@@ -22,7 +22,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D6EC716D-03FA-4052-9E01-712D8FC362D0}"
 	ProjectSection(SolutionItems) = preProject
 		Directory.Build.props = Directory.Build.props
-		GitVersion.yml = GitVersion.yml
 		LICENSE = LICENSE
 		README.md = README.md
 	EndProjectSection
@@ -68,8 +67,8 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{9D0D767B-F784-458B-8B70-364847173F44} = {83D656DB-9F92-441C-93CE-5FADAEF7F49E}
 		{BA844A48-9DC4-43A4-A3AC-8D6665807DDC} = {4F8C1A08-27FB-436A-A257-3B9E752DC870}
+		{9D0D767B-F784-458B-8B70-364847173F44} = {83D656DB-9F92-441C-93CE-5FADAEF7F49E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {58B2CD89-4D43-4712-BAC6-09BE34B8F795}
