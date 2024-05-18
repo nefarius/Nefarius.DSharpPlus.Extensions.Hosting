@@ -11,7 +11,7 @@
     <MinVerDefaultPreReleaseIdentifiers>nightly.0</MinVerDefaultPreReleaseIdentifiers>
 
     <!-- DSharpPlus version -->
-    <DSharpPlusVersion>5.0.0-nightly-02115</DSharpPlusVersion>
+    <DSharpPlusVersion>5.0.0-nightly-02261</DSharpPlusVersion>
  
     <!-- Copyright information -->
     <Authors>Benjamin Höglinger-Stelzer</Authors>
