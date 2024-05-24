@@ -1,9 +1,8 @@
-﻿namespace Nefarius.DSharpPlus.Extensions.Hosting
+﻿namespace Nefarius.DSharpPlus.Extensions.Hosting;
+
+/// <summary>
+///     Implements configuration for optional extensions.
+/// </summary>
+public interface IDiscordExtensionConfiguration
 {
-    /// <summary>
-    ///     Implements configuration for optional extensions.
-    /// </summary>
-    public interface IDiscordExtensionConfiguration
-    {
-    }
 }
