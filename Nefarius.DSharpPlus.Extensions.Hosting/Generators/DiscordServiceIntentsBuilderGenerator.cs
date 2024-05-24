@@ -87,7 +87,7 @@ using Nefarius.DSharpPlus.Extensions.Hosting.Events;
 
 namespace Nefarius.DSharpPlus.Extensions.Hosting
 {
-    public partial class DiscordService
+    internal partial class DiscordService
     {
         /// <summary>
         ///     Source-generated utility method to auto-detect intents required by registered services.

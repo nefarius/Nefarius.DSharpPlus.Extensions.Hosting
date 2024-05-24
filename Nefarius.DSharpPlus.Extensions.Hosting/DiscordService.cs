@@ -26,7 +26,7 @@ public interface IDiscordClientService
 /// </summary>
 [SuppressMessage("ReSharper", "UnusedMember.Global")]
 [SuppressMessage("ReSharper", "ClassNeverInstantiated.Global")]
-public partial class DiscordService : IDiscordClientService
+internal partial class DiscordService : IDiscordClientService
 {
     private readonly IOptions<DiscordConfiguration> _discordOptions;
     private readonly ILoggerFactory _logFactory;

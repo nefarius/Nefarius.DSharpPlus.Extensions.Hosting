@@ -12,7 +12,7 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting;
 /// </summary>
 [SuppressMessage("ReSharper", "UnusedMember.Global")]
 [SuppressMessage("ReSharper", "ClassNeverInstantiated.Global")]
-public class DiscordHostedService : IHostedService
+internal class DiscordHostedService : IHostedService
 {
     private readonly IDiscordClientService _discordClient;
 
