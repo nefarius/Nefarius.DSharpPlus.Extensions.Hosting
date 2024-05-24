@@ -30,6 +30,7 @@ namespace Nefarius.DSharpPlus.SlashCommands.Extensions.Hosting
         ///     subscribers automatically. This is the default.
         /// </param>
         /// <returns>The <see cref="IServiceCollection" />.</returns>
+        [SuppressMessage("ReSharper", "UnusedMethodReturnValue.Global")]
         public static IServiceCollection AddDiscordSlashCommands(
             this IServiceCollection services,
             Action<SlashCommandsConfiguration?> configuration = null,

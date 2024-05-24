@@ -1,6 +1,8 @@
 using System;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Nefarius.DSharpPlus.Extensions.Hosting;
+using Nefarius.DSharpPlus.SlashCommands.Extensions.Hosting;
 
 #region OPTIONAL CommandsNext integration
 
@@ -37,7 +39,7 @@ namespace WorkerExample
                         //
                         // Minimum required configuration
                         // 
-                        options.Token = "recommended to read bot token from configuration file";
+                        options.Token = hostContext.Configuration.GetRequiredSection("BotToken").Get<string>();
                     });
 
                     #region OPTIONAL CommandsNext integration
@@ -65,6 +67,15 @@ namespace WorkerExample
                         options.Timeout = TimeSpan.FromMinutes(2);
                     });
 
+                    #endregion
+                    
+                    #region OPTIONAL Application/Shash commands integration
+                    
+                    services.AddDiscordSlashCommands(extension: extension =>
+                    {
+                        extension.RegisterCommands<EchoApplicationCommand>();
+                    });
+                    
                     #endregion
 
                     //

@@ -13,5 +13,6 @@
     <ProjectReference Include="..\Nefarius.DSharpPlus.CommandsNext.Extensions.Hosting\Nefarius.DSharpPlus.CommandsNext.Extensions.Hosting.csproj" />
     <ProjectReference Include="..\Nefarius.DSharpPlus.Extensions.Hosting\Nefarius.DSharpPlus.Extensions.Hosting.csproj" />
     <ProjectReference Include="..\Nefarius.DSharpPlus.Interactivity.Extensions.Hosting\Nefarius.DSharpPlus.Interactivity.Extensions.Hosting.csproj" />
+    <ProjectReference Include="..\Nefarius.DSharpPlus.SlashCommands.Extensions.Hosting\Nefarius.DSharpPlus.SlashCommands.Extensions.Hosting.csproj" />
   </ItemGroup>
 </Project>
