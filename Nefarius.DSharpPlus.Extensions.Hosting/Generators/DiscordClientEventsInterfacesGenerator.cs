@@ -1,29 +1,33 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Text;
+
 using Nefarius.DSharpPlus.Extensions.Hosting.Generators.Util;
 
-namespace Nefarius.DSharpPlus.Extensions.Hosting.Generators
+namespace Nefarius.DSharpPlus.Extensions.Hosting.Generators;
+
+/// <summary>
+///     Builds the attributes and interfaces to decorate and implement event subscribers.
+/// </summary>
+[Generator]
+public class DiscordClientEventsInterfacesGenerator : ISourceGenerator
 {
-    /// <summary>
-    ///     Builds the attributes and interfaces to decorate and implement event subscribers
-    /// </summary>
-    [Generator]
-    public class DiscordClientEventsInterfacesGenerator : ISourceGenerator
+    public void Initialize(GeneratorInitializationContext context)
     {
-        public void Initialize(GeneratorInitializationContext context)
-        {
-        }
+    }
 
-        public void Execute(GeneratorExecutionContext context)
-        {
-            var discordClientClassSyntax = DSharpPlusClientParser.Instance.DiscordClient;
+    public void Execute(GeneratorExecutionContext context)
+    {
+        ClassDeclarationSyntax discordClientClassSyntax = DSharpPlusClientParser.Instance.DiscordClient;
 
-            var eventsSyntax = discordClientClassSyntax.Members.OfType<EventDeclarationSyntax>();
+        IEnumerable<EventDeclarationSyntax> eventsSyntax =
+            discordClientClassSyntax.Members.OfType<EventDeclarationSyntax>();
 
-            var sourceBuilder = new StringBuilder(@"using System;
+        StringBuilder sourceBuilder = new StringBuilder(@"using System;
 using System.Threading.Tasks;
 using DSharpPlus;
 using DSharpPlus.EventArgs;
@@ -31,16 +35,16 @@ using DSharpPlus.EventArgs;
 namespace Nefarius.DSharpPlus.Extensions.Hosting.Events
 {");
 
-            foreach (var eventSyntax in eventsSyntax)
-            {
-                var name = eventSyntax.Identifier.ToString();
-                var typeSyntax = (GenericNameSyntax)eventSyntax.Type;
-                var arguments = typeSyntax.TypeArgumentList.Arguments;
+        foreach (EventDeclarationSyntax eventSyntax in eventsSyntax)
+        {
+            string name = eventSyntax.Identifier.ToString();
+            GenericNameSyntax typeSyntax = (GenericNameSyntax)eventSyntax.Type;
+            SeparatedSyntaxList<TypeSyntax> arguments = typeSyntax.TypeArgumentList.Arguments;
 
-                var senderType = ((IdentifierNameSyntax)arguments[0]).Identifier.Text;
-                var argsType = ((IdentifierNameSyntax)arguments[1]).Identifier.Text;
+            string senderType = ((IdentifierNameSyntax)arguments[0]).Identifier.Text;
+            string argsType = ((IdentifierNameSyntax)arguments[1]).Identifier.Text;
 
-                sourceBuilder.Append($@"
+            sourceBuilder.Append($@"
     /// <summary>
     ///     Marks this class as a receiver of <see cref=""IDiscord{name}EventSubscriber"" /> events.
     /// </summary>
@@ -48,7 +52,7 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting.Events
     public sealed class Discord{name}EventSubscriberAttribute : Attribute {{ }}
 ");
 
-                sourceBuilder.Append($@"
+            sourceBuilder.Append($@"
     /// <summary>
     ///     Implements a DiscordOn{name} event handler.
     /// </summary>
@@ -60,13 +64,13 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting.Events
         public Task DiscordOn{name}({senderType} sender, {argsType} args);
     }}
 ");
-            }
+        }
 
-            sourceBuilder.Append(@"
+        sourceBuilder.Append(@"
 }
 ");
 
-            context.AddSource("DiscordClientEventsInterfacesGenerated", SourceText.From(sourceBuilder.ToString(), Encoding.UTF8));
-        }
+        context.AddSource("DiscordClientEventsInterfaces.g.cs",
+            SourceText.From(sourceBuilder.ToString(), Encoding.UTF8));
     }
 }

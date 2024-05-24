@@ -1,26 +1,33 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Text;
+
 using Nefarius.DSharpPlus.Extensions.Hosting.Generators.Util;
 
-namespace Nefarius.DSharpPlus.Extensions.Hosting.Generators
+namespace Nefarius.DSharpPlus.Extensions.Hosting.Generators;
+
+/// <summary>
+///     Builds an internal helper method that wires up all supported event handlers to subscriber proxying.
+/// </summary>
+[Generator]
+public class DiscordServiceEventsHookGenerator : ISourceGenerator
 {
-    [Generator]
-    public class DiscordServiceEventsHookGenerator : ISourceGenerator
+    public void Initialize(GeneratorInitializationContext context)
     {
-        public void Initialize(GeneratorInitializationContext context)
-        {
-        }
+    }
 
-        public void Execute(GeneratorExecutionContext context)
-        {
-            var discordClientClassSyntax = DSharpPlusClientParser.Instance.DiscordClient;
+    public void Execute(GeneratorExecutionContext context)
+    {
+        ClassDeclarationSyntax discordClientClassSyntax = DSharpPlusClientParser.Instance.DiscordClient;
 
-            var eventsSyntax = discordClientClassSyntax.Members.OfType<EventDeclarationSyntax>();
+        IEnumerable<EventDeclarationSyntax> eventsSyntax =
+            discordClientClassSyntax.Members.OfType<EventDeclarationSyntax>();
 
-            var sourceBuilder = new StringBuilder(@"using System;
+        StringBuilder sourceBuilder = new StringBuilder(@"using System;
 using System.Linq;
 using System.Reflection;
 using DSharpPlus;
@@ -42,16 +49,16 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
         {
 ");
 
-            foreach (var eventSyntax in eventsSyntax)
-            {
-                var name = eventSyntax.Identifier.ToString();
-                var typeSyntax = (GenericNameSyntax)eventSyntax.Type;
-                var arguments = typeSyntax.TypeArgumentList.Arguments;
+        foreach (EventDeclarationSyntax eventSyntax in eventsSyntax)
+        {
+            string name = eventSyntax.Identifier.ToString();
+            GenericNameSyntax typeSyntax = (GenericNameSyntax)eventSyntax.Type;
+            SeparatedSyntaxList<TypeSyntax> arguments = typeSyntax.TypeArgumentList.Arguments;
 
-                var senderType = ((IdentifierNameSyntax)arguments[0]).Identifier.Text;
-                var argsType = ((IdentifierNameSyntax)arguments[1]).Identifier.Text;
+            string senderType = ((IdentifierNameSyntax)arguments[0]).Identifier.Text;
+            string argsType = ((IdentifierNameSyntax)arguments[1]).Identifier.Text;
 
-                sourceBuilder.Append($@"
+            sourceBuilder.Append($@"
             Client.{name} += async delegate ({senderType} sender, {argsType} args)
             {{
                 using var scope = _serviceProvider.CreateScope();
@@ -64,16 +71,15 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
                     await eventSubscriber.DiscordOn{name}(sender, args);
             }};
 ");
-            }
+        }
 
-            sourceBuilder.Append(@"
+        sourceBuilder.Append(@"
         }
     }
 }
 ");
 
-            context.AddSource("DiscordServiceEventsHookGenerated",
-                SourceText.From(sourceBuilder.ToString(), Encoding.UTF8));
-        }
+        context.AddSource("DiscordServiceEventsHook.g.cs",
+            SourceText.From(sourceBuilder.ToString(), Encoding.UTF8));
     }
 }

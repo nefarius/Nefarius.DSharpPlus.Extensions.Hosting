@@ -1,26 +1,30 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Text;
+
 using Nefarius.DSharpPlus.Extensions.Hosting.Generators.Util;
 
-namespace Nefarius.DSharpPlus.Extensions.Hosting.Generators
+namespace Nefarius.DSharpPlus.Extensions.Hosting.Generators;
+
+[Generator]
+public class DiscordServiceCollectionGenerator : ISourceGenerator
 {
-    [Generator]
-    public class DiscordServiceCollectionGenerator : ISourceGenerator
+    public void Initialize(GeneratorInitializationContext context)
     {
-        public void Initialize(GeneratorInitializationContext context)
-        {
-        }
+    }
 
-        public void Execute(GeneratorExecutionContext context)
-        {
-            var discordClientClassSyntax = DSharpPlusClientParser.Instance.DiscordClient;
+    public void Execute(GeneratorExecutionContext context)
+    {
+        ClassDeclarationSyntax discordClientClassSyntax = DSharpPlusClientParser.Instance.DiscordClient;
 
-            var eventsSyntax = discordClientClassSyntax.Members.OfType<EventDeclarationSyntax>().ToList();
+        List<EventDeclarationSyntax> eventsSyntax =
+            discordClientClassSyntax.Members.OfType<EventDeclarationSyntax>().ToList();
 
-            var sourceBuilder = new StringBuilder(@"using System;
+        StringBuilder sourceBuilder = new StringBuilder(@"using System;
 using DSharpPlus;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
@@ -32,8 +36,9 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
     public static partial class DiscordServiceCollectionExtensions
     {");
 
-            foreach (var name in eventsSyntax.Select(eventSyntax => eventSyntax.Identifier.ToString()))
-                sourceBuilder.Append($@"
+        foreach (string name in eventsSyntax.Select(eventSyntax => eventSyntax.Identifier.ToString()))
+        {
+            sourceBuilder.Append($@"
         /// <summary>
         ///     Registers an event subscriber implementation.
         /// </summary>
@@ -57,26 +62,28 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
             return services.AddScoped(typeof(IDiscord{name}EventSubscriber), t);
         }}
 ");
+        }
 
-            sourceBuilder.Append(@"
+        sourceBuilder.Append(@"
         private static void RegisterSubscribers(IServiceCollection services)
         {
 ");
 
-            foreach (var name in eventsSyntax.Select(eventSyntax => eventSyntax.Identifier.ToString()))
-                sourceBuilder.Append($@"
+        foreach (string name in eventsSyntax.Select(eventSyntax => eventSyntax.Identifier.ToString()))
+        {
+            sourceBuilder.Append($@"
             foreach (var type in AssemblyTypeHelper.GetTypesWith<Discord{name}EventSubscriberAttribute>())
                 services.AddDiscord{name}EventSubscriber(type);
 ");
+        }
 
-            sourceBuilder.Append(@"
+        sourceBuilder.Append(@"
         }
     }
 }
 ");
 
-            context.AddSource("DiscordServiceCollectionGenerated",
-                SourceText.From(sourceBuilder.ToString(), Encoding.UTF8));
-        }
+        context.AddSource("DiscordServiceCollection.g.cs",
+            SourceText.From(sourceBuilder.ToString(), Encoding.UTF8));
     }
 }
