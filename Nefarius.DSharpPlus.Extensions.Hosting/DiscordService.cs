@@ -64,15 +64,28 @@ internal partial class DiscordService : IDiscordClientService
         // Grab the content of the user-set intents and merge them with what the subscribers need
         // 
         PropertyInfo property = typeof(DiscordConfiguration).GetProperty("Intents");
-        property = property.DeclaringType.GetProperty("Intents");
-        DiscordIntents intents = (DiscordIntents)property.GetValue(_discordOptions.Value,
+
+        if (property is null)
+        {
+            // ReSharper disable once NotResolvedInText
+            throw new ArgumentNullException("Property 'Intents' not found in class 'DiscordConfiguration'.");
+        }
+
+        if (property.DeclaringType is null)
+        {
+            // ReSharper disable once NotResolvedInText
+            throw new ArgumentNullException("Declaring type of 'Intents' property not found.");
+        }
+
+        property = property.DeclaringType.GetProperty(nameof(DiscordConfiguration.Intents));
+        DiscordIntents? intents = (DiscordIntents?)property!.GetValue(_discordOptions.Value,
             BindingFlags.NonPublic | BindingFlags.Instance, null, null, null);
 
         using IServiceScope serviceScope = _serviceProvider.CreateScope();
 
-        intents = BuildIntents(serviceScope, intents);
+        intents = BuildIntents(serviceScope, intents!.Value);
 
-        DiscordConfiguration configuration = new DiscordConfiguration(_discordOptions.Value)
+        DiscordConfiguration configuration = new(_discordOptions.Value)
         {
             //
             // Overwrite with DI configured logging factory
@@ -81,7 +94,7 @@ internal partial class DiscordService : IDiscordClientService
             //
             // Use merged intents
             // 
-            Intents = intents
+            Intents = intents.Value
         };
 
         Client = new DiscordClient(configuration);
