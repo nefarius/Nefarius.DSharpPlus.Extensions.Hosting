@@ -1,6 +1,4 @@
-<img src="assets/NSS-128x128.png" align="right" />
-
-# DSharpPlus hosting extensions
+# <img src="assets/NSS-128x128.png" align="left" />DSharpPlus hosting extensions
 
 An extension for [DSharpPlus](https://github.com/DSharpPlus/DSharpPlus) to make hosting a Discord bot in [.NET Core Worker Services](https://docs.microsoft.com/en-us/dotnet/core/extensions/workers) easier.
 
