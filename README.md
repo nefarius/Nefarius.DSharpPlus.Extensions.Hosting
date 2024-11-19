@@ -4,6 +4,10 @@ An extension for [DSharpPlus](https://github.com/DSharpPlus/DSharpPlus) to make 
 
 [![.NET](https://github.com/nefarius/Nefarius.DSharpPlus.Extensions.Hosting/actions/workflows/build.yml/badge.svg)](https://github.com/nefarius/Nefarius.DSharpPlus.Extensions.Hosting/actions/workflows/build.yml) ![GitHub](https://img.shields.io/github/license/nefarius/Nefarius.DSharpPlus.Extensions.Hosting) ![Nuget](https://img.shields.io/nuget/dt/Nefarius.DSharpPlus.Extensions.Hosting) [![Discord](https://img.shields.io/discord/346756263763378176.svg)](https://discord.nefarius.at/)
 
+## 🚨 This project will be retired soon 🚨
+
+With DSharpPlus **version 5** (onwards) the [event handling design](https://github.com/DSharpPlus/DSharpPlus/issues/1585#issuecomment-2282832059) has been completely overhauled, making the core features of this project obsolete. v5 is also more tightly coupled to dependency injection, another great change. Therefore I will no longer introduce any breaking changes nor try to make it v5 compatible. It's been a fun ride!
+
 ## About
 
 ---
@@ -17,11 +21,6 @@ This set of libraries abstracts away a lot of the plumbing code required to get 
 It also offers a new feature/concept on top: event subscribers! Changes happening in the Discord universe are represented in DSharpPlus by a (rather large) number of events that can be subscribed to. The library offers an interface for every event of the Discord Client your "event subscriber" class can implement. These interface methods will be called when the corresponding event occurs. But there's a convenience extra: within the callback method you will have access to scoped services, like database contexts!
 
 And if that wasn't enough, here's another one: intents will be automatically registered if you're using an interface/event that requires them! Yay automation!
-
-## To-Do
-
-- [ ] More documentation 😇
-- [ ] Support the sharded client
 
 ## Package overview
 
