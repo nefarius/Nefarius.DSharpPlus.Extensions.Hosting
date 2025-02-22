@@ -1,7 +1,7 @@
 <Project>
 
   <PropertyGroup>
-    <TargetFrameworks>net7.0;net8.0;net9.0</TargetFrameworks>
+    <TargetFramework>net8.0</TargetFramework>
     <RepositoryUrl>https://github.com/nefarius/Nefarius.DSharpPlus.Extensions.Hosting</RepositoryUrl>
     <PackageProjectUrl>https://github.com/nefarius/Nefarius.DSharpPlus.Extensions.Hosting</PackageProjectUrl>
     <PackageTags>discord dsharpplus hosting extensions</PackageTags>
