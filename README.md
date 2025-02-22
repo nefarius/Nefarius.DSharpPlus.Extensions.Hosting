@@ -1,12 +1,12 @@
 # <img src="assets/NSS-128x128.png" align="left" />DSharpPlus hosting extensions
 
-An extension for [DSharpPlus](https://github.com/DSharpPlus/DSharpPlus) to make hosting a Discord bot
-in [.NET Core Worker Services](https://docs.microsoft.com/en-us/dotnet/core/extensions/workers) easier.
-
 [![.NET](https://github.com/nefarius/Nefarius.DSharpPlus.Extensions.Hosting/actions/workflows/build.yml/badge.svg)](https://github.com/nefarius/Nefarius.DSharpPlus.Extensions.Hosting/actions/workflows/build.yml)
 ![GitHub](https://img.shields.io/github/license/nefarius/Nefarius.DSharpPlus.Extensions.Hosting)
 ![Nuget](https://img.shields.io/nuget/dt/Nefarius.DSharpPlus.Extensions.Hosting)
 [![Discord](https://img.shields.io/discord/346756263763378176.svg)](https://discord.nefarius.at/)
+
+An extension for [DSharpPlus](https://github.com/DSharpPlus/DSharpPlus) to make hosting a Discord bot
+in [.NET Core Worker Services](https://docs.microsoft.com/en-us/dotnet/core/extensions/workers) easier.
 
 ## 🚨 This project will be retired soon 🚨
 
