@@ -22,7 +22,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D6EC716D-03FA-4052-9E01-712D8FC362D0}"
 	ProjectSection(SolutionItems) = preProject
 		Directory.Build.props = Directory.Build.props
-		GitVersion.yml = GitVersion.yml
 		LICENSE = LICENSE
 		README.md = README.md
 	EndProjectSection

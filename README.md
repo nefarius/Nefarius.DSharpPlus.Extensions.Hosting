@@ -1,12 +1,20 @@
 # <img src="assets/NSS-128x128.png" align="left" />DSharpPlus hosting extensions
 
-An extension for [DSharpPlus](https://github.com/DSharpPlus/DSharpPlus) to make hosting a Discord bot in [.NET Core Worker Services](https://docs.microsoft.com/en-us/dotnet/core/extensions/workers) easier.
+An extension for [DSharpPlus](https://github.com/DSharpPlus/DSharpPlus) to make hosting a Discord bot
+in [.NET Core Worker Services](https://docs.microsoft.com/en-us/dotnet/core/extensions/workers) easier.
 
-[![.NET](https://github.com/nefarius/Nefarius.DSharpPlus.Extensions.Hosting/actions/workflows/build.yml/badge.svg)](https://github.com/nefarius/Nefarius.DSharpPlus.Extensions.Hosting/actions/workflows/build.yml) ![GitHub](https://img.shields.io/github/license/nefarius/Nefarius.DSharpPlus.Extensions.Hosting) ![Nuget](https://img.shields.io/nuget/dt/Nefarius.DSharpPlus.Extensions.Hosting) [![Discord](https://img.shields.io/discord/346756263763378176.svg)](https://discord.nefarius.at/)
+[![.NET](https://github.com/nefarius/Nefarius.DSharpPlus.Extensions.Hosting/actions/workflows/build.yml/badge.svg)](https://github.com/nefarius/Nefarius.DSharpPlus.Extensions.Hosting/actions/workflows/build.yml)
+![GitHub](https://img.shields.io/github/license/nefarius/Nefarius.DSharpPlus.Extensions.Hosting)
+![Nuget](https://img.shields.io/nuget/dt/Nefarius.DSharpPlus.Extensions.Hosting)
+[![Discord](https://img.shields.io/discord/346756263763378176.svg)](https://discord.nefarius.at/)
 
 ## 🚨 This project will be retired soon 🚨
 
-With DSharpPlus **version 5** (onwards) the [event handling design](https://github.com/DSharpPlus/DSharpPlus/issues/1585#issuecomment-2282832059) has been completely overhauled, making the core features of this project obsolete. v5 is also more tightly coupled to dependency injection, another great change. Therefore I will no longer introduce any breaking changes nor try to make it v5 compatible. It's been a fun ride!
+With DSharpPlus **version 5** (onwards)
+the [event handling design](https://github.com/DSharpPlus/DSharpPlus/issues/1585#issuecomment-2282832059) has been
+completely overhauled, making the core features of this project obsolete. Version 5 is also more tightly coupled to
+dependency injection, another great change. Therefore, I will no longer introduce any breaking changes nor try to make
+it v5 compatible. It's been a fun ride!
 
 ## About
 
@@ -16,45 +24,59 @@ With DSharpPlus **version 5** (onwards) the [event handling design](https://gith
 
 ---
 
-This set of libraries abstracts away a lot of the plumbing code required to get DSharpPlus up and running in a .NET Core Worker Service (or simply a plain old Console Application) and provides Dependency-Injection-friendly integration.
+This set of libraries abstracts away a lot of the plumbing code required to get DSharpPlus up and running in a .NET Core
+Worker Service (or simply a plain old Console Application) and provides Dependency-Injection-friendly integration.
 
-It also offers a new feature/concept on top: event subscribers! Changes happening in the Discord universe are represented in DSharpPlus by a (rather large) number of events that can be subscribed to. The library offers an interface for every event of the Discord Client your "event subscriber" class can implement. These interface methods will be called when the corresponding event occurs. But there's a convenience extra: within the callback method you will have access to scoped services, like database contexts!
+It also offers a new feature/concept on top: event subscribers! Changes happening in the Discord universe are
+represented in DSharpPlus by a (rather large) number of events that can be subscribed to. The library offers an
+interface for every event of the Discord Client your "event subscriber" class can implement. These interface methods
+will be called when the corresponding event occurs. But there's a convenience extra: within the callback method you will
+have access to scoped services, like database contexts!
 
-And if that wasn't enough, here's another one: intents will be automatically registered if you're using an interface/event that requires them! Yay automation!
+And if that wasn't enough, here's another one: intents will be automatically registered if you're using an
+interface/event that requires them! Yay automation!
 
 ## Package overview
 
-I try my best to publish stable releases with every major DSharpPlus update. I try to stick to their `Major`.`Minor` version prefixes, but the `Build` is out of sync as it increments every time I trigger a CI build. Overall the library is considered stable and production-ready. Even in pre-releases I try to not introduce critical bugs or API-breaking changes unless documented otherwise.
+I try my best to publish stable releases with every major DSharpPlus update. I try to stick to their `Major`.`Minor`
+version prefixes, but the `Build` is out of sync as it increments every time I trigger a CI build. Overall, the library
+is considered stable and production-ready. Even in pre-releases, I try to not introduce critical bugs or API-breaking
+changes unless documented otherwise.
 
 ### Nefarius.DSharpPlus.Extensions.Hosting
 
 [![NuGet](https://img.shields.io/nuget/vpre/Nefarius.DSharpPlus.Extensions.Hosting.svg)](https://nuget.org/packages/Nefarius.DSharpPlus.Extensions.Hosting)
 
-The core library for [DSharpPlus](https://github.com/DSharpPlus/DSharpPlus), required to set up a Discord client as a hosted service.
+The core library for [DSharpPlus](https://github.com/DSharpPlus/DSharpPlus) required to set up a Discord client as a
+hosted service.
 
 ### Nefarius.DSharpPlus.CommandsNext.Extensions.Hosting
 
 [![NuGet](https://img.shields.io/nuget/vpre/Nefarius.DSharpPlus.CommandsNext.Extensions.Hosting.svg)](https://nuget.org/packages/Nefarius.DSharpPlus.CommandsNext.Extensions.Hosting)
 
-Optional. Adds support for [DSharpPlus.CommandsNext](https://dsharpplus.github.io/articles/commands/intro.html) extension.
+Optional. Adds support for [DSharpPlus.CommandsNext](https://dsharpplus.github.io/articles/commands/intro.html)
+extension.
 
 ### Nefarius.DSharpPlus.Interactivity.Extensions.Hosting
 
 [![NuGet](https://img.shields.io/nuget/vpre/Nefarius.DSharpPlus.Interactivity.Extensions.Hosting.svg)](https://nuget.org/packages/Nefarius.DSharpPlus.Interactivity.Extensions.Hosting)
 
-Optional. Adds support for [DSharpPlus.Interactivity](https://dsharpplus.github.io/articles/interactivity.html) extension.
+Optional. Adds support for [DSharpPlus.Interactivity](https://dsharpplus.github.io/articles/interactivity.html)
+extension.
 
 ### Nefarius.DSharpPlus.VoiceNext.Extensions.Hosting
 
 [![NuGet](https://img.shields.io/nuget/vpre/Nefarius.DSharpPlus.VoiceNext.Extensions.Hosting.svg)](https://nuget.org/packages/Nefarius.DSharpPlus.VoiceNext.Extensions.Hosting)
 
-Optional. Adds support for [DSharpPlus.VoiceNext](https://dsharpplus.github.io/articles/audio/voicenext/prerequisites.html) extension.
+Optional. Adds support
+for [DSharpPlus.VoiceNext](https://dsharpplus.github.io/articles/audio/voicenext/prerequisites.html) extension.
 
 ### Nefarius.DSharpPlus.SlashCommands.Extensions.Hosting
 
 [![NuGet](https://img.shields.io/nuget/vpre/Nefarius.DSharpPlus.SlashCommands.Extensions.Hosting.svg)](https://nuget.org/packages/Nefarius.DSharpPlus.SlashCommands.Extensions.Hosting)
 
-Optional. Adds support for [DSharpPlus.SlashCommands](https://github.com/DSharpPlus/DSharpPlus/tree/master/DSharpPlus.SlashCommands) extension.
+Optional. Adds support
+for [DSharpPlus.SlashCommands](https://github.com/DSharpPlus/DSharpPlus/tree/master/DSharpPlus.SlashCommands) extension.
 
 ## Documentation
 
@@ -64,15 +86,18 @@ You can also take a look at [the reference example](WorkerExample) of this repos
 
 ### Setup
 
-Create a new .NET Core Worker project either via Visual Studio templates or using the command `dotnet new worker` in a fresh directory.
+Create a new .NET Core Worker project either via Visual Studio templates or using the command `dotnet new worker` in a
+fresh directory.
 
-The current version of the library depends on the DSharpPlus nightly version. If you're using the stable nuget version, [update to the nightly version](https://github.com/DSharpPlus/DSharpPlus#installing).
+The current version of the library depends on the DSharpPlus nightly version. If you're using the stable nuget
+version, [update to the nightly version](https://github.com/DSharpPlus/DSharpPlus#installing).
 
 Add the core hosting package (and optional extensions, if you need them) via NuGet package manager.
 
 ### Implementation
 
-Most of the heavy lifting is done in the `ConfigureServices` method, so we will focus on that. To get a bare basic Discord bot running, all you need to do is register the client service and the hosted background service:
+Most of the heavy lifting is done in the `ConfigureServices` method, so we will focus on that. To get a bare basic
+Discord bot running, all you need to do is register the client service and the hosted background service:
 
 ```csharp
 //
@@ -92,11 +117,13 @@ services.AddDiscord(options =>
 services.AddDiscordHostedService();
 ```
 
-That's pretty much it! When you launch your worker with a valid bot token you should see your bot come online in an instant, congratulations! ✨
+That's pretty much it! When you launch your worker with a valid bot token you should see your bot come online in an
+instant, congratulations! ✨
 
 ### Handling Discord Events
 
-Now to the actual convenience feature of this library! Creating one (or more) class(es) that handle events, like when a guild came online or a message got created. Let's wire one up that gets general guild and member change events:
+Now to the actual convenience feature of this library! Creating one (or more) class(es) that handle events, like when a
+guild came online or a message got created. Let's wire one up that gets general guild and member change events:
 
 ```csharp
 // this does the same as calling
@@ -165,7 +192,10 @@ internal class BotModuleForGuildAndMemberEvents :
 }
 ```
 
-Now let's dissect what is happening here. The class gets decorated by the attributes `DiscordGuildAvailableEventSubscriber` and `DiscordGuildMemberAddedEventSubscriber` (hint: you can use only one attribute for the event group you're interested in, you can use many more on the same class, doesn't matter, your choice) which causes it to get **automatically registered as subscribers for these events**.
+Now let's dissect what is happening here. The class gets decorated by the attributes
+`DiscordGuildAvailableEventSubscriber` and `DiscordGuildMemberAddedEventSubscriber` (hint: you can use only one
+attribute for the event group you're interested in, you can use many more on the same class, doesn't matter, your
+choice) which causes it to get **automatically registered as subscribers for these events**.
 
 An *alternative* approach to registration is manually calling the extension methods, like
 
@@ -174,11 +204,17 @@ services.AddDiscordGuildAvailableEventSubscriber<BotModuleForGuildAndMemberEvent
 services.AddDiscordGuildMemberAddedEventSubscriber<BotModuleForGuildAndMemberEvents>();
 ```
 
-from within `ConfigureServices`. Using the attributes instead ensures you don't forget to register your subscribers while coding vigorously!
+from within `ConfigureServices`. Using the attributes instead ensures you don't forget to register your subscribers
+while coding vigorously!
 
-Implementing the interfaces `IDiscordGuildAvailableEventSubscriber` and `IDiscordGuildMemberEventsSubscriber` ensures your subscriber class is actually callable by the Discord Client Service. You must complete every event callback you're not interested in with `return Task.CompletedTask;` as demonstrated or it will result in errors. In the example above we are only interested in `DiscordOnGuildAvailable` and print the guild name to the console. I'm sure you can think of more exciting tasks!
+Implementing the interfaces `IDiscordGuildAvailableEventSubscriber` and `IDiscordGuildMemberEventsSubscriber` ensures
+your subscriber class is actually callable by the Discord Client Service. You must complete every event callback you're
+not interested in with `return Task.CompletedTask;` as demonstrated or it will result in errors. In the example above we
+are only interested in `DiscordOnGuildAvailable` and print the guild name to the console. I'm sure you can think of more
+exciting tasks!
 
-And last but not least; your subscriber classes are fully dependency injection aware! You can access services via classic constructor injection:
+And last but not least; your subscriber classes are fully dependency-injection-aware! You can access services via
+classic constructor injection:
 
 ```csharp
 private readonly ILogger<BotModuleForGuildAndMemberEvents> _logger;
@@ -191,11 +227,14 @@ public BotModuleForGuildAndMemberEvents(
 }
 ```
 
-You can even inject **scoped services**, the subscriber objects get invoked in their own scope by default. This allows for easy access for e.g. database contexts within each subscriber. Neat!
+You can even inject **scoped services**, the subscriber objects get invoked in their own scope by default. This allows
+for easy access for e.g. database contexts within each subscriber. Neat!
 
 ### Intents
 
-The library tries to assume the required intents from the event subscribers used, but not all intents can be derived with that method. For example, if you need to read user message contents within a slash command module, you need to manually set the required intents on Discord initialization like so:
+The library tries to assume the required intents from the event subscribers used, but not all intents can be derived
+with that method. For example, if you need to read user message contents within a slash command module, you need to
+manually set the required intents on Discord initialization like so:
 
 ```cs
 serviceCollection.AddDiscord(discordConfiguration =>
@@ -206,7 +245,9 @@ serviceCollection.AddDiscord(discordConfiguration =>
 });
 ```
 
-Otherwise your code "might" work but you'll experience weird side effects like empty message contents. If you do assign intents like demonstrated, they will be merged with your subscribers intents automatically, so you do not need to specify them manually again!
+Otherwise your code "might" work, but you'll experience weird side effects like empty message contents. If you do assign
+intents like demonstrated, they will be merged with your subscribers intents automatically, so you do not need to
+specify them manually again!
 
 ### Accessing `DiscordClient`
 
