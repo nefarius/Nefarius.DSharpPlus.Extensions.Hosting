@@ -15,7 +15,7 @@ With DSharpPlus **version 5** (onwards)
 the [event handling design](https://github.com/DSharpPlus/DSharpPlus/issues/1585#issuecomment-2282832059) has been
 completely overhauled, making the core features of this project obsolete. Version 5 is also more tightly coupled to
 dependency injection, another great change. Therefore, I will no longer introduce any breaking changes nor try to make
-it v5 compatible. It's been a fun ride!
+it v5 compatible. It's been a fun ride! This project's nuget versions 6.x build upon DSharpPlus **4.x**.
 
 ## About
 
