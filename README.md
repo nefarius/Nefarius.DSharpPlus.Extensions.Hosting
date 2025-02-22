@@ -1,6 +1,7 @@
 # <img src="assets/NSS-128x128.png" align="left" />DSharpPlus hosting extensions
 
 [![.NET](https://github.com/nefarius/Nefarius.DSharpPlus.Extensions.Hosting/actions/workflows/build.yml/badge.svg)](https://github.com/nefarius/Nefarius.DSharpPlus.Extensions.Hosting/actions/workflows/build.yml)
+![Static Badge](https://img.shields.io/badge/DSharpPlus%20version-4.5-purple)
 ![GitHub](https://img.shields.io/github/license/nefarius/Nefarius.DSharpPlus.Extensions.Hosting)
 ![Nuget](https://img.shields.io/nuget/dt/Nefarius.DSharpPlus.Extensions.Hosting)
 [![Discord](https://img.shields.io/discord/346756263763378176.svg)](https://discord.nefarius.at/)
