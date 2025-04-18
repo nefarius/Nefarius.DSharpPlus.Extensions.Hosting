@@ -70,7 +70,7 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting.Events
 }
 ");
 
-        context.AddSource("DiscordClientEventsInterfacesGenerated",
+        context.AddSource("DiscordClientEventsInterfaces.g.cs",
             SourceText.From(sourceBuilder.ToString(), Encoding.UTF8));
     }
 }

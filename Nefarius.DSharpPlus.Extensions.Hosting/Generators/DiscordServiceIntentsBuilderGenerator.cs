@@ -126,7 +126,7 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
 }
 ");
 
-        context.AddSource("DiscordServiceIntentsBuilderGenerated",
+        context.AddSource("DiscordServiceIntentsBuilder.g.cs",
             SourceText.From(sourceBuilder.ToString(), Encoding.UTF8));
     }
 }

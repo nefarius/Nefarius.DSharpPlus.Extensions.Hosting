@@ -76,7 +76,7 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
 }
 ");
 
-        context.AddSource("DiscordServiceEventsHookGenerated",
+        context.AddSource("DiscordServiceEventsHook.g.cs",
             SourceText.From(sourceBuilder.ToString(), Encoding.UTF8));
     }
 }

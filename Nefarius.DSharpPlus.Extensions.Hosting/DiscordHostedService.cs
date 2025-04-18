@@ -13,38 +13,27 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting;
 /// </summary>
 [SuppressMessage("ReSharper", "UnusedMember.Global")]
 [SuppressMessage("ReSharper", "ClassNeverInstantiated.Global")]
-public class DiscordHostedService : IHostedService
+public class DiscordHostedService(
+    IDiscordClientService discordClient,
+    ILogger<DiscordHostedService> logger,
+    IOptions<DiscordClientConnectOptions> connectOptions)
+    : IHostedService
 {
-    private readonly IOptions<DiscordClientConnectOptions> _connectOptions;
-    private readonly IDiscordClientService _discordClient;
-    private readonly ILogger<DiscordHostedService> _logger;
-
-    public DiscordHostedService(
-        IDiscordClientService discordClient,
-        ILogger<DiscordHostedService> logger,
-        IOptions<DiscordClientConnectOptions> connectOptions
-    )
-    {
-        _discordClient = discordClient;
-        _logger = logger;
-        _connectOptions = connectOptions;
-    }
-
     /// <inheritdoc />
     public async Task StartAsync(CancellationToken cancellationToken)
     {
-        ((DiscordService)_discordClient).Initialize();
+        ((DiscordService)discordClient).Initialize();
 
-        DiscordClientConnectOptions opts = _connectOptions.Value;
+        DiscordClientConnectOptions opts = connectOptions.Value;
 
-        _logger.LogInformation("Connecting to Discord API...");
-        await _discordClient.Client.ConnectAsync(opts.Activity, opts.Status, opts.IdleSince);
-        _logger.LogInformation("Connected");
+        logger.LogInformation("Connecting to Discord API...");
+        await discordClient.Client.ConnectAsync(opts.Activity, opts.Status, opts.IdleSince);
+        logger.LogInformation("Connected");
     }
 
     /// <inheritdoc />
     public async Task StopAsync(CancellationToken cancellationToken)
     {
-        await _discordClient.Client.DisconnectAsync();
+        await discordClient.Client.DisconnectAsync();
     }
 }

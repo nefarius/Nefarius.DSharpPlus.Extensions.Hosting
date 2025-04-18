@@ -12,7 +12,7 @@ namespace WorkerExample;
 [Description("Administrative commands.")] // give it a description for help purposes
 [Hidden] // let's hide this from the eyes of curious users
 [RequirePermissions(Permissions.ManageGuild)] // and restrict this to users who have appropriate permissions
-[SuppressMessage("ReSharper", "ClassNeverInstantiated.Global")] 
+[SuppressMessage("ReSharper", "ClassNeverInstantiated.Global")]
 public class AdminCommands : BaseCommandModule
 {
     // all the commands will need to be executed as <prefix>admin <command> <arguments>

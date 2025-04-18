@@ -83,7 +83,7 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
 }
 ");
 
-        context.AddSource("DiscordServiceCollectionGenerated",
+        context.AddSource("DiscordServiceCollection.g.cs",
             SourceText.From(sourceBuilder.ToString(), Encoding.UTF8));
     }
 }
