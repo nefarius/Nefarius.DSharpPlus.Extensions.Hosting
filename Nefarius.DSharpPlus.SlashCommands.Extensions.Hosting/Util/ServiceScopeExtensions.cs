@@ -1,20 +1,21 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+
 using Microsoft.Extensions.DependencyInjection;
+
 using Nefarius.DSharpPlus.SlashCommands.Extensions.Hosting.Events;
 
-namespace Nefarius.DSharpPlus.SlashCommands.Extensions.Hosting.Util
+namespace Nefarius.DSharpPlus.SlashCommands.Extensions.Hosting.Util;
+
+internal static class ServiceScopeExtensions
 {
-    internal static class ServiceScopeExtensions
+    public static IList<IDiscordSlashCommandsEventsSubscriber> GetDiscordSlashCommandsEventsSubscriber(
+        this IServiceScope scope
+    )
     {
-        public static IList<IDiscordSlashCommandsEventsSubscriber> GetDiscordSlashCommandsEventsSubscriber(
-            this IServiceScope scope
-        )
-        {
-            return scope.ServiceProvider
-                .GetServices(typeof(IDiscordSlashCommandsEventsSubscriber))
-                .Cast<IDiscordSlashCommandsEventsSubscriber>()
-                .ToList();
-        }
+        return scope.ServiceProvider
+            .GetServices(typeof(IDiscordSlashCommandsEventsSubscriber))
+            .Cast<IDiscordSlashCommandsEventsSubscriber>()
+            .ToList();
     }
 }

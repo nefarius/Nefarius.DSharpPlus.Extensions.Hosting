@@ -1,7 +1,9 @@
 ﻿#nullable enable
 using System;
 using System.Diagnostics.CodeAnalysis;
+
 using DSharpPlus;
+
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Options;
@@ -36,7 +38,7 @@ public static partial class DiscordServiceCollectionExtensions
     {
         services.Configure(configure);
 
-        var options = new DiscordClientConnectOptions();
+        DiscordClientConnectOptions options = new();
         connectOptions?.Invoke(options);
         services.TryAddSingleton<IOptions<DiscordClientConnectOptions>>(
             new OptionsWrapper<DiscordClientConnectOptions>(options));
@@ -44,7 +46,9 @@ public static partial class DiscordServiceCollectionExtensions
         services.TryAddSingleton<IDiscordClientService, DiscordService>();
 
         if (!autoRegisterSubscribers)
+        {
             return services;
+        }
 
         RegisterSubscribers(services);
 

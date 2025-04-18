@@ -1,6 +1,7 @@
 ﻿#nullable enable
 using System;
 using System.Diagnostics.CodeAnalysis;
+
 using DSharpPlus;
 using DSharpPlus.Entities;
 

@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 using System.Threading.Tasks;
+
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
@@ -34,7 +35,7 @@ public class DiscordHostedService : IHostedService
     {
         ((DiscordService)_discordClient).Initialize();
 
-        var opts = _connectOptions.Value;
+        DiscordClientConnectOptions opts = _connectOptions.Value;
 
         _logger.LogInformation("Connecting to Discord API...");
         await _discordClient.Client.ConnectAsync(opts.Activity, opts.Status, opts.IdleSince);

@@ -1,26 +1,26 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <Description>DSharpPlus.SlashCommands UNOFFICIAL Microsoft.Extensions.DependencyInjection integration.</Description>
-    <Version>1.0.0</Version>
-  </PropertyGroup>
+    <PropertyGroup>
+        <Description>DSharpPlus.SlashCommands UNOFFICIAL Microsoft.Extensions.DependencyInjection integration.</Description>
+        <Version>1.0.0</Version>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <Compile Remove="Generators\**" />
-    <EmbeddedResource Remove="Generators\**" />
-    <None Remove="Generators\**" />
-  </ItemGroup>
+    <ItemGroup>
+        <Compile Remove="Generators\**"/>
+        <EmbeddedResource Remove="Generators\**"/>
+        <None Remove="Generators\**"/>
+    </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="DSharpPlus.SlashCommands" Version="4.*" />
-    <PackageReference Include="MinVer" Version="6.0.0">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-  </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="DSharpPlus.SlashCommands" Version="4.*"/>
+        <PackageReference Include="MinVer" Version="6.0.0">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+    </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Nefarius.DSharpPlus.Extensions.Hosting\Nefarius.DSharpPlus.Extensions.Hosting.csproj" />
-  </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\Nefarius.DSharpPlus.Extensions.Hosting\Nefarius.DSharpPlus.Extensions.Hosting.csproj"/>
+    </ItemGroup>
 
 </Project>

@@ -17,7 +17,7 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 9.x
-  
+
       - name: Modify README.md for NuGet
         run: |
           sed -i 's/# <img[^>]*>/# /' README.md

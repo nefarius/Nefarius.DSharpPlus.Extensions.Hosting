@@ -1,5 +1,7 @@
 using System;
+
 using Microsoft.Extensions.Hosting;
+
 using Nefarius.DSharpPlus.Extensions.Hosting;
 
 #region OPTIONAL CommandsNext integration
@@ -11,6 +13,7 @@ using Nefarius.DSharpPlus.CommandsNext.Extensions.Hosting;
 #region OPTIONAL Interactivity integration
 
 using DSharpPlus.Interactivity.Enums;
+
 using Nefarius.DSharpPlus.Interactivity.Extensions.Hosting;
 
 #endregion

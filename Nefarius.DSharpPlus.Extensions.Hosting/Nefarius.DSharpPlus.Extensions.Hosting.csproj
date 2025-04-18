@@ -1,35 +1,35 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <Description>DSharpPlus UNOFFICIAL Microsoft.Extensions.DependencyInjection integration.</Description>
-    <Version>1.0.0</Version>
-  </PropertyGroup>
+    <PropertyGroup>
+        <Description>DSharpPlus UNOFFICIAL Microsoft.Extensions.DependencyInjection integration.</Description>
+        <Version>1.0.0</Version>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <Compile Remove="Generators\**" />
-    <EmbeddedResource Remove="Generators\**" />
-    <None Remove="Generators\**" />
-  </ItemGroup>
+    <ItemGroup>
+        <Compile Remove="Generators\**"/>
+        <EmbeddedResource Remove="Generators\**"/>
+        <None Remove="Generators\**"/>
+    </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="DSharpPlus" Version="4.*" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.2" />
-    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="9.0.2" />
-    <PackageReference Include="Microsoft.Extensions.Options" Version="9.0.2" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.2" />
-    <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="3.3.4">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.5.0" />
-    <PackageReference Include="MinVer" Version="6.0.0">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-  </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="DSharpPlus" Version="4.*"/>
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.2"/>
+        <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="9.0.2"/>
+        <PackageReference Include="Microsoft.Extensions.Options" Version="9.0.2"/>
+        <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.2"/>
+        <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="3.3.4">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.5.0"/>
+        <PackageReference Include="MinVer" Version="6.0.0">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+    </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="Generators\Nefarius.DSharpPlus.Extensions.Hosting.Generators.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
-  </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="Generators\Nefarius.DSharpPlus.Extensions.Hosting.Generators.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false"/>
+    </ItemGroup>
 
 </Project>

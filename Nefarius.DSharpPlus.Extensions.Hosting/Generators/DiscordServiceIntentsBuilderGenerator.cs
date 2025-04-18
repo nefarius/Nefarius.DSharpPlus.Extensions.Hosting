@@ -1,66 +1,76 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Text;
+
 using Nefarius.DSharpPlus.Extensions.Hosting.Generators.Util;
 
-namespace Nefarius.DSharpPlus.Extensions.Hosting.Generators
+namespace Nefarius.DSharpPlus.Extensions.Hosting.Generators;
+
+[Generator]
+public class DiscordServiceIntentsBuilderGenerator : ISourceGenerator
 {
-    [Generator]
-    public class DiscordServiceIntentsBuilderGenerator : ISourceGenerator
+    public void Initialize(GeneratorInitializationContext context)
     {
-        public void Initialize(GeneratorInitializationContext context)
+    }
+
+    public void Execute(GeneratorExecutionContext context)
+    {
+        EnumDeclarationSyntax discordIntentsSyntax = DSharpPlusClientParser.Instance.DiscordIntents;
+
+        List<EnumMemberDeclarationSyntax> intents = discordIntentsSyntax.Members.ToList();
+
+        Dictionary<string, HashSet<string>> map = new();
+
+        foreach (EnumMemberDeclarationSyntax intent in intents)
         {
-        }
+            string intentName = intent.Identifier.Text;
 
-        public void Execute(GeneratorExecutionContext context)
-        {
-            var discordIntentsSyntax = DSharpPlusClientParser.Instance.DiscordIntents;
+            SyntaxTrivia trivia = intent.GetLeadingTrivia().Single(syntaxTrivia =>
+                syntaxTrivia.IsKind(SyntaxKind.SingleLineDocumentationCommentTrivia));
 
-            var intents = discordIntentsSyntax.Members.ToList();
+            SyntaxNode syntaxNode = trivia.GetStructure();
 
-            var map = new Dictionary<string, HashSet<string>>();
-
-            foreach (var intent in intents)
+            if (syntaxNode is null)
             {
-                var intentName = intent.Identifier.Text;
+                continue;
+            }
 
-                var trivia = intent.GetLeadingTrivia().Single(syntaxTrivia =>
-                    syntaxTrivia.IsKind(SyntaxKind.SingleLineDocumentationCommentTrivia));
+            SyntaxNode summaryNode = syntaxNode.ChildNodes().Single(node => node.IsKind(SyntaxKind.XmlElement));
 
-                var syntaxNode = trivia.GetStructure();
+            IEnumerable<SyntaxNode> summaryElements =
+                summaryNode.ChildNodes().Where(node => node.IsKind(SyntaxKind.XmlElement));
 
-                if (syntaxNode is null)
-                    continue;
+            foreach (SyntaxNode summaryElement in summaryElements)
+            {
+                IEnumerable<SyntaxNode> crefElements = summaryElement.ChildNodes()
+                    .Where(node => node.IsKind(SyntaxKind.XmlEmptyElement));
 
-                var summaryNode = syntaxNode.ChildNodes().Single(node => node.IsKind(SyntaxKind.XmlElement));
-
-                var summaryElements = summaryNode.ChildNodes().Where(node => node.IsKind(SyntaxKind.XmlElement));
-
-                foreach (var summaryElement in summaryElements)
+                foreach (SyntaxNode crefElement in crefElements)
                 {
-                    var crefElements = summaryElement.ChildNodes()
-                        .Where(node => node.IsKind(SyntaxKind.XmlEmptyElement));
+                    SyntaxNode crefAttribute = crefElement.ChildNodes()
+                        .Single(node => node.IsKind(SyntaxKind.XmlCrefAttribute));
 
-                    foreach (var crefElement in crefElements)
+                    string eventName = crefAttribute.ChildNodes().Single(node => node.IsKind(SyntaxKind.QualifiedCref))
+                        .ToString();
+
+                    if (!map.ContainsKey(eventName))
                     {
-                        var crefAttribute = crefElement.ChildNodes()
-                            .Single(node => node.IsKind(SyntaxKind.XmlCrefAttribute));
-
-                        var eventName = crefAttribute.ChildNodes().Single(node => node.IsKind(SyntaxKind.QualifiedCref))
-                            .ToString();
-
-                        if (!map.ContainsKey(eventName))
-                            map.Add(eventName, new HashSet<string> { intentName });
-                        else
-                            map[eventName].Add(intentName);
+                        map.Add(eventName, new HashSet<string> { intentName });
+                    }
+                    else
+                    {
+                        map[eventName].Add(intentName);
                     }
                 }
             }
+        }
 
-            var sourceBuilder = new StringBuilder(@"using System;
+        StringBuilder sourceBuilder = new(@"using System;
 using System.Linq;
 using System.Reflection;
 using DSharpPlus;
@@ -82,39 +92,41 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting
         {
 ");
 
-            //
-            // Skip "AllUnprivileged" and "All" or code generation breaks
-            // 
-            foreach (var entry in map.Reverse().Skip(2))
-            {
-                var name = entry.Key.Replace("DiscordClient.", string.Empty);
-                var value = entry.Value;
+        //
+        // Skip "AllUnprivileged" and "All" or code generation breaks
+        // 
+        foreach (KeyValuePair<string, HashSet<string>> entry in map.Reverse().Skip(2))
+        {
+            string name = entry.Key.Replace("DiscordClient.", string.Empty);
+            HashSet<string> value = entry.Value;
 
-                sourceBuilder.Append($@"
+            sourceBuilder.Append($@"
             if (scope.ServiceProvider
                 .GetServices(typeof(IDiscord{name}EventSubscriber))
                 .Any())
             {{
 ");
 
-                foreach (var intentName in value)
-                    sourceBuilder.Append($@"
+            foreach (string intentName in value)
+            {
+                sourceBuilder.Append($@"
                 intents |= DiscordIntents.{intentName};
-");
-
-                sourceBuilder.Append(@"
-            }    
 ");
             }
 
             sourceBuilder.Append(@"
+            }    
+");
+        }
+
+        sourceBuilder.Append(@"
             return intents;
         }
     }
 }
 ");
 
-            context.AddSource("DiscordServiceIntentsBuilderGenerated", SourceText.From(sourceBuilder.ToString(), Encoding.UTF8));
-        }
+        context.AddSource("DiscordServiceIntentsBuilderGenerated",
+            SourceText.From(sourceBuilder.ToString(), Encoding.UTF8));
     }
 }

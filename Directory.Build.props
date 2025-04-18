@@ -1,42 +1,42 @@
 <Project>
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <RepositoryUrl>https://github.com/nefarius/Nefarius.DSharpPlus.Extensions.Hosting</RepositoryUrl>
-    <PackageProjectUrl>https://github.com/nefarius/Nefarius.DSharpPlus.Extensions.Hosting</PackageProjectUrl>
-    <PackageTags>discord dsharpplus hosting extensions</PackageTags>
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <RepositoryUrl>https://github.com/nefarius/Nefarius.DSharpPlus.Extensions.Hosting</RepositoryUrl>
+        <PackageProjectUrl>https://github.com/nefarius/Nefarius.DSharpPlus.Extensions.Hosting</PackageProjectUrl>
+        <PackageTags>discord dsharpplus hosting extensions</PackageTags>
 
-    <!-- Copyright information -->
-    <Authors>Benjamin Höglinger-Stelzer</Authors>
-    <Copyright>Copyright © Benjamin Höglinger-Stelzer 2021-2025</Copyright>
+        <!-- Copyright information -->
+        <Authors>Benjamin Höglinger-Stelzer</Authors>
+        <Copyright>Copyright © Benjamin Höglinger-Stelzer 2021-2025</Copyright>
 
-    <!-- Package Icon -->
-    <PackageIcon>NSS-128x128.png</PackageIcon>
-    <PackageIconUrl />
-    <PackageReadmeFile>README.md</PackageReadmeFile>
+        <!-- Package Icon -->
+        <PackageIcon>NSS-128x128.png</PackageIcon>
+        <PackageIconUrl/>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
 
-    <!-- Common solution settings -->
-    <OutputPath>$(SolutionDir)bin\</OutputPath>
-    <LangVersion>latest</LangVersion>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <!-- Common solution settings -->
+        <OutputPath>$(SolutionDir)bin\</OutputPath>
+        <LangVersion>latest</LangVersion>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
 
-    <!-- Docs and symbols generation -->
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <IncludeSymbols>true</IncludeSymbols>
-    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-    <PublishRepositoryUrl>true</PublishRepositoryUrl>
-  </PropertyGroup>
+        <!-- Docs and symbols generation -->
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    </PropertyGroup>
 
-  <PropertyGroup>
-    <MinVerTagPrefix>v</MinVerTagPrefix>
-  </PropertyGroup>
+    <PropertyGroup>
+        <MinVerTagPrefix>v</MinVerTagPrefix>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <None Include="$(SolutionDir)assets\NSS-128x128.png">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
-    <None Include="$(SolutionDir)README.md" Pack="true" PackagePath="\" />
-  </ItemGroup>
+    <ItemGroup>
+        <None Include="$(SolutionDir)assets\NSS-128x128.png">
+            <Pack>True</Pack>
+            <PackagePath></PackagePath>
+        </None>
+        <None Include="$(SolutionDir)README.md" Pack="true" PackagePath="\"/>
+    </ItemGroup>
 </Project>
