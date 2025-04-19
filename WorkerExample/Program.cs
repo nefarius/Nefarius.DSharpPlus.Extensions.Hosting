@@ -1,5 +1,6 @@
 using System;
 
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 
 using Nefarius.DSharpPlus.Extensions.Hosting;
@@ -40,7 +41,7 @@ public class Program
                         //
                         // Minimum required configuration
                         // 
-                        options.Token = "recommended to read bot token from configuration file";
+                        options.Token = hostContext.Configuration.GetValue<string>("Bot:Token");
                     },
                     // optional parameters for ConnectAsync()
                     connectOptions: copts => { copts.IdleSince = DateTimeOffset.UtcNow; });
