@@ -1,4 +1,6 @@
-﻿using System;
+﻿#nullable enable
+
+using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 
@@ -63,10 +65,13 @@ public partial class DiscordService : IDiscordClientService
         //
         // Grab the content of the user-set intents and merge them with what the subscribers need
         // 
-        PropertyInfo property = typeof(DiscordConfiguration).GetProperty("Intents");
-        property = property.DeclaringType.GetProperty("Intents");
-        DiscordIntents intents = (DiscordIntents)property.GetValue(_discordOptions.Value,
-            BindingFlags.NonPublic | BindingFlags.Instance, null, null, null);
+        PropertyInfo? property = typeof(DiscordConfiguration).GetProperty(nameof(DiscordConfiguration.Intents));
+        property = property!.DeclaringType!.GetProperty(nameof(DiscordConfiguration.Intents));
+        DiscordIntents intents = (DiscordIntents)property!.GetValue(
+            _discordOptions.Value,
+            BindingFlags.NonPublic | BindingFlags.Instance,
+            null, null, null
+        );
 
         using IServiceScope serviceScope = _serviceProvider.CreateScope();
 
