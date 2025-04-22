@@ -1,9 +1,9 @@
-﻿using System;
+﻿#nullable enable
+
+using System;
 using System.Diagnostics.CodeAnalysis;
 
-using DSharpPlus;
 using DSharpPlus.Interactivity;
-using DSharpPlus.Interactivity.Extensions;
 
 using Microsoft.Extensions.DependencyInjection;
 
@@ -16,6 +16,7 @@ namespace Nefarius.DSharpPlus.Interactivity.Extensions.Hosting;
 /// </summary>
 [SuppressMessage("ReSharper", "UnusedMember.Global")]
 [SuppressMessage("ReSharper", "ClassNeverInstantiated.Global")]
+[SuppressMessage("ReSharper", "UnusedMethodReturnValue.Global")]
 public static class DiscordServiceCollectionExtensions
 {
     /// <summary>
@@ -23,31 +24,16 @@ public static class DiscordServiceCollectionExtensions
     /// </summary>
     /// <param name="services">The <see cref="IServiceCollection" />.</param>
     /// <param name="configuration">The <see cref="InteractivityConfiguration" />.</param>
-    /// <param name="extension">The <see cref="InteractivityExtension" /></param>
+    /// <param name="extension">The <see cref="InteractivityExtension" />.</param>
     /// <returns>The <see cref="IServiceCollection" />.</returns>
     public static IServiceCollection AddDiscordInteractivity(
         this IServiceCollection services,
         Action<InteractivityConfiguration> configuration,
-        Action<InteractivityExtension?> extension = null
+        Action<InteractivityExtension>? extension = null
     )
     {
-        services.AddSingleton(typeof(IDiscordExtensionConfiguration), provider =>
-        {
-            InteractivityConfiguration options = new();
-
-            configuration(options);
-
-            DiscordClient discord = provider.GetRequiredService<IDiscordClientService>().Client;
-
-            InteractivityExtension ext = discord.UseInteractivity(options);
-
-            extension?.Invoke(ext);
-
-            //
-            // This is intentional; we don't need this "service", just the execution flow ;)
-            // 
-            return null;
-        });
+        services.AddSingleton<IServiceActivator, InteractivityActivator>(_ =>
+            new InteractivityActivator(configuration, extension));
 
         return services;
     }

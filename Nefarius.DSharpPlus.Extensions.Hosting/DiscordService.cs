@@ -88,9 +88,11 @@ public partial class DiscordService : IDiscordClientService
 
         //
         // Load options that should load in before Connect call
-        // TODO: this is a messy IoC abuse, come up with something smarter!
         // 
-        _serviceProvider.GetServices<IDiscordExtensionConfiguration>();
+        foreach (IServiceActivator activator in _serviceProvider.GetServices<IServiceActivator>())
+        {
+            activator.Activate(_serviceProvider);
+        }
 
         HookEvents();
     }
