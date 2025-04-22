@@ -28,36 +28,23 @@ public interface IDiscordClientService
 /// </summary>
 [SuppressMessage("ReSharper", "UnusedMember.Global")]
 [SuppressMessage("ReSharper", "ClassNeverInstantiated.Global")]
-public partial class DiscordService : IDiscordClientService
+public partial class DiscordService(
+    IServiceProvider serviceProvider,
+    ILoggerFactory logFactory,
+    IOptions<DiscordConfiguration> discordOptions)
+    : IDiscordClientService
 {
-    private readonly IOptions<DiscordConfiguration> _discordOptions;
-    private readonly ILoggerFactory _logFactory;
-
-    private readonly ILogger<DiscordService> _logger;
-
-    private readonly IServiceProvider _serviceProvider;
-
-    public DiscordService(
-        IServiceProvider serviceProvider,
-        ILoggerFactory logFactory,
-        ILogger<DiscordService> logger,
-        IOptions<DiscordConfiguration> discordOptions
-    )
-    {
-        _serviceProvider = serviceProvider;
-        _logger = logger;
-        _discordOptions = discordOptions;
-        _logFactory = logFactory;
-    }
-
     /// <summary>
     ///     Gets the <see cref="DiscordClient" />.
     /// </summary>
-    public DiscordClient Client { get; private set; }
+    public DiscordClient Client { get; private set; } = null!;
 
+    /// <summary>
+    ///     Discover intents, initialize <see cref="DiscordClient"/> and hook events to subscribers.
+    /// </summary>
     internal void Initialize()
     {
-        if (_discordOptions.Value is null)
+        if (discordOptions.Value is null)
         {
             throw new InvalidOperationException($"{nameof(DiscordConfiguration)} option is required");
         }
@@ -68,21 +55,21 @@ public partial class DiscordService : IDiscordClientService
         PropertyInfo? property = typeof(DiscordConfiguration).GetProperty(nameof(DiscordConfiguration.Intents));
         property = property!.DeclaringType!.GetProperty(nameof(DiscordConfiguration.Intents));
         DiscordIntents intents = (DiscordIntents)property!.GetValue(
-            _discordOptions.Value,
+            discordOptions.Value,
             BindingFlags.NonPublic | BindingFlags.Instance,
             null, null, null
         );
 
-        using IServiceScope serviceScope = _serviceProvider.CreateScope();
+        using IServiceScope serviceScope = serviceProvider.CreateScope();
 
         intents = BuildIntents(serviceScope, intents);
 
-        DiscordConfiguration configuration = new(_discordOptions.Value)
+        DiscordConfiguration configuration = new(discordOptions.Value)
         {
             //
             // Overwrite with DI configured logging factory
             // 
-            LoggerFactory = _logFactory,
+            LoggerFactory = logFactory,
             //
             // Use merged intents
             // 
@@ -94,9 +81,9 @@ public partial class DiscordService : IDiscordClientService
         //
         // Load options that should load in before Connect call
         // 
-        foreach (IServiceActivator activator in _serviceProvider.GetServices<IServiceActivator>())
+        foreach (IServiceActivator activator in serviceProvider.GetServices<IServiceActivator>())
         {
-            activator.Activate(_serviceProvider);
+            activator.Activate(serviceProvider);
         }
 
         HookEvents();
