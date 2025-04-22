@@ -11,7 +11,9 @@ using Nefarius.DSharpPlus.Extensions.Hosting;
 
 namespace Nefarius.DSharpPlus.VoiceNext.Extensions.Hosting;
 
-internal sealed class VoiceNextActivator(Action<VoiceNextConfiguration>? configure = null) : IServiceActivator
+internal sealed class VoiceNextActivator(
+    Action<VoiceNextConfiguration>? configure = null,
+    Action<VoiceNextExtension>? extension = null) : IServiceActivator
 {
     public void Activate(IServiceProvider provider)
     {
@@ -21,6 +23,8 @@ internal sealed class VoiceNextActivator(Action<VoiceNextConfiguration>? configu
 
         DiscordClient discord = provider.GetRequiredService<IDiscordClientService>().Client;
 
-        discord.UseVoiceNext(options);
+        VoiceNextExtension? ext = discord.UseVoiceNext(options);
+
+        extension?.Invoke(ext);
     }
 }

@@ -24,13 +24,15 @@ public static class DiscordServiceCollectionExtensions
     /// </summary>
     /// <param name="services">The <see cref="IServiceCollection" />.</param>
     /// <param name="configure">The <see cref="VoiceNextConfiguration" />.</param>
+    /// <param name="extension">The <see cref="VoiceNextExtension" />.</param>
     /// <returns>The <see cref="IServiceCollection" />.</returns>
     public static IServiceCollection AddDiscordVoiceNext(
         this IServiceCollection services,
-        Action<VoiceNextConfiguration>? configure = null
+        Action<VoiceNextConfiguration>? configure = null,
+        Action<VoiceNextExtension>? extension = null
     )
     {
-        services.AddSingleton<IServiceActivator, VoiceNextActivator>(_ => new VoiceNextActivator(configure));
+        services.AddSingleton<IServiceActivator, VoiceNextActivator>(_ => new VoiceNextActivator(configure, extension));
 
         return services;
     }
