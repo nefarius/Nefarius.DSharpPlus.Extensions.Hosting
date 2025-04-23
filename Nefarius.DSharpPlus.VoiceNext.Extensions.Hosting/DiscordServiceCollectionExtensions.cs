@@ -1,7 +1,8 @@
-﻿using System;
+﻿#nullable enable
+
+using System;
 using System.Diagnostics.CodeAnalysis;
 
-using DSharpPlus;
 using DSharpPlus.VoiceNext;
 
 using Microsoft.Extensions.DependencyInjection;
@@ -15,6 +16,7 @@ namespace Nefarius.DSharpPlus.VoiceNext.Extensions.Hosting;
 /// </summary>
 [SuppressMessage("ReSharper", "UnusedMember.Global")]
 [SuppressMessage("ReSharper", "ClassNeverInstantiated.Global")]
+[SuppressMessage("ReSharper", "UnusedType.Global")]
 public static class DiscordServiceCollectionExtensions
 {
     /// <summary>
@@ -22,27 +24,15 @@ public static class DiscordServiceCollectionExtensions
     /// </summary>
     /// <param name="services">The <see cref="IServiceCollection" />.</param>
     /// <param name="configure">The <see cref="VoiceNextConfiguration" />.</param>
+    /// <param name="extension">The <see cref="VoiceNextExtension" />.</param>
     /// <returns>The <see cref="IServiceCollection" />.</returns>
     public static IServiceCollection AddDiscordVoiceNext(
         this IServiceCollection services,
-        Action<VoiceNextConfiguration?> configure = null
+        Action<VoiceNextConfiguration>? configure = null,
+        Action<VoiceNextExtension>? extension = null
     )
     {
-        services.AddSingleton(typeof(IDiscordExtensionConfiguration), provider =>
-        {
-            VoiceNextConfiguration options = new();
-
-            configure?.Invoke(options);
-
-            DiscordClient discord = provider.GetRequiredService<IDiscordClientService>().Client;
-
-            discord.UseVoiceNext(options);
-
-            //
-            // This is intentional; we don't need this "service", just the execution flow ;)
-            // 
-            return null;
-        });
+        services.AddSingleton<IServiceActivator, VoiceNextActivator>(_ => new VoiceNextActivator(configure, extension));
 
         return services;
     }

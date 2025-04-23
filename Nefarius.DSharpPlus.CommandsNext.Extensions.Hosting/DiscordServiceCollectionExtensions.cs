@@ -1,14 +1,14 @@
-﻿using System;
+﻿#nullable enable
+
+using System;
 using System.Diagnostics.CodeAnalysis;
 
-using DSharpPlus;
 using DSharpPlus.CommandsNext;
 
 using Microsoft.Extensions.DependencyInjection;
 
 using Nefarius.DSharpPlus.CommandsNext.Extensions.Hosting.Attributes;
 using Nefarius.DSharpPlus.CommandsNext.Extensions.Hosting.Events;
-using Nefarius.DSharpPlus.CommandsNext.Extensions.Hosting.Util;
 using Nefarius.DSharpPlus.Extensions.Hosting;
 using Nefarius.DSharpPlus.Extensions.Hosting.Util;
 
@@ -20,6 +20,7 @@ namespace Nefarius.DSharpPlus.CommandsNext.Extensions.Hosting;
 [SuppressMessage("ReSharper", "UnusedMember.Global")]
 [SuppressMessage("ReSharper", "ClassNeverInstantiated.Global")]
 [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
+[SuppressMessage("ReSharper", "UnusedMethodReturnValue.Global")]
 public static class DiscordServiceCollectionExtensions
 {
     /// <summary>
@@ -36,54 +37,12 @@ public static class DiscordServiceCollectionExtensions
     public static IServiceCollection AddDiscordCommandsNext(
         this IServiceCollection services,
         Action<CommandsNextConfiguration> configuration,
-        Action<CommandsNextExtension?> extension = null,
+        Action<CommandsNextExtension>? extension = null,
         bool autoRegisterSubscribers = true
     )
     {
-        services.AddSingleton(typeof(IDiscordExtensionConfiguration), provider =>
-        {
-            CommandsNextConfiguration options = new();
-
-            configuration(options);
-
-            //
-            // Make all services available to bot commands
-            // 
-            options.Services = provider;
-
-            DiscordClient discord = provider.GetRequiredService<IDiscordClientService>().Client;
-
-            CommandsNextExtension ext = discord.UseCommandsNext(options);
-
-            extension?.Invoke(ext);
-
-            ext.CommandExecuted += async delegate(CommandsNextExtension sender, CommandExecutionEventArgs args)
-            {
-                using IServiceScope scope = provider.CreateScope();
-
-                foreach (IDiscordCommandsNextEventsSubscriber eventsSubscriber in scope
-                             .GetDiscordCommandsNextEventsSubscriber())
-                {
-                    await eventsSubscriber.CommandsOnCommandExecuted(sender, args);
-                }
-            };
-
-            ext.CommandErrored += async delegate(CommandsNextExtension sender, CommandErrorEventArgs args)
-            {
-                using IServiceScope scope = provider.CreateScope();
-
-                foreach (IDiscordCommandsNextEventsSubscriber eventsSubscriber in scope
-                             .GetDiscordCommandsNextEventsSubscriber())
-                {
-                    await eventsSubscriber.CommandsOnCommandErrored(sender, args);
-                }
-            };
-
-            //
-            // This is intentional; we don't need this "service", just the execution flow ;)
-            // 
-            return null;
-        });
+        services.AddSingleton<IServiceActivator, CommandsNextActivator>(_ =>
+            new CommandsNextActivator(configuration, extension));
 
         if (!autoRegisterSubscribers)
         {
