@@ -58,6 +58,7 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting.Events
     /// <summary>
     ///     Implements a DiscordOn{name} event handler.
     /// </summary>
+    [UsedImplicitly(ImplicitUseTargetFlags.WithInheritors)]    
     public interface IDiscord{name}EventSubscriber
     {{
         /// <summary>

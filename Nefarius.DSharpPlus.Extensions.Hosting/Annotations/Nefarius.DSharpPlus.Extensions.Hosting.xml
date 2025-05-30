@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <assembly name="Nefarius.DSharpPlus.Extensions.Hosting">
+  <!-- Attributes -->
   <member name="T:Nefarius.DSharpPlus.Extensions.Hosting.DiscordApplicationCommandCreatedEventSubscriberAttribute">
     <attribute ctor="M:JetBrains.Annotations.MeansImplicitUseAttribute.#ctor" />
   </member>
@@ -227,5 +228,11 @@
   </member>
   <member name="T:Nefarius.DSharpPlus.Extensions.Hosting.DiscordZombiedEventSubscriberAttribute">
     <attribute ctor="M:JetBrains.Annotations.MeansImplicitUseAttribute.#ctor" />
+  </member>
+  <!-- Interfaces -->
+  <member name="T:Nefarius.DSharpPlus.Extensions.Hosting.IDiscordComponentInteractionCreatedEventSubscriber">
+    <attribute ctor="M:JetBrains.Annotations.UsedImplicitlyAttribute.#ctor(JetBrains.Annotations.ImplicitUseTargetFlags)">
+      <argument>4</argument> <!-- ImplicitUseTargetFlags.WithInheritors -->
+    </attribute>
   </member>
 </assembly>
