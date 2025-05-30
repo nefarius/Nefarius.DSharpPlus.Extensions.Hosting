@@ -32,4 +32,9 @@
         <ProjectReference Include="Generators\Nefarius.DSharpPlus.Extensions.Hosting.Generators.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false"/>
     </ItemGroup>
 
+    <ItemGroup>
+        <None Include="Annotations\Nefarius.DSharpPlus.Extensions.Hosting.xml" Pack="true"
+              PackagePath="contentFiles/any/annotations/Nefarius.DSharpPlus.Extensions.Hosting.xml"/>
+    </ItemGroup>
+
 </Project>

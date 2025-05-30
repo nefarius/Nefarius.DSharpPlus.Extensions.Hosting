@@ -1,0 +1,230 @@
+<assembly name="Nefarius.DSharpPlus.Extensions.Hosting">
+  <member name="T:Nefarius.DSharpPlus.Extensions.Hosting.DiscordApplicationCommandCreatedEventSubscriberAttribute">
+    <attribute ctor="M:JetBrains.Annotations.MeansImplicitUseAttribute.#ctor" />
+  </member>
+  <member name="T:Nefarius.DSharpPlus.Extensions.Hosting.DiscordApplicationCommandDeletedEventSubscriberAttribute">
+    <attribute ctor="M:JetBrains.Annotations.MeansImplicitUseAttribute.#ctor" />
+  </member>
+  <member name="T:Nefarius.DSharpPlus.Extensions.Hosting.DiscordApplicationCommandPermissionsUpdatedEventSubscriberAttribute">
+    <attribute ctor="M:JetBrains.Annotations.MeansImplicitUseAttribute.#ctor" />
+  </member>
+  <member name="T:Nefarius.DSharpPlus.Extensions.Hosting.DiscordApplicationCommandUpdatedEventSubscriberAttribute">
+    <attribute ctor="M:JetBrains.Annotations.MeansImplicitUseAttribute.#ctor" />
+  </member>
+  <member name="T:Nefarius.DSharpPlus.Extensions.Hosting.DiscordChannelCreatedEventSubscriberAttribute">
+    <attribute ctor="M:JetBrains.Annotations.MeansImplicitUseAttribute.#ctor" />
+  </member>
+  <member name="T:Nefarius.DSharpPlus.Extensions.Hosting.DiscordChannelDeletedEventSubscriberAttribute">
+    <attribute ctor="M:JetBrains.Annotations.MeansImplicitUseAttribute.#ctor" />
+  </member>
+  <member name="T:Nefarius.DSharpPlus.Extensions.Hosting.DiscordChannelPinsUpdatedEventSubscriberAttribute">
+    <attribute ctor="M:JetBrains.Annotations.MeansImplicitUseAttribute.#ctor" />
+  </member>
+  <member name="T:Nefarius.DSharpPlus.Extensions.Hosting.DiscordChannelUpdatedEventSubscriberAttribute">
+    <attribute ctor="M:JetBrains.Annotations.MeansImplicitUseAttribute.#ctor" />
+  </member>
+  <member name="T:Nefarius.DSharpPlus.Extensions.Hosting.DiscordClientErroredEventSubscriberAttribute">
+    <attribute ctor="M:JetBrains.Annotations.MeansImplicitUseAttribute.#ctor" />
+  </member>
+  <member name="T:Nefarius.DSharpPlus.Extensions.Hosting.DiscordComponentInteractionCreatedEventSubscriberAttribute">
+    <attribute ctor="M:JetBrains.Annotations.MeansImplicitUseAttribute.#ctor" />
+  </member>
+  <member name="T:Nefarius.DSharpPlus.Extensions.Hosting.DiscordContextMenuInteractionCreatedEventSubscriberAttribute">
+    <attribute ctor="M:JetBrains.Annotations.MeansImplicitUseAttribute.#ctor" />
+  </member>
+  <member name="T:Nefarius.DSharpPlus.Extensions.Hosting.DiscordDmChannelDeletedEventSubscriberAttribute">
+    <attribute ctor="M:JetBrains.Annotations.MeansImplicitUseAttribute.#ctor" />
+  </member>
+  <member name="T:Nefarius.DSharpPlus.Extensions.Hosting.DiscordGuildAvailableEventSubscriberAttribute">
+    <attribute ctor="M:JetBrains.Annotations.MeansImplicitUseAttribute.#ctor" />
+  </member>
+  <member name="T:Nefarius.DSharpPlus.Extensions.Hosting.DiscordGuildBanAddedEventSubscriberAttribute">
+    <attribute ctor="M:JetBrains.Annotations.MeansImplicitUseAttribute.#ctor" />
+  </member>
+  <member name="T:Nefarius.DSharpPlus.Extensions.Hosting.DiscordGuildBanRemovedEventSubscriberAttribute">
+    <attribute ctor="M:JetBrains.Annotations.MeansImplicitUseAttribute.#ctor" />
+  </member>
+  <member name="T:Nefarius.DSharpPlus.Extensions.Hosting.DiscordGuildCreatedEventSubscriberAttribute">
+    <attribute ctor="M:JetBrains.Annotations.MeansImplicitUseAttribute.#ctor" />
+  </member>
+  <member name="T:Nefarius.DSharpPlus.Extensions.Hosting.DiscordGuildDeletedEventSubscriberAttribute">
+    <attribute ctor="M:JetBrains.Annotations.MeansImplicitUseAttribute.#ctor" />
+  </member>
+  <member name="T:Nefarius.DSharpPlus.Extensions.Hosting.DiscordGuildDownloadCompletedEventSubscriberAttribute">
+    <attribute ctor="M:JetBrains.Annotations.MeansImplicitUseAttribute.#ctor" />
+  </member>
+  <member name="T:Nefarius.DSharpPlus.Extensions.Hosting.DiscordGuildEmojisUpdatedEventSubscriberAttribute">
+    <attribute ctor="M:JetBrains.Annotations.MeansImplicitUseAttribute.#ctor" />
+  </member>
+  <member name="T:Nefarius.DSharpPlus.Extensions.Hosting.DiscordGuildIntegrationsUpdatedEventSubscriberAttribute">
+    <attribute ctor="M:JetBrains.Annotations.MeansImplicitUseAttribute.#ctor" />
+  </member>
+  <member name="T:Nefarius.DSharpPlus.Extensions.Hosting.DiscordGuildMemberAddedEventSubscriberAttribute">
+    <attribute ctor="M:JetBrains.Annotations.MeansImplicitUseAttribute.#ctor" />
+  </member>
+  <member name="T:Nefarius.DSharpPlus.Extensions.Hosting.DiscordGuildMemberRemovedEventSubscriberAttribute">
+    <attribute ctor="M:JetBrains.Annotations.MeansImplicitUseAttribute.#ctor" />
+  </member>
+  <member name="T:Nefarius.DSharpPlus.Extensions.Hosting.DiscordGuildMembersChunkedEventSubscriberAttribute">
+    <attribute ctor="M:JetBrains.Annotations.MeansImplicitUseAttribute.#ctor" />
+  </member>
+  <member name="T:Nefarius.DSharpPlus.Extensions.Hosting.DiscordGuildMemberUpdatedEventSubscriberAttribute">
+    <attribute ctor="M:JetBrains.Annotations.MeansImplicitUseAttribute.#ctor" />
+  </member>
+  <member name="T:Nefarius.DSharpPlus.Extensions.Hosting.DiscordGuildRoleCreatedEventSubscriberAttribute">
+    <attribute ctor="M:JetBrains.Annotations.MeansImplicitUseAttribute.#ctor" />
+  </member>
+  <member name="T:Nefarius.DSharpPlus.Extensions.Hosting.DiscordGuildRoleDeletedEventSubscriberAttribute">
+    <attribute ctor="M:JetBrains.Annotations.MeansImplicitUseAttribute.#ctor" />
+  </member>
+  <member name="T:Nefarius.DSharpPlus.Extensions.Hosting.DiscordGuildRoleUpdatedEventSubscriberAttribute">
+    <attribute ctor="M:JetBrains.Annotations.MeansImplicitUseAttribute.#ctor" />
+  </member>
+  <member name="T:Nefarius.DSharpPlus.Extensions.Hosting.DiscordGuildStickersUpdatedEventSubscriberAttribute">
+    <attribute ctor="M:JetBrains.Annotations.MeansImplicitUseAttribute.#ctor" />
+  </member>
+  <member name="T:Nefarius.DSharpPlus.Extensions.Hosting.DiscordGuildUnavailableEventSubscriberAttribute">
+    <attribute ctor="M:JetBrains.Annotations.MeansImplicitUseAttribute.#ctor" />
+  </member>
+  <member name="T:Nefarius.DSharpPlus.Extensions.Hosting.DiscordGuildUpdatedEventSubscriberAttribute">
+    <attribute ctor="M:JetBrains.Annotations.MeansImplicitUseAttribute.#ctor" />
+  </member>
+  <member name="T:Nefarius.DSharpPlus.Extensions.Hosting.DiscordHeartbeatedEventSubscriberAttribute">
+    <attribute ctor="M:JetBrains.Annotations.MeansImplicitUseAttribute.#ctor" />
+  </member>
+  <member name="T:Nefarius.DSharpPlus.Extensions.Hosting.DiscordIntegrationCreatedEventSubscriberAttribute">
+    <attribute ctor="M:JetBrains.Annotations.MeansImplicitUseAttribute.#ctor" />
+  </member>
+  <member name="T:Nefarius.DSharpPlus.Extensions.Hosting.DiscordIntegrationDeletedEventSubscriberAttribute">
+    <attribute ctor="M:JetBrains.Annotations.MeansImplicitUseAttribute.#ctor" />
+  </member>
+  <member name="T:Nefarius.DSharpPlus.Extensions.Hosting.DiscordIntegrationUpdatedEventSubscriberAttribute">
+    <attribute ctor="M:JetBrains.Annotations.MeansImplicitUseAttribute.#ctor" />
+  </member>
+  <member name="T:Nefarius.DSharpPlus.Extensions.Hosting.DiscordInteractionCreatedEventSubscriberAttribute">
+    <attribute ctor="M:JetBrains.Annotations.MeansImplicitUseAttribute.#ctor" />
+  </member>
+  <member name="T:Nefarius.DSharpPlus.Extensions.Hosting.DiscordInviteCreatedEventSubscriberAttribute">
+    <attribute ctor="M:JetBrains.Annotations.MeansImplicitUseAttribute.#ctor" />
+  </member>
+  <member name="T:Nefarius.DSharpPlus.Extensions.Hosting.DiscordInviteDeletedEventSubscriberAttribute">
+    <attribute ctor="M:JetBrains.Annotations.MeansImplicitUseAttribute.#ctor" />
+  </member>
+  <member name="T:Nefarius.DSharpPlus.Extensions.Hosting.DiscordMessageAcknowledgedEventSubscriberAttribute">
+    <attribute ctor="M:JetBrains.Annotations.MeansImplicitUseAttribute.#ctor" />
+  </member>
+  <member name="T:Nefarius.DSharpPlus.Extensions.Hosting.DiscordMessageCreatedEventSubscriberAttribute">
+    <attribute ctor="M:JetBrains.Annotations.MeansImplicitUseAttribute.#ctor" />
+  </member>
+  <member name="T:Nefarius.DSharpPlus.Extensions.Hosting.DiscordMessageDeletedEventSubscriberAttribute">
+    <attribute ctor="M:JetBrains.Annotations.MeansImplicitUseAttribute.#ctor" />
+  </member>
+  <member name="T:Nefarius.DSharpPlus.Extensions.Hosting.DiscordMessageReactionAddedEventSubscriberAttribute">
+    <attribute ctor="M:JetBrains.Annotations.MeansImplicitUseAttribute.#ctor" />
+  </member>
+  <member name="T:Nefarius.DSharpPlus.Extensions.Hosting.DiscordMessageReactionRemovedEmojiEventSubscriberAttribute">
+    <attribute ctor="M:JetBrains.Annotations.MeansImplicitUseAttribute.#ctor" />
+  </member>
+  <member name="T:Nefarius.DSharpPlus.Extensions.Hosting.DiscordMessageReactionRemovedEventSubscriberAttribute">
+    <attribute ctor="M:JetBrains.Annotations.MeansImplicitUseAttribute.#ctor" />
+  </member>
+  <member name="T:Nefarius.DSharpPlus.Extensions.Hosting.DiscordMessageReactionsClearedEventSubscriberAttribute">
+    <attribute ctor="M:JetBrains.Annotations.MeansImplicitUseAttribute.#ctor" />
+  </member>
+  <member name="T:Nefarius.DSharpPlus.Extensions.Hosting.DiscordMessagesBulkDeletedEventSubscriberAttribute">
+    <attribute ctor="M:JetBrains.Annotations.MeansImplicitUseAttribute.#ctor" />
+  </member>
+  <member name="T:Nefarius.DSharpPlus.Extensions.Hosting.DiscordMessageUpdatedEventSubscriberAttribute">
+    <attribute ctor="M:JetBrains.Annotations.MeansImplicitUseAttribute.#ctor" />
+  </member>
+  <member name="T:Nefarius.DSharpPlus.Extensions.Hosting.DiscordModalSubmittedEventSubscriberAttribute">
+    <attribute ctor="M:JetBrains.Annotations.MeansImplicitUseAttribute.#ctor" />
+  </member>
+  <member name="T:Nefarius.DSharpPlus.Extensions.Hosting.DiscordPresenceUpdatedEventSubscriberAttribute">
+    <attribute ctor="M:JetBrains.Annotations.MeansImplicitUseAttribute.#ctor" />
+  </member>
+  <member name="T:Nefarius.DSharpPlus.Extensions.Hosting.DiscordReadyEventSubscriberAttribute">
+    <attribute ctor="M:JetBrains.Annotations.MeansImplicitUseAttribute.#ctor" />
+  </member>
+  <member name="T:Nefarius.DSharpPlus.Extensions.Hosting.DiscordResumedEventSubscriberAttribute">
+    <attribute ctor="M:JetBrains.Annotations.MeansImplicitUseAttribute.#ctor" />
+  </member>
+  <member name="T:Nefarius.DSharpPlus.Extensions.Hosting.DiscordScheduledGuildEventCompletedEventSubscriberAttribute">
+    <attribute ctor="M:JetBrains.Annotations.MeansImplicitUseAttribute.#ctor" />
+  </member>
+  <member name="T:Nefarius.DSharpPlus.Extensions.Hosting.DiscordScheduledGuildEventCreatedEventSubscriberAttribute">
+    <attribute ctor="M:JetBrains.Annotations.MeansImplicitUseAttribute.#ctor" />
+  </member>
+  <member name="T:Nefarius.DSharpPlus.Extensions.Hosting.DiscordScheduledGuildEventDeletedEventSubscriberAttribute">
+    <attribute ctor="M:JetBrains.Annotations.MeansImplicitUseAttribute.#ctor" />
+  </member>
+  <member name="T:Nefarius.DSharpPlus.Extensions.Hosting.DiscordScheduledGuildEventUpdatedEventSubscriberAttribute">
+    <attribute ctor="M:JetBrains.Annotations.MeansImplicitUseAttribute.#ctor" />
+  </member>
+  <member name="T:Nefarius.DSharpPlus.Extensions.Hosting.DiscordScheduledGuildEventUserAddedEventSubscriberAttribute">
+    <attribute ctor="M:JetBrains.Annotations.MeansImplicitUseAttribute.#ctor" />
+  </member>
+  <member name="T:Nefarius.DSharpPlus.Extensions.Hosting.DiscordScheduledGuildEventUserRemovedEventSubscriberAttribute">
+    <attribute ctor="M:JetBrains.Annotations.MeansImplicitUseAttribute.#ctor" />
+  </member>
+  <member name="T:Nefarius.DSharpPlus.Extensions.Hosting.DiscordSocketClosedEventSubscriberAttribute">
+    <attribute ctor="M:JetBrains.Annotations.MeansImplicitUseAttribute.#ctor" />
+  </member>
+  <member name="T:Nefarius.DSharpPlus.Extensions.Hosting.DiscordSocketErroredEventSubscriberAttribute">
+    <attribute ctor="M:JetBrains.Annotations.MeansImplicitUseAttribute.#ctor" />
+  </member>
+  <member name="T:Nefarius.DSharpPlus.Extensions.Hosting.DiscordSocketOpenedEventSubscriberAttribute">
+    <attribute ctor="M:JetBrains.Annotations.MeansImplicitUseAttribute.#ctor" />
+  </member>
+  <member name="T:Nefarius.DSharpPlus.Extensions.Hosting.DiscordStageInstanceCreatedEventSubscriberAttribute">
+    <attribute ctor="M:JetBrains.Annotations.MeansImplicitUseAttribute.#ctor" />
+  </member>
+  <member name="T:Nefarius.DSharpPlus.Extensions.Hosting.DiscordStageInstanceDeletedEventSubscriberAttribute">
+    <attribute ctor="M:JetBrains.Annotations.MeansImplicitUseAttribute.#ctor" />
+  </member>
+  <member name="T:Nefarius.DSharpPlus.Extensions.Hosting.DiscordStageInstanceUpdatedEventSubscriberAttribute">
+    <attribute ctor="M:JetBrains.Annotations.MeansImplicitUseAttribute.#ctor" />
+  </member>
+  <member name="T:Nefarius.DSharpPlus.Extensions.Hosting.DiscordThreadCreatedEventSubscriberAttribute">
+    <attribute ctor="M:JetBrains.Annotations.MeansImplicitUseAttribute.#ctor" />
+  </member>
+  <member name="T:Nefarius.DSharpPlus.Extensions.Hosting.DiscordThreadDeletedEventSubscriberAttribute">
+    <attribute ctor="M:JetBrains.Annotations.MeansImplicitUseAttribute.#ctor" />
+  </member>
+  <member name="T:Nefarius.DSharpPlus.Extensions.Hosting.DiscordThreadListSyncedEventSubscriberAttribute">
+    <attribute ctor="M:JetBrains.Annotations.MeansImplicitUseAttribute.#ctor" />
+  </member>
+  <member name="T:Nefarius.DSharpPlus.Extensions.Hosting.DiscordThreadMembersUpdatedEventSubscriberAttribute">
+    <attribute ctor="M:JetBrains.Annotations.MeansImplicitUseAttribute.#ctor" />
+  </member>
+  <member name="T:Nefarius.DSharpPlus.Extensions.Hosting.DiscordThreadMemberUpdatedEventSubscriberAttribute">
+    <attribute ctor="M:JetBrains.Annotations.MeansImplicitUseAttribute.#ctor" />
+  </member>
+  <member name="T:Nefarius.DSharpPlus.Extensions.Hosting.DiscordThreadUpdatedEventSubscriberAttribute">
+    <attribute ctor="M:JetBrains.Annotations.MeansImplicitUseAttribute.#ctor" />
+  </member>
+  <member name="T:Nefarius.DSharpPlus.Extensions.Hosting.DiscordTypingStartedEventSubscriberAttribute">
+    <attribute ctor="M:JetBrains.Annotations.MeansImplicitUseAttribute.#ctor" />
+  </member>
+  <member name="T:Nefarius.DSharpPlus.Extensions.Hosting.DiscordUnknownEventEventSubscriberAttribute">
+    <attribute ctor="M:JetBrains.Annotations.MeansImplicitUseAttribute.#ctor" />
+  </member>
+  <member name="T:Nefarius.DSharpPlus.Extensions.Hosting.DiscordUserSettingsUpdatedEventSubscriberAttribute">
+    <attribute ctor="M:JetBrains.Annotations.MeansImplicitUseAttribute.#ctor" />
+  </member>
+  <member name="T:Nefarius.DSharpPlus.Extensions.Hosting.DiscordUserUpdatedEventSubscriberAttribute">
+    <attribute ctor="M:JetBrains.Annotations.MeansImplicitUseAttribute.#ctor" />
+  </member>
+  <member name="T:Nefarius.DSharpPlus.Extensions.Hosting.DiscordVoiceServerUpdatedEventSubscriberAttribute">
+    <attribute ctor="M:JetBrains.Annotations.MeansImplicitUseAttribute.#ctor" />
+  </member>
+  <member name="T:Nefarius.DSharpPlus.Extensions.Hosting.DiscordVoiceStateUpdatedEventSubscriberAttribute">
+    <attribute ctor="M:JetBrains.Annotations.MeansImplicitUseAttribute.#ctor" />
+  </member>
+  <member name="T:Nefarius.DSharpPlus.Extensions.Hosting.DiscordWebhooksUpdatedEventSubscriberAttribute">
+    <attribute ctor="M:JetBrains.Annotations.MeansImplicitUseAttribute.#ctor" />
+  </member>
+  <member name="T:Nefarius.DSharpPlus.Extensions.Hosting.DiscordZombiedEventSubscriberAttribute">
+    <attribute ctor="M:JetBrains.Annotations.MeansImplicitUseAttribute.#ctor" />
+  </member>
+</assembly>
