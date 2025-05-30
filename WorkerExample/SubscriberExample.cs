@@ -25,7 +25,6 @@ internal class BotModuleForGuildAndMemberEvents :
     ///     Optional constructor for Dependency Injection. parameters get populated automatically with you services.
     /// </summary>
     /// <param name="logger">The logger service instance.</param>
-    /// <param name="tracer">The tracer service instance.</param>
     public BotModuleForGuildAndMemberEvents(
         ILogger<BotModuleForGuildAndMemberEvents> logger
     )
