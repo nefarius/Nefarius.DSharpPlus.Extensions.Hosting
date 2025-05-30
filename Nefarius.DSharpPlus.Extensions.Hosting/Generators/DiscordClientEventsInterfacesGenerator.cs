@@ -50,7 +50,7 @@ namespace Nefarius.DSharpPlus.Extensions.Hosting.Events
     ///     Marks this class as a receiver of <see cref=""IDiscord{name}EventSubscriber"" /> events.
     /// </summary>
     [AttributeUsage(AttributeTargets.Class)]
-    [MeansImplicitUse(ImplicitUseTargetFlags.WithInheritors | ImplicitUseTargetFlags.WithMembers)]
+    [MeansImplicitUse]
     public sealed class Discord{name}EventSubscriberAttribute : Attribute {{ }}
 ");
 
