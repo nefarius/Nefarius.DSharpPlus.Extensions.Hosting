@@ -145,7 +145,6 @@ internal class BotModuleForGuildAndMemberEvents :
     ///     Parameters get populated automatically with your services.
     /// </summary>
     /// <param name="logger">The logger service instance.</param>
-    /// <param name="tracer">The tracer service instance.</param>
     public BotModuleForGuildAndMemberEvents(
         ILogger<BotModuleForGuildAndMemberEvents> logger
     )
