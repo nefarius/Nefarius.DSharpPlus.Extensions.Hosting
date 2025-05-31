@@ -9,7 +9,7 @@
 An extension for [DSharpPlus](https://github.com/DSharpPlus/DSharpPlus) to make hosting a Discord bot
 in [.NET Core Worker Services](https://docs.microsoft.com/en-us/dotnet/core/extensions/workers) easier.
 
-## 🚨 This project will be retired soon 🚨
+## 🚨 This project is in maintenance mode 🚨
 
 With DSharpPlus **version 5** (onwards)
 the [event handling design](https://github.com/DSharpPlus/DSharpPlus/issues/1585#issuecomment-2282832059) has been
